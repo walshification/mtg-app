@@ -1,0 +1,22 @@
+<h1>Your Decks</h1>
+
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Color(s)</th>
+    <th>Deck Type</th>
+    <th>Format</th>
+  </tr>
+  <% @decks.each do |deck| %>
+    <tr>
+      <td><%= deck.name %></td>
+      <td><%= deck.color %></td>
+      <td><%= deck.deck_type %></td>
+      <td><%= deck.legal_format %></td>
+    </tr>
+  <% end %>
+</table>
+
+<a href="<%= new_deck_path %>">
+  <button type="button" class="btn btn-success">Create a Deck</button>
+</a>
