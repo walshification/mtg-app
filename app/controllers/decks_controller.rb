@@ -21,4 +21,8 @@ class DecksController < ApplicationController
   def edit
     @deck = Deck.find_by(:id => params[:id])
   end
+
+  def show
+    @deck = Deck.find_by(:id => params[:id])
+  end
 end
