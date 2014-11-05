@@ -1,5 +1,11 @@
 <h1><%= @deck.name %></h1>
 
 <ul>
-  
+  <% @cards.each do |card| %>
+    <li>
+      <%= card.name %>, <%= card.decked_cards.quantity %>
+    </li>
+  <% end %>
 </ul>
+
+<%= render 'card_form' %>
