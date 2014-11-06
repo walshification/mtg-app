@@ -12,6 +12,7 @@
   </div>
 <% end %>
 
-<%= simple_form_for(@decked_card, html: {class: 'form-vertical' }) do |f| %>
-  <%= f.input :quantity %>
+<%= simple_form_for(@deck, html: {class: 'form-vertical' }) do |f| %>
+  <%= f.association :cards, collection: Card.all %>
+  <%= f.submit %>
 <% end %>
