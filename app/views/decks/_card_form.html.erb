@@ -12,7 +12,14 @@
   </div>
 <% end %>
 
-<%= simple_form_for(@deck, html: {class: 'form-vertical' }) do |f| %>
-  <%= f.association :cards, collection: Card.all %>
-  <%= f.submit %>
+
+
+<%= form_tag '/decked_cards' do %>
+  <%= label_tag :card_name %>
+  <%= text_field_tag :card_name %>
+
+  <%= label_tag :quantity %>
+  <%= text_field_tag :quantity %>
+
+  <%= submit_tag "Add Card" %>
 <% end %>

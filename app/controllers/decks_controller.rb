@@ -36,4 +36,10 @@ class DecksController < ApplicationController
     flash[:success] = "Deck updated."
     redirect_to deck_path
   end
+
+  private
+
+  def deck_params
+    params.require(:deck).permit(:name, :user_id, :legal_format, :deck_type)
+  end
 end
