@@ -1,5 +1,3 @@
-<h2>Add a card:</h2>
-
 <% if @card.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
@@ -14,12 +12,17 @@
 
 
 
-<%= form_tag '/decked_cards' do %>
-  <%= label_tag :card_name %>
-  <%= text_field_tag :card_name %>
-
-  <%= label_tag :quantity %>
-  <%= text_field_tag :quantity %>
-
-  <%= submit_tag "Add Card" %>
+<%= form_tag decked_cards_path do %>
+  <div>
+    <%= label_tag :card_name %>
+    <%= text_field_tag :card_name %>
+  </div>
+  <div>
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity %>
+  </div>
+    <%= hidden_field_tag :deck_id, @deck.id %>
+  <div>
+    <%= submit_tag "Add Card" %>
+  </div>
 <% end %>

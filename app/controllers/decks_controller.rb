@@ -26,7 +26,6 @@ class DecksController < ApplicationController
     @decked_card = DeckedCard.new
     @card = Card.new
     @deck = Deck.find_by(:id => params[:id])
-    @decked_cards = @deck.decked_cards.all
     @cards = @deck.cards.all
   end
 
@@ -34,7 +33,7 @@ class DecksController < ApplicationController
     @deck = Deck.find_by(:id => params[:id])
     @deck.update(params[:deck])
     flash[:success] = "Deck updated."
-    redirect_to deck_path
+    redirect_to deck_path(@deck.id)
   end
 
   private
