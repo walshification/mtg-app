@@ -23,7 +23,6 @@ class DecksController < ApplicationController
   end
 
   def show
-    @decked_card = DeckedCard.new
     @card = Card.new
     @deck = Deck.find_by(:id => params[:id])
     @cards = @deck.cards.all

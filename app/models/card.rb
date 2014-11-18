@@ -1,7 +1,8 @@
 class Card < ActiveRecord::Base
+  validates :deck_id, :presence => true
+  
   belongs_to :user
-  has_many :decked_cards
-  has_many :decks, :through => :decked_cards
+  belongs_to :decks
 
 #   attr_accessor :multiverse_id, :related_card_multiverse_id, :set_number, :name, :search_name, :description, :flavor, :mana_cost, :converted_mana_cost, :card_set_name, :card_type, :card_subtype, :power, :toughness, :loyalty, :rarity, :artist, :card_set_abbreviated_name, :token, :promo, :released_at
 
