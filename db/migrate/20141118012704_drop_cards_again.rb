@@ -1,5 +1,9 @@
-class CreateCards < ActiveRecord::Migration
-  def change
+class DropCardsAgain < ActiveRecord::Migration
+  def up
+    drop_table :cards
+  end
+
+  def down
     create_table :cards do |t|
       t.integer :multiverse_id
       t.integer :related_card_multiverse_id
@@ -25,5 +29,6 @@ class CreateCards < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :tablenames, :anothertable_id
   end
 end

@@ -17,11 +17,7 @@
     <%= label_tag :card_name %>
     <%= text_field_tag :card_name %>
   </div>
-  <div>
-    <%= label_tag :quantity %>
-    <%= text_field_tag :quantity %>
-  </div>
-    <%= hidden_field_tag :deck_id, @deck.id %>
+  <%= hidden_field_tag :deck_id, @deck.id %>
   <div>
     <%= submit_tag "Add Card" %>
   </div>
