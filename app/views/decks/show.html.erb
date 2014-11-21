@@ -3,7 +3,7 @@
 <ul>
   <% @cards.each do |card| %>
     <li>
-      <img src="http://api.mtgdb.info/content/card_images/<%= card["multiverse_id"] %>.jpeg" />
+      <a href='<%= card_path(card.id) %>'><img src="http://api.mtgdb.info/content/card_images/<%= card["multiverse_id"] %>.jpeg" /></a>
     </li>
   <% end %>
 </ul>

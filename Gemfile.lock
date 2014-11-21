@@ -107,6 +107,8 @@ GEM
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
     minitest (5.4.2)
+    mtg_pricer (0.0.3)
+      unirest
     multi_json (1.10.1)
     mysql2 (0.3.16)
     orm_adapter (0.5.0)
@@ -211,6 +213,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  mtg_pricer (= 0.0.3)
   mysql2
   quiet_assets
   rails (= 4.1.6)

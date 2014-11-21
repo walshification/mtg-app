@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118031829) do
+ActiveRecord::Schema.define(version: 20141121020046) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141118031829) do
     t.integer  "deck_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "card_name"
   end
 
   create_table "decks", force: true do |t|
