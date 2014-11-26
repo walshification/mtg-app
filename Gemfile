@@ -19,7 +19,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'carrierwave'
 gem 'activeadmin', github: 'activeadmin'
 gem 'unirest'
-gem 'mtg_pricer', '0.0.3'
+gem 'tolarian_registry'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

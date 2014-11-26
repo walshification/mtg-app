@@ -1,3 +1,22 @@
 <h1><%= @card.card_name %></h1>
 
-<p><%= @cfb %></p>
+<img src="https://api.mtgdb.info/content/card_images/<%= @card.multiverse_id %>.jpeg" />
+
+<p><%= @card.related_card_id %></p>
+<p><%= @card.set_number %></p>
+<p><%= @card.description %></p>
+<p><%= @card.flavor %></p>
+<p><%= @card.colors %></p>
+<p><%= @card.mana_cost %></p>
+<p><%= @card.converted_mana_cost %></p>
+<p><%= @card.card_set_name %></p>
+<p><%= @card.card_type %></p>
+<p><%= @card.card_subtype %></p>
+<p><%= @card.power %></p>
+<p><%= @card.toughness %></p>
+<p><%= @card.loyalty %></p>
+<p><%= @card.rarity %></p>
+<p><%= @card.artist %></p>
+<p><%= @card.rulings %></p>
+<p><%= @card.formats %></p>
+<p><%= @card.released_at %></p>
