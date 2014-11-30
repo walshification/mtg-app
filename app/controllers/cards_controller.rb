@@ -11,7 +11,7 @@ class CardsController < ApplicationController
 
   def create
     @deck = Deck.find_by(:id => params[:deck_id])
-    @card = TolarianRegistry::Library.new({:multiverse_id => @card["id"].to_i, :deck_id => params[:deck_id], :card_name => @card["name"], :image_url => "
+    @card = TolarianRegistry::Card.new({:multiverse_id => @card["id"].to_i, :deck_id => params[:deck_id], :card_name => @card["name"], :image_url => "
     https://api.mtgdb.info/content/card_images/#{@card["id"]}.jpeg"})
     if @card.save
       flash[:success] = "Card successfully added!"
