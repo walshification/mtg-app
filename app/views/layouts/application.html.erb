@@ -42,13 +42,16 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-  <div class="container">
-    <% flash.each do |name, message| %>
-      <%= content_tag :div, message, class: "alert alert-#{name}" %>
-    <% end %>
+  <% flash.each do |name, message| %>
+    <%= content_tag :div, message, class: "alert alert-#{name}" %>
+  <% end %>
 
-    <%= yield %>
+  <div class="container" id="shield">
+    <div class="col-md-12">
 
+      <%= yield %>
+
+    </div>
   </div>
 </body>
 </html>

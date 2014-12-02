@@ -1,12 +1,15 @@
 <h1><%= @deck.name %></h1>
 
-<ul>
-  <% @cards.each do |card| %>
-    <li>
-      <a href='<%= card_path(card.id) %>'><img src="http://api.mtgdb.info/content/card_images/<%= card["multiverse_id"] %>.jpeg" /></a>
-    </li>
-  <% end %>
-</ul>
+
+<div>
+  <ul>
+    <% @cards.each do |card| %>
+      <li>
+        <h4><a href='<%= card_path(card.id) %>'><%= card.card_name %></a></h4>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <h2>Add a Card:</h2>
   <div class="col-md-3">

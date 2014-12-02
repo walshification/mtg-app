@@ -1,8 +1,20 @@
 body {
-  background-image: image-url("subtle_white_mini_waves.png");
+  background-image: image-url("mtg_background.jpg");
+  background-attachment: fixed;
+  background-position: center;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  padding: 25px;
+  color: white;
 }
 
 table {
   background-color: #eaeaea;
+}
+
+#shield {
+  background-color: white;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50px;
+  padding: 20px;
+  background-position: center;
 }
