@@ -6,11 +6,11 @@
 
 <% if @card.related_card_id > 0 %>
   <div class="col-md-6">
-    <img src="https://api.mtgdb.info/content/card_images/<%= @card.multiverse_id %>.jpeg" />
-    <img src="https://api.mtgdb.info/content/card_images/<%= @card.related_card_id %>.jpeg" />
+    <img src="https://api.mtgdb.info/content/card_images/<%= @card.multiverse_id %>.jpeg" class="show" />
+    <img src="https://api.mtgdb.info/content/card_images/<%= @card.related_card_id %>.jpeg" class="show" />
 <% else %>
   <div class="col-md-4">
-    <img src="https://api.mtgdb.info/content/card_images/<%= @card.multiverse_id %>.jpeg" />
+    <img src="https://api.mtgdb.info/content/card_images/<%= @card.multiverse_id %>.jpeg" class="show" />
 <% end %>
   </div>
 

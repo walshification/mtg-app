@@ -26,6 +26,26 @@ class DecksController < ApplicationController
     @card = Card.new
     @deck = Deck.find_by(:id => params[:id])
     @cards = @deck.cards.all
+
+    # @cards.each do |card|
+    #   case card.card_type
+    #   when "artifact"
+    #     @artifacts << card
+    #   when "creature"
+    #     @creatures << card
+    #   when "enchantment"
+    #     @enchantments << card
+    #   when "instant"
+    #     @instants << card
+    #   when "land"
+    #     @lands << card
+    #   when "planeswalker"
+    #     @planeswalkers << card
+    #   when "sorcery"
+    #     @sorceries << card
+    #   end
+    # end
+    
   end
 
   def update

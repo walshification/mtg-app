@@ -11,7 +11,7 @@ h1 {
   text-align: center;
 }
 
-img {
+img .show {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -28,4 +28,28 @@ img {
 
 table, .well {
   color: black;
+}
+
+/* unvisited link */
+a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #FF00FF;
+    text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+    color: #FFFFFF;
+    text-decoration: underline;
 }

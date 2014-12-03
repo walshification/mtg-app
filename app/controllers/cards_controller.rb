@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
-  # def index
-  # end
+  def index
+  end
 
   def show
     @card = Card.find_by(:id => params[:id])
@@ -13,8 +13,6 @@ class CardsController < ApplicationController
     @deck = Deck.find_by(:id => params[:deck_id])
     lookup_card = TolarianRegistry::Card.find_by_name(params[:card_name])
     @card = Card.new(:multiverse_id => lookup_card.multiverse_id, :deck_id => params[:deck_id], :card_name => lookup_card.card_name)
-    # new({:multiverse_id => @card["id"].to_i, :deck_id => params[:deck_id], :card_name => @card["name"], :image_url => "
-    # https://api.mtgdb.info/content/card_images/#{@card["id"]}.jpeg"})
     if @card.save
       flash[:success] = "Card successfully added!"
       redirect_to deck_path(@deck.id)
