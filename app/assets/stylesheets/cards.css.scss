@@ -11,13 +11,6 @@ h1 {
   text-align: center;
 }
 
-img .show {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 15px;
-}
-
 .flavor {
   font-style: italic;
 }
@@ -52,4 +45,11 @@ a:hover {
 a:active {
     color: #FFFFFF;
     text-decoration: underline;
+}
+
+.show_card {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
 }
