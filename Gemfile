@@ -20,6 +20,7 @@ gem 'carrierwave'
 gem 'activeadmin', github: 'activeadmin'
 gem 'unirest'
 gem 'tolarian_registry'
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

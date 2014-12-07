@@ -4,21 +4,100 @@ body {
   background-position: center;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   padding: 25px;
-  color: white;
+  color: gray;
 }
 
 table {
   background-color: #eaeaea;
 }
 
+.table-inverse {
+  color: black;
+
+  a:hover {
+    text-decoration: underline;
+    color: black;
+  }
+
+  a:link {
+    text-decoration: none;
+    color: black;
+  }
+}
+
 #shield {
-  background-color: white;
-  background: rgba(255,255,255,0.15);
+  background-color: gray;
+  background: rgba(255,255,255,0.25);
   border-radius: 50px;
   padding: 20px;
   background-position: center;
 }
 
 nav {
-  // margin-bottom: 20px;
+  position: fixed;
+  top: 0px;
+}
+
+#add_card_form {
+  clear: both
+}
+
+.card-group {
+  padding-bottom: 30px
+}
+
+h1, h2, h3 {
+  color: white;
+  text-shadow: 2px 2px 2px #000000;
+}
+
+h1 {
+  text-align: center;
+}
+
+.flavor {
+  font-style: italic;
+}
+
+#rulings {
+  clear: both;
+}
+
+#rulings_date {
+    width: 100px;
+}
+
+a {
+  font-size: 14px
+}
+
+/* unvisited link */
+a:link {
+    color: white;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #02C7FE;
+    text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+    color: #02C7FE;
+    text-decoration: underline;
+}
+
+.show_card {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
 }

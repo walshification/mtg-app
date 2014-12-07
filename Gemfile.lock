@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 8c87611980fa3de9e26ca9e02df3712032f9825c
+  revision: e4f8dbbbb8046b719e100fddf83319b9e6cb8796
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -76,6 +76,9 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     erubis (2.7.0)
     execjs (2.2.2)
     formtastic (3.1.2)
@@ -132,14 +135,14 @@ GEM
       activesupport (= 4.1.6)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.4.0)
+    rake (10.4.2)
     ransack (1.5.1)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.1)
-    rdoc (4.1.2)
+    rdoc (4.2.0)
       json (~> 1.4)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
@@ -212,6 +215,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
+  dotenv-rails
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
