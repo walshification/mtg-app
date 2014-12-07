@@ -101,3 +101,17 @@ a:active {
   margin-right: auto;
   border-radius: 10px;
 }
+
+#battlefield-deck {
+  float: left;
+}
+
+#player-hand {
+  float: right;
+}
+
+.battlefield-card {
+  display: block;
+  height: 150px;
+  width: 75px;
+}

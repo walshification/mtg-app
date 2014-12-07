@@ -49,6 +49,10 @@ class DecksController < ApplicationController
     redirect_to deck_path(@deck.id)
   end
 
+  def battlefield
+    
+  end
+
   private
 
   def deck_params
