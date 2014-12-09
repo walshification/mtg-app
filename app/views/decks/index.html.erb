@@ -1,6 +1,6 @@
 <h1>Your Decks</h1>
 
-<table class="table table-striped table-hover table-inverse">
+<table class="table-inverse">
   <tr>
     <th>Name</th>
     <th>Color(s)</th>
@@ -9,7 +9,7 @@
   </tr>
   <% @decks.each do |deck| %>
     <tr>
-      <td><a href="<%= deck_path(deck.id) %>"><%= deck.name %></a></td>
+      <td><a href="<%= deck_path(deck.id) %>"><button><%= deck.name %></button></a></td>
       <td><%= deck.color %></td>
       <td><%= deck.deck_type %></td>
       <td><%= deck.legal_format %></td>

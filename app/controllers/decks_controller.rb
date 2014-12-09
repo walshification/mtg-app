@@ -32,7 +32,7 @@ class DecksController < ApplicationController
       "Creatures" => [],
       "Enchantments" => [],
       "Instants" => [],
-      "Lands" => [],
+      "Basic Lands" => [],
       "Planeswalkers" => [],
       "Sorceries" => []
     }
@@ -69,8 +69,8 @@ class DecksController < ApplicationController
       @card_groups["Enchaments"] << card
     when "Instant"
       @card_groups["Instants"] << card
-    when "Land"
-      @card_groups["Lands"] << card
+    when "Basic Land"
+      @card_groups["Basic Lands"] << card
     when "Planeswalker"
       @card_groups["Planeswalkers"] << card
     when "Sorcery"

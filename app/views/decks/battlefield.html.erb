@@ -1,14 +1,48 @@
 <div ng-app="app">
   <div ng-controller="decksCtrl">
 
-    <h1>BATTLEFIELD!</h1>
+    <div class="container-fluid">
 
-    <div class="col-md-3">
-      <img src="/assets/magic_deck.png" ng-click="drawCard()">
-    </div>
+      <div class="col-md-2" id="stack">
+        <h3>The Stack</h3>
+        <div class="permanent" ng-repeat="spell in stackSpells track by $index">
+          <img class="battlefield-card" src="{{ spell.image_url }}">
+          <button ng-click="resolve(spell)">Resolve</button>
+        </div>
+      </div>
 
-    <div class="col-md-9" id="player_hand">
-      <div class="col-md-1"ng-repeat="card in hand track by $index"><img class="battlefield-card" src="{{ card.image_url }}"></div>
+      <div class="col-md-10" id="player-permanents">
+        <div class="permanent" ng-repeat="permanent in permanents track by $index" ng-click="tap(permanent)">
+          <img ng-class="{tap: permanent.tapped }" class="battlefield-card" src="{{ permanent.image_url }}">
+        </div>
+      </div>
+
+      <div class="col-md-10" id="player-land">
+        <div class="permanent" ng-repeat="land in lands track by $index" ng-click="tap(land)">
+          <img ng-class="{tap: land.tapped }" class="battlefield-card" src="{{ land.image_url }}">
+        </div>
+      </div>
+
+      <div class="col-md-12" id="player-resources">
+        <div class="col-md-8" id="player_hand">
+          <div class="col-md-1" ng-repeat="card in hand track by $index">
+            <img ng-click="cast(card)" class="battlefield-card" src="{{ card.image_url }}">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <h3 class="battlefield-text">Life Total: 20</h3>
+          <img class="deck" src="/assets/magic_deck.png" ng-click="drawCard()">
+        </div>
+
+        <div class="col-md-2" id="graveyard">
+          <h3 class="battlefield-text">Graveyard</h3>
+          <div ng-repeat="card in graveyard track by $index">
+            <img class="battlefield-card graveyard" src="{{ card.image_url }}">
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>

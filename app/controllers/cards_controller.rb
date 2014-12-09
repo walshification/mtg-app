@@ -12,7 +12,14 @@ class CardsController < ApplicationController
   def create
     @deck = Deck.find_by(:id => params[:deck_id])
     lookup_card = TolarianRegistry::Card.find_by_name(params[:card_name])
-    @card = Card.new(:multiverse_id => lookup_card.multiverse_id, :deck_id => params[:deck_id], :card_name => lookup_card.card_name)
+    @card = Card.new({
+      :multiverse_id => lookup_card.multiverse_id, 
+      :deck_id => params[:deck_id], 
+      :card_name => lookup_card.card_name, 
+      :image_url => lookup_card.image_url, 
+      :card_type => lookup_card.card_type,
+      :card_subtype => lookup_card.card_subtype
+    })
     if @card.save
       flash[:success] = "Card successfully added!"
       redirect_to deck_path(@deck.id)
