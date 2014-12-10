@@ -3,7 +3,7 @@
 
     <div class="container-fluid">
 
-      <div class="col-md-2" id="stack">
+      <div class="test" id="stack">
         <h3>The Stack</h3>
         <div class="permanent" ng-repeat="spell in stackSpells track by $index">
           <img class="battlefield-card" src="{{ spell.image_url }}">
@@ -11,39 +11,69 @@
         </div>
       </div>
 
-      <div class="col-md-10" id="player-permanents">
+      <div class="col-md-10 test" id="player-permanents">
         <div class="permanent" ng-repeat="permanent in permanents track by $index" ng-click="tap(permanent)">
           <img ng-class="{tap: permanent.tapped }" class="battlefield-card" src="{{ permanent.image_url }}">
         </div>
       </div>
 
-      <div class="col-md-10" id="player-land">
+      <div id="turn-steps" class="test">
+        <div>
+          Beginning Phase
+          <span class="label label-default">Untap</span>
+          <span class="label label-default">Upkeep</span>
+          <span class="label label-default">Draw</span>
+        </div>
+        <div>
+          <span class="label label-default">Main Phase</span>
+        </div>
+        <div>
+          Combat
+          <span class="label label-default">Beginning Combat Phase</span>
+          <span class="label label-default">Declare Attackers</span>
+          <span class="label label-default">Declare Blockers</span>
+          <span class="label label-default">Combat Damage</span>
+          <span class="label label-default">End of Combat</span>
+        </div>
+        <div>
+          <span class="label label-default">Second Main Phase</span>
+        </div>
+        <div>
+          End Phase
+          <span class="label label-default">End of Turn</span>
+          <span class="label label-default">Cleanup</span>
+        </div>
+      </div> <!-- turn-steps -->
+
+      <div class="col-md-10 test" id="player-land">
         <div class="permanent" ng-repeat="land in lands track by $index" ng-click="tap(land)">
           <img ng-class="{tap: land.tapped }" class="battlefield-card" src="{{ land.image_url }}">
         </div>
       </div>
 
-      <div class="col-md-12" id="player-resources">
-        <div class="col-md-8" id="player_hand">
+      <div class="col-md-11" id="player-resources">
+        <div class="col-md-8 test" id="player_hand">
           <div class="col-md-1" ng-repeat="card in hand track by $index">
             <img ng-click="cast(card)" class="battlefield-card" src="{{ card.image_url }}">
           </div>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-2 test">
           <h3 class="battlefield-text">Life Total: 20</h3>
           <img class="deck" src="/assets/magic_deck.png" ng-click="drawCard()">
         </div>
 
-        <div class="col-md-2" id="graveyard">
+        <div class="test" id="graveyard">
           <h3 class="battlefield-text">Graveyard</h3>
-          <div ng-repeat="card in graveyard track by $index">
-            <img class="battlefield-card graveyard" src="{{ card.image_url }}">
+          <div class="relative" ng-repeat="card in graveyard track by $index">
+            <img class="battlefield-card graveyard absolute" src="{{ card.image_url }}">
           </div>
-        </div>
-      </div>
+        </div> <!-- graveyard -->
+      </div> <!-- player-resources -->
 
-    </div>
+      
 
-  </div>
-</div>
+    </div> <!-- container-fluid -->
+  </div> <!-- ng-controller -->
+
+</div> <!-- ng-app -->

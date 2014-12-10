@@ -107,18 +107,22 @@ a:active {
 
 #player-hand {
   float: left;
+  height: 150px;
+  width: 800px;
 }
 
 #stack {
   float: left;
   width: 107px;
   height: 300px;
-  text-align: center;
+  button {
+    display: block;
+    margin-right: 53px;
+  }
 }
 
 #player-land, #player-permanents {
   text-align: center;
-  float: right;
   height: 150px;
 }
 
@@ -135,13 +139,21 @@ a:active {
   border: 3px solid #000000;
   border-radius: 8px;
 
-  .graveyard {
-  }
 }
 
 #graveyard {
-  height: 150px;
-  width: 107px;
+  float: right;
+  height: 155px;
+  width: 112px;
+  left: 80px;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
 }
 
 .tap {
@@ -149,3 +161,21 @@ a:active {
   -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
   transform: rotate(90deg);
 }
+
+.test {
+  background-color: yellow;
+  border: 2px solid gray;
+}
+
+#turn-steps {
+  float: right;
+  clear: right;
+  height: 500px;
+  width: 77px;
+}
+
+// img:hover {
+//   height: 200px;
+//   width: 140px;
+//   z-index: 99;
+// }
