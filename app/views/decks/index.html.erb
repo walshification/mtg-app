@@ -1,22 +1,26 @@
-<h1>Your Decks</h1>
+<%= render "shared/shield_front" %>
 
-<table class="table-inverse">
-  <tr>
-    <th>Name</th>
-    <th>Color(s)</th>
-    <th>Deck Type</th>
-    <th>Format</th>
-  </tr>
-  <% @decks.each do |deck| %>
+  <h1>Your Decks</h1>
+
+  <table class="table-inverse">
     <tr>
-      <td><a href="<%= deck_path(deck.id) %>"><button><%= deck.name %></button></a></td>
-      <td><%= deck.color %></td>
-      <td><%= deck.deck_type %></td>
-      <td><%= deck.legal_format %></td>
+      <th>Name</th>
+      <th>Color(s)</th>
+      <th>Deck Type</th>
+      <th>Format</th>
     </tr>
-  <% end %>
-</table>
+    <% @decks.each do |deck| %>
+      <tr>
+        <td><a href="<%= deck_path(deck.id) %>"><button><%= deck.name %></button></a></td>
+        <td><%= deck.color %></td>
+        <td><%= deck.deck_type %></td>
+        <td><%= deck.legal_format %></td>
+      </tr>
+    <% end %>
+  </table>
 
-<a href="<%= new_deck_path %>">
-  <button type="button" class="btn btn-success">Create a Deck</button>
-</a>
+  <a href="<%= new_deck_path %>">
+    <button type="button" class="btn btn-success">Create a Deck</button>
+  </a>
+
+<%= render "shared/shield_back" %>

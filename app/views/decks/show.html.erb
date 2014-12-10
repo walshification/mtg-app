@@ -1,26 +1,30 @@
-<h1><%= @deck.name %></h1>
+<%= render "shared/shield_front" %>
 
-<div class="col-md-8">
-  <% @card_groups.each do |group, cards| %>
-    <% if cards.any? %>
-      <div class="col-md-3 card-group">
-        <h2><%= group %></h2>
-        <% cards.each do |card| %>
-          <a href="<%= card_path(card.id) %>">
-            <%= card.card_name %>
-          </a>
-          <br />
-        <% end %>
-      </div>
+  <h1><%= @deck.name %></h1>
+
+  <div class="col-md-8">
+    <% @card_groups.each do |group, cards| %>
+      <% if cards.any? %>
+        <div class="col-md-3 card-group">
+          <h2><%= group %></h2>
+          <% cards.each do |card| %>
+            <a href="<%= card_path(card.id) %>">
+              <%= card.card_name %>
+            </a>
+            <br />
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <div class="col-md-4" id="add_card_form">
-    <h2>Add a Card:</h2>
-    <%= render 'card_form' %>
+    <div class="col-md-4" id="add_card_form">
+      <h2>Add a Card:</h2>
+      <%= render 'card_form' %>
+    </div>
   </div>
-</div>
 
-<div class="col-md-4 card-frame">
-  
-</div>
+  <div class="col-md-4 card-frame">
+    
+  </div>
+
+<%= render "shared/shield_back" %>
