@@ -42,8 +42,10 @@
       }
     }
 
-    $scope.shuffle = function(deck) {
-      var m = deck.length, t, i;
+    $scope.shuffle = function() {
+      var m = $scope.deck.length;
+      var t;
+      var i;
 
       // While there remain elements to shuffle…
       while (m) {
@@ -52,12 +54,12 @@
         i = Math.floor(Math.random() * m--);
 
         // And swap it with the current element.
-        t = deck[m];
-        deck[m] = deck[i];
-        deck[i] = t;
+        t = $scope.deck[m];
+        $scope.deck[m] = $scope.deck[i];
+        $scope.deck[i] = t;
       }
 
-      return deck;
+      return $scope.deck;
     }
 
     window.scope = $scope;
