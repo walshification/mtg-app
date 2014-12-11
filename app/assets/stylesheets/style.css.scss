@@ -106,9 +106,16 @@ a:active {
 }
 
 #player-hand {
-  float: left;
   height: 150px;
-  width: 800px;
+
+  img:hover {
+    position: absolute;
+    margin-bottom: 15px;
+    height: 200px;
+    width: 140px;
+    z-index: 99;
+  }
+
 }
 
 #stack {
@@ -162,20 +169,48 @@ a:active {
   transform: rotate(90deg);
 }
 
-.test {
-  background-color: yellow;
-  border: 2px solid gray;
-}
-
 #turn-steps {
   float: right;
   clear: right;
   height: 500px;
   width: 77px;
+  h4 {
+    background-color: white;
+    background: rgba(255,255,255,0.40);
+    color: white;
+  }
 }
 
-// img:hover {
-//   height: 200px;
-//   width: 140px;
-//   z-index: 99;
+#player-resources, #player-buttons {
+  padding-left: 0px;
+}
+
+#player-buttons {
+  float: left;
+}
+
+#turn-button, #shuffle-button {
+  text-align: left;
+}
+
+#attack-zone {
+  height: 75px;
+
+  #inner-attack-zone {
+    height: 75px;
+  }
+
+  div {
+    z-index: 10000000;
+  }
+
+  img {
+    outline: red solid 2px;
+  }
+}
+
+// .test {
+//   background-color: yellow;
+//   border: 2px solid gray;
 // }
+

@@ -11,6 +11,14 @@
         </div>
       </div>
 
+      <div class="relative col-md-10" id="attack-zone">
+        <div class="col-md-10 test absolute" id="inner-attack-zone">
+          <div class="permanent" ng-repeat="attacker in attackers track by $index">
+            <img class="battlefield-card" src="{{ permanent.image_url }}">
+          </div>
+        </div>
+      </div>
+
       <div class="col-md-10 test" id="player-permanents">
         <div class="permanent" ng-repeat="permanent in permanents track by $index" ng-click="tap(permanent)">
           <img ng-class="{tap: permanent.tapped }" class="battlefield-card" src="{{ permanent.image_url }}">
@@ -19,29 +27,31 @@
 
       <div id="turn-steps" class="test">
         <div>
-          Beginning Phase
-          <span class="label label-default">Untap</span>
-          <span class="label label-default">Upkeep</span>
-          <span class="label label-default">Draw</span>
+          <h4>Beginning Phase</h4>
+          <div>Untap</div>
+          <div>Upkeep</div>
+          <div>Draw</div>
+        </div>
+        <br>
+        <div>
+          <div><h4>Main Phase</h4></div>
         </div>
         <div>
-          <span class="label label-default">Main Phase</span>
+          <h4>Combat</h4>
+          <div>Beginning Combat Phase</div>
+          <div>Declare Attackers</div>
+          <div>Declare Blockers</div>
+          <div>Combat Damage</div>
+          <div>End of Combat</div>
+        </div>
+        <br>
+        <div>
+          <div><h4>Second Main Phase</h4></div>
         </div>
         <div>
-          Combat
-          <span class="label label-default">Beginning Combat Phase</span>
-          <span class="label label-default">Declare Attackers</span>
-          <span class="label label-default">Declare Blockers</span>
-          <span class="label label-default">Combat Damage</span>
-          <span class="label label-default">End of Combat</span>
-        </div>
-        <div>
-          <span class="label label-default">Second Main Phase</span>
-        </div>
-        <div>
-          End Phase
-          <span class="label label-default">End of Turn</span>
-          <span class="label label-default">Cleanup</span>
+          <h4>End Phase</h4>
+          <div>End of Turn</div>
+          <div>Cleanup</div>
         </div>
       </div> <!-- turn-steps -->
 
@@ -52,7 +62,12 @@
       </div>
 
       <div class="col-md-11" id="player-resources">
-        <div class="col-md-8 test" id="player_hand">
+        <div class="btn-group-vertical" role="group" id="player-buttons">
+          <button type="button" class="btn btn-primary">Pass Priority</button>
+          <button type="button" class="btn btn-primary" ng-click="shuffle()">Shuffle</button>
+        </div>
+
+        <div class="col-md-6 relative test" id="player-hand">
           <div class="col-md-1" ng-repeat="card in hand track by $index">
             <img ng-click="cast(card)" class="battlefield-card" src="{{ card.image_url }}">
           </div>
@@ -70,8 +85,6 @@
           </div>
         </div> <!-- graveyard -->
       </div> <!-- player-resources -->
-
-      
 
     </div> <!-- container-fluid -->
   </div> <!-- ng-controller -->
