@@ -99,6 +99,16 @@
       return $scope.deck;
     }
 
+    $scope.card_groups = {
+      "Artifacts" => [],
+      "Creatures" => [],
+      "Enchantments" => [],
+      "Instants" => [],
+      "Basic Lands" => [],
+      "Planeswalkers" => [],
+      "Sorceries" => []
+    }
+
     window.scope = $scope;
 
   });

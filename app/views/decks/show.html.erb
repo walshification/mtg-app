@@ -3,19 +3,15 @@
   <h1><%= @deck.name %></h1>
 
   <div class="col-md-8">
-    <% @card_groups.each do |group, cards| %>
-      <% if cards.any? %>
-        <div class="col-md-3 card-group">
-          <h2><%= group %></h2>
-          <% cards.each do |card| %>
-            <a href="<%= card_path(card.id) %>">
-              <%= card.card_name %>
-            </a>
-            <br />
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
+    <div class="col-md-3 card-group" ng-repeat="card_group in card_groups track by $index">
+      <h2>{{ card_group }}</h2>
+      <div ng-repeat="card in card_group track by $index">
+        <a href="/cards/{{ card.id }}">
+            {{ card.card_name }}
+        </a>
+        <br />
+      </div>
+    </div>
 
     <div class="col-md-4" id="add_card_form">
       <h2>Add a Card:</h2>
