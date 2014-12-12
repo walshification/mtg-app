@@ -3,6 +3,18 @@
 
   angular.module("app").controller("decksCtrl", function($scope, $http){
 
+  Pusher.log = function(message) {
+    if (window.console && window.console.log) {
+      window.console.log(message);
+    }
+  };
+
+  var pusher = new Pusher('2187084e7089c4797e05');
+  var channel = pusher.subscribe('test_channel');
+  channel.bind('my_event', function(data) {
+    alert(data.message);
+  });
+
     $scope.setUser = function(id) {
       $scope.userId = id;
     };

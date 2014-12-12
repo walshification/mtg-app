@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   get 'battlefield' => 'decks#battlefield', as: :battlefield
+  get 'test' => 'decks#test_pusher'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

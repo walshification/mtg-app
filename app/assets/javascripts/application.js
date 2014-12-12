@@ -16,4 +16,5 @@
 //= require angular
 //= require angular-animate
 //= require app
+//= require pusher.min
 //= require_tree .

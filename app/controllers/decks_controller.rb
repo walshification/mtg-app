@@ -53,6 +53,12 @@ class DecksController < ApplicationController
     
   end
 
+  def test_pusher
+    Pusher['test_channel'].trigger('my_event', {
+      message: 'hello world'
+    })
+  end
+
   private
 
   def deck_params

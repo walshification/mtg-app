@@ -88,6 +88,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
+    httpclient (2.5.3.3)
     i18n (0.6.11)
     inherited_resources (1.5.1)
       actionpack (>= 3.2, < 4.2)
@@ -115,6 +116,10 @@ GEM
     orm_adapter (0.5.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
+    pusher (0.14.2)
+      httpclient (~> 2.4)
+      multi_json (~> 1.0)
+      signature (~> 0.1.6)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -174,6 +179,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    signature (0.1.7)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -219,6 +225,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
+  pusher
   quiet_assets
   rails (= 4.1.6)
   rspec-rails
