@@ -1,26 +1,54 @@
 <%= render "shared/shield_front" %>
+<div ng-app="app">
+  <div ng-controller="decksCtrl" ng-init="setUser(<%= current_user.id %>)">
 
-  <h1>Your Decks</h1>
+    <h1>Your Decks</h1>
 
-  <table class="table-inverse">
-    <tr>
-      <th>Name</th>
-      <th>Color(s)</th>
-      <th>Deck Type</th>
-      <th>Format</th>
-    </tr>
-    <% @decks.each do |deck| %>
-      <tr>
-        <td><a href="<%= deck_path(deck.id) %>"><button><%= deck.name %></button></a></td>
-        <td><%= deck.color %></td>
-        <td><%= deck.deck_type %></td>
-        <td><%= deck.legal_format %></td>
-      </tr>
-    <% end %>
-  </table>
+    <div class="row">
+      <div class="col-md-3 unit">
+        <label>Search:</label>
+        <input ng-model="nameFilter">
+      </div>
+    </div>
+    <br>
 
-  <a href="<%= new_deck_path %>">
-    <button type="button" class="btn btn-success">Create a Deck</button>
-  </a>
+    <div class="row">
+      <table class="table-inverse">
+        <tr>
+          <th>Name</th>
+          <th>Color(s)</th>
+          <th>Deck Type</th>
+          <th>Format</th>
+        </tr>
+        <tr ng-repeat="deck in decks | filter: { name: nameFilter } | orderBy:name:false">
+          <td><a href="/decks/{{ deck.id }}"><button>{{ deck.name }}</button></a></td>
+          <td>{{ deck.color }}</td>
+          <td>{{ deck.deck_type }}</td>
+          <td>{{ deck.legal_format }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 unit" id="new_deck_form">
+        <div>
+          <label class="deck_form">New Deck Name:* </label><input ng-model="newDeckName">
+        </div>
+        <div>
+          <label class="deck_form">New Deck Color(s): </label><input ng-model="newDeckColors">
+        </div>
+        <div>
+          <label class="deck_form">New Deck Type: </label><input ng-model="newDeckType">
+        </div>
+        <div>
+          <label class="deck_form">New Deck Format: </label><input ng-model="newDeckFormat">
+        </div>
+        <button type="button" class="btn btn-success" ng-click="createDeck(newDeckName, newDeckColors, newDeckType, newDeckFormat)">Create a Deck</button>
+        <div>*required</div>
+      </div>
+    </div>
+
+  </div> <!-- ng-controller -->
+</div> <!-- ng-app -->
 
 <%= render "shared/shield_back" %>

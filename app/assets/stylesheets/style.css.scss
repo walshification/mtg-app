@@ -3,25 +3,28 @@ body {
   background-attachment: fixed;
   background-position: center;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  color: gray;
+  color: black;
 }
 
 table, tr, td, th {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  color: white;
-}
-
-tbody tr:hover td, tbody tr:hover {
-  background-color: #222222;
+  color: black;
 }
 
 #shield {
   background-color: gray;
-  background: rgba(255,255,255,0.40);
+  background: rgba(255,255,255,0.50);
   border-radius: 50px;
   padding: 20px;
   background-position: center;
+
+  div.unit {
+    background-color: gray;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: 1px solid black;
+  }
 }
 
 nav {
@@ -105,12 +108,16 @@ a:active {
   text-align: center;
 }
 
+.battlefield-cards {
+  padding: 0px;
+}
+
 #player-hand {
   height: 150px;
 
   img:hover {
-    position: absolute;
-    margin-bottom: 15px;
+    position: relative;
+    // bottom: 175px;
     height: 200px;
     width: 140px;
     z-index: 99;
@@ -207,6 +214,15 @@ a:active {
   img {
     outline: red solid 2px;
   }
+}
+
+.deck_form {
+  width: 125px;
+}
+
+#new_deck_form {
+  border: 1px solid black;
+  padding: 15px;
 }
 
 // .test {

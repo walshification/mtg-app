@@ -68,7 +68,7 @@
         </div>
 
         <div class="col-md-6 relative test" id="player-hand">
-          <div class="col-md-1" ng-repeat="card in hand track by $index">
+          <div class="col-md-1 battlefield-cards" ng-repeat="card in hand track by $index">
             <img ng-click="cast(card)" class="battlefield-card" src="{{ card.image_url }}">
           </div>
         </div>

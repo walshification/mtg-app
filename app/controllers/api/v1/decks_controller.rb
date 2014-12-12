@@ -7,6 +7,17 @@ class Api::V1::DecksController < ApplicationController
     @deck = Deck.find_by(id: params[:id])
   end
 
+  def create
+    @deck = Deck.new(deck_params)
+
+    if @deck.save
+      flash[:success] = "Deck created successfully"
+      redirect_to decks_path
+    else
+      render 'new'
+    end
+  end
+
   private
 
   def deck_params
