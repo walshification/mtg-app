@@ -27,6 +27,14 @@ table, tr, td, th {
   }
 }
 
+.little-shield {
+  background-color: white;
+  background: rgba(255, 255, 255, 0.50);
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 nav {
   position: fixed;
   top: 0px;
@@ -94,6 +102,18 @@ a:active {
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
+  height: 288px;
+  width: 202px;
+}
+
+.card-frame {
+  height: 298px;
+  width: 212px;
+  border: 5px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
 }
 
 #battlefield-deck {
@@ -101,10 +121,10 @@ a:active {
 }
 
 .deck {
-  height: 155px;
-  width: 112px;
+  height: 78px;
+  width: 56px;
 }
-#player-resources {
+#player-resources, #opponent-resources {
   text-align: center;
 }
 
@@ -113,7 +133,12 @@ a:active {
 }
 
 #player-hand {
-  height: 150px;
+  height: 145px;
+
+  img {
+    height: 144px;
+    width: 101px;
+  }
 
   img:hover {
     position: relative;
@@ -122,44 +147,62 @@ a:active {
     width: 140px;
     z-index: 99;
   }
+}
 
+#opponent-hand {
+  height: 75px;
 }
 
 #stack {
   float: left;
-  width: 107px;
+  width: 110px;
   height: 300px;
   button {
     display: block;
     margin-right: 53px;
   }
+
+  img {
+    height: 144px;
+    width: 101px;
+  }
 }
 
-#player-land, #player-permanents {
+#player-land, #player-permanents, #opponent-land, #opponent-permanents {
   text-align: center;
-  height: 150px;
+  height: 75px;
 }
 
 .permanent {
   display: inline-block;
-  height: 150px;
-  width: 150px;
+  height: 75px;
+  width: 75px;
 }
 
 .battlefield-card {
   display: block;
-  height: 144px;
-  width: 101px;
+  height: 77px;
+  width: 50px;
   border: 3px solid #000000;
   border-radius: 8px;
 
 }
 
-#graveyard {
+.graveyard-card {
+  left: 50px;
+}
+
+#graveyard, #player-deck {
   float: right;
-  height: 155px;
-  width: 112px;
-  left: 80px;
+  height: 78px;
+  width: 14%;
+}
+
+#opponent-graveyard {
+  float: left;
+  height: 78px;
+  width: 56px;
+
 }
 
 .relative {
@@ -178,12 +221,9 @@ a:active {
 
 #turn-steps {
   float: right;
-  clear: right;
   height: 500px;
   width: 77px;
   h4 {
-    background-color: white;
-    background: rgba(255,255,255,0.40);
     color: white;
   }
 }
