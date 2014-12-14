@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :decks
       resources :cards
+      post "place_land" => 'battlefields#place_land'
     end
   end
 

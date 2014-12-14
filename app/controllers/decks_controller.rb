@@ -50,7 +50,11 @@ class DecksController < ApplicationController
   end
 
   def battlefield
-    
+    if current_user.id == 1
+      @opponent_id = 2
+    else
+      @opponent_id = 1
+    end
   end
 
   def test_pusher

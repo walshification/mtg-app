@@ -1,1 +1,1 @@
-json.(deck, :name, :legal_format, :deck_type, :color, :cards)
+json.(deck, :name, :id, :legal_format, :deck_type, :color, :cards)
