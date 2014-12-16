@@ -47,7 +47,7 @@
     }
 
     $scope.cast = function(card) {
-      if (card.card_type === "Basic Land") {
+      if (card.card_type === "Basic Land" || card.card_type === "Land") {
         $http.post("/api/v1/place_land.json", {card: card, user_id: $scope.userId }).then(function (response) {
         }, function (error) {
           $scope.error = error.statusText;
