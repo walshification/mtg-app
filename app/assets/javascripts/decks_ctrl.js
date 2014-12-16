@@ -3,63 +3,89 @@
 
   angular.module("app").controller("decksCtrl", function($scope, $http){
 
-    $scope.hand = [];
-    $scope.permanents = [];
-    $scope.lands = [];
-    $scope.stackSpells = [];
-    $scope.graveyard = [];
+    $scope.setUser = function(id) {
+      $scope.userId = id;
+    };
+
+    $scope.setDeck = function(id) {
+      $http.get("/api/v1/decks/" + id + ".json").then(function (response) {
+        $scope.currentDeck = response.data;
+        $scope.sortByType($scope.currentDeck["cards"]);
+      });
+    };
 
     $http.get("/api/v1/decks.json").then(function (response) {
       $scope.decks = response.data;
       $scope.deck = $scope.decks[0];
     });
 
-    $scope.drawCard = function() {
-      $scope.hand.push($scope.deck.cards[0]);
-      $scope.deck.cards.splice(0, 1);
+    $scope.createDeck = function (newDeckName, newDeckColors, newDeckType, newDeckFormat) {
+      var newDeck = {
+        name: newDeckName, 
+        color: newDeckColors, 
+        deck_type: newDeckType, 
+        legal_format: newDeckFormat,
+        user_id: $scope.userId
+      };
+      $http.post("/api/v1/decks.json", {deck: newDeck}).then(function (response) {
+
+        }, function (error) {
+          $scope.error = error.statusText;
+        });
+
+      $scope.decks.push(newDeck);
+      $scope.newDeckName = "";
+      $scope.newDeckColors = "";
+      $scope.newDeckType = "";
+      $scope.newDeckFormat = "";
+    };
+
+    $scope.cardGroups = {
+      "Artifacts": [],
+      "Creatures": [],
+      "Enchantments": [],
+      "Instants": [],
+      "Lands": [],
+      "Planeswalkers": [],
+      "Sorceries": []
     }
 
-    $scope.cast = function(card) {
-      if (card.card_type === "Basic Land") {
-        $scope.lands.push(card);
-      } else {
-        $scope.stackSpells.push(card);
-      }
-      $scope.hand.splice($scope.hand.indexOf(card), 1);
+    $scope.sortByType = function (cards) {
+      for (var i = 0; i < cards.length; i++) {
+        switch (cards[i].card_type) {
+        case "Artifact":
+          $scope.cardGroups["Artifacts"].push(cards[i]);
+          break;
+        case "Creature":
+        case "Artifact Creature":
+        case "Legendary Creature":
+        case "Legendary Artifact Creature":
+          $scope.cardGroups["Creatures"].push(cards[i]);
+          break;
+        case "Enchantment":
+          $scope.cardGroups["Enchantments"].push(cards[i]);
+          break;
+        case "Instant":
+          $scope.cardGroups["Instants"].push(cards[i]);
+          break;
+        case "Basic Land":
+        case "Land":
+          $scope.cardGroups["Lands"].push(cards[i]);
+          break;
+        case "Planeswalker":
+          $scope.cardGroups["Planeswalkers"].push(cards[i]);
+          break;
+        case "Sorcery":
+          $scope.cardGroups["Sorceries"].push(cards[i]);
+          break;
+        }
+      } 
     }
 
-    $scope.tap = function(card) {
-      card.tapped = !card.tapped;
-    }
+    $scope.cardImageInGallery;
 
-    $scope.resolve = function(card) {
-      if ((card.card_type === "Creature") || (card.card_type === "Enchantment") || (card.card_type === "Legendary Creature") || (card.card_type === "Legendary Artifact Creature")) {
-        $scope.permanents.push(card);
-        $scope.stackSpells.splice($scope.stackSpells.indexOf(card), 1);
-      } else {
-        $scope.graveyard.push(card);
-        $scope.stackSpells.splice($scope.stackSpells.indexOf(card), 1);
-      }
-    }
-
-    $scope.shuffle = function() {
-      var m = $scope.deck.length;
-      var t;
-      var i;
-
-      // While there remain elements to shuffle…
-      while (m) {
-
-        // Pick a remaining element…
-        i = Math.floor(Math.random() * m--);
-
-        // And swap it with the current element.
-        t = $scope.deck[m];
-        $scope.deck[m] = $scope.deck[i];
-        $scope.deck[i] = t;
-      }
-
-      return $scope.deck;
+    $scope.galleryCard = function(cardImage) {
+      $scope.cardImageInGallery = cardImage;
     }
 
     window.scope = $scope;

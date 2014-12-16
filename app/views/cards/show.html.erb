@@ -13,22 +13,11 @@
 
       <div class="col-md-4">
         <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th>
-                <%= @card.card_name %>
-              </th>
-            </tr>
-          </thead>
+          <thead><tr><th><%= @card.card_name %></th></tr></thead>
           <tbody>
+            <tr><td><strong>Mana Cost: </strong><%= @card.mana_cost %></td></tr>
             <tr>
-              <td>
-                <strong>Mana Cost: </strong><%= @card.mana_cost %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Types: </strong>
+              <td><strong>Types: </strong>
                 <%= @card.card_type %>
                 <% if @card.card_subtype %>
                    -- <%= @card.card_subtype %>
@@ -36,53 +25,21 @@
               </td>
             </tr>
             <% if @card.card_type == "Creature" %>
-              <tr>
-                <td>
-                  <strong>P/T: </strong><%= @card.power %>/<%= @card.toughness %>
-                </td>
-              </tr>
+              <tr><td><strong>P/T: </strong><%= @card.power %>/<%= @card.toughness %></td></tr>
             <% end %>
             <% if @card.card_type == "Planeswalker" %>
-              <tr>
-                <td>
-                  <strong>Loyalty: </strong><%= @card.loyalty %>
-                </td>
-              </tr>
+              <tr><td><strong>Loyalty: </strong><%= @card.loyalty %></td></tr>
             <% end %>
             <% if @card.text %>
-              <tr>
-                <td>
-                  <strong>Card Text: </strong><%= @card.text %>
-                </td>
-              </tr>
+              <tr><td><strong>Card Text: </strong><%= @card.text %></td></tr>
             <% end %>
             <% if @card.flavor %>
-              <tr>
-                <td>
-                  <strong>Flavor Text: </strong><span class="flavor"><%= @card.flavor %></span>
-                </td>
-              </tr>
+              <tr><td><strong>Flavor Text: </strong><span class="flavor"><%= @card.flavor %></span></td></tr>
             <% end %>
-            <tr>
-              <td>
-                <strong>Expansion: </strong><%= @card.card_set_name %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Card Number: </strong><%= @card.card_set_id %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Rarity: </strong><%= @card.rarity %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Artist: </strong><%= @card.artist %>
-              </td>
-            </tr>
+            <tr><td><strong>Expansion: </strong><%= @card.card_set_name %></td></tr>
+            <tr><td><strong>Card Number: </strong><%= @card.card_set_id %></td></tr>
+            <tr><td><strong>Rarity: </strong><%= @card.rarity %></td></tr>
+            <tr><td><strong>Artist: </strong><%= @card.artist %></td></tr>
           </tbody>
         </table>
       </div>
@@ -109,11 +66,7 @@
       <% if @card.rulings.any? %>
         <div class="row" id="rulings">
           <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th colspan="2">Card Rulings:</th>
-              </tr>
-            </thead>
+            <thead><tr><th colspan="2">Card Rulings:</th></tr></thead>
             <tbody>
             <% @card.rulings.each do |ruling| %>
               <tr>

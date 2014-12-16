@@ -4,7 +4,20 @@ class Api::V1::DecksController < ApplicationController
   end
 
   def show
-    @deck = Deck.find_by(id: params[:id])
+    @card = Card.new
+    @deck = Deck.find_by(:id => params[:id])
+    @cards = @deck.cards.all
+  end
+
+  def create
+    @deck = Deck.new(deck_params)
+
+    if @deck.save
+      flash[:success] = "Deck created successfully"
+      redirect_to decks_path
+    else
+      render 'new'
+    end
   end
 
   private

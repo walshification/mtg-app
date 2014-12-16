@@ -50,7 +50,17 @@ class DecksController < ApplicationController
   end
 
   def battlefield
-    
+    if current_user.id == 1
+      @opponent_id = 2
+    else
+      @opponent_id = 1
+    end
+  end
+
+  def test_pusher
+    Pusher['test_channel'].trigger('my_event', {
+      message: 'hello world'
+    })
   end
 
   private
@@ -66,7 +76,7 @@ class DecksController < ApplicationController
     when "Creature"
       @card_groups["Creatures"] << card
     when "Enchantment"
-      @card_groups["Enchaments"] << card
+      @card_groups["Enchantments"] << card
     when "Instant"
       @card_groups["Instants"] << card
     when "Basic Land"

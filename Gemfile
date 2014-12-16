@@ -21,7 +21,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'unirest'
 gem 'tolarian_registry'
 gem 'dotenv-rails', :groups => [:development, :test]
-
+gem 'pusher'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

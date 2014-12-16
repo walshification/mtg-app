@@ -3,25 +3,36 @@ body {
   background-attachment: fixed;
   background-position: center;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  color: gray;
+  color: black;
 }
 
 table, tr, td, th {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  color: white;
-}
-
-tbody tr:hover td, tbody tr:hover {
-  background-color: #222222;
+  color: black;
 }
 
 #shield {
   background-color: gray;
-  background: rgba(255,255,255,0.40);
+  background: rgba(255,255,255,0.50);
   border-radius: 50px;
   padding: 20px;
   background-position: center;
+
+  div.unit {
+    background-color: gray;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: 1px solid black;
+  }
+}
+
+.little-shield {
+  background-color: white;
+  background: rgba(255, 255, 255, 0.50);
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 nav {
@@ -34,7 +45,12 @@ nav {
 }
 
 .card-group {
-  padding-bottom: 30px
+  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 24%;
+  display: inline-block;
+  float: left;
 }
 
 h1, h2, h3 {
@@ -64,13 +80,13 @@ a {
 
 /* unvisited link */
 a:link {
-    color: white;
+    color: #3A517D;
     text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-    color: white;
+    color: #3A517D;
     text-decoration: none;
 }
 
@@ -91,6 +107,26 @@ a:active {
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
+  height: 288px;
+  width: 202px;
+}
+
+.card-group {
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 1px 1px 1px 1px;
+}
+
+.card-frame {
+  height: 298px;
+  width: 212px;
+  border: 5px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  background-color: gray;
 }
 
 #battlefield-deck {
@@ -98,54 +134,88 @@ a:active {
 }
 
 .deck {
-  height: 155px;
-  width: 112px;
+  height: 78px;
+  width: 56px;
 }
-#player-resources {
+#player-resources, #opponent-resources {
   text-align: center;
 }
 
+.battlefield-cards {
+  padding: 0px;
+}
+
 #player-hand {
-  float: left;
-  height: 150px;
-  width: 800px;
+  height: 145px;
+
+  img {
+    height: 144px;
+    width: 101px;
+  }
+
+  img:hover {
+    position: relative;
+    // bottom: 175px;
+    height: 200px;
+    width: 140px;
+    z-index: 99;
+  }
+}
+
+#opponent-hand {
+  height: 75px;
 }
 
 #stack {
   float: left;
-  width: 107px;
+  width: 110px;
   height: 300px;
   button {
     display: block;
     margin-right: 53px;
   }
+
+  img {
+    height: 144px;
+    width: 101px;
+  }
 }
 
-#player-land, #player-permanents {
+#player-land, #player-permanents, #opponent-land, #opponent-permanents {
   text-align: center;
-  height: 150px;
+  height: 75px;
 }
 
 .permanent {
   display: inline-block;
-  height: 150px;
-  width: 150px;
+  height: 75px;
+  width: 75px;
 }
 
 .battlefield-card {
   display: block;
-  height: 144px;
-  width: 101px;
+  height: 77px;
+  width: 50px;
   border: 3px solid #000000;
   border-radius: 8px;
 
 }
 
-#graveyard {
+.graveyard-card {
+  left: 50px;
+}
+
+#graveyard, #player-deck {
   float: right;
-  height: 155px;
-  width: 112px;
-  left: 80px;
+  height: 78px;
+  width: 14%;
+}
+
+#opponent-graveyard {
+  float: left;
+  height: 78px;
+  width: 56px;
+
 }
 
 .relative {
@@ -162,20 +232,54 @@ a:active {
   transform: rotate(90deg);
 }
 
-.test {
-  background-color: yellow;
-  border: 2px solid gray;
-}
-
 #turn-steps {
   float: right;
-  clear: right;
   height: 500px;
   width: 77px;
+  h4 {
+    color: white;
+  }
 }
 
-// img:hover {
-//   height: 200px;
-//   width: 140px;
-//   z-index: 99;
+#player-resources, #player-buttons {
+  padding-left: 0px;
+}
+
+#player-buttons {
+  float: left;
+}
+
+#turn-button, #shuffle-button {
+  text-align: left;
+}
+
+#attack-zone {
+  height: 75px;
+
+  #inner-attack-zone {
+    height: 75px;
+  }
+
+  div {
+    z-index: 10000000;
+  }
+
+  img {
+    outline: red solid 2px;
+  }
+}
+
+.deck_form {
+  width: 125px;
+}
+
+#new_deck_form {
+  border: 1px solid black;
+  padding: 15px;
+}
+
+// .test {
+//   background-color: yellow;
+//   border: 2px solid gray;
 // }
+

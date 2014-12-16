@@ -19,10 +19,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :decks
       resources :cards
+      post "place_land" => 'battlefields#place_land'
     end
   end
 
   get 'battlefield' => 'decks#battlefield', as: :battlefield
+  get 'test' => 'decks#test_pusher'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
