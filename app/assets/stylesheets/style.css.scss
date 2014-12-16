@@ -45,7 +45,12 @@ nav {
 }
 
 .card-group {
-  padding-bottom: 30px
+  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 24%;
+  display: inline-block;
+  float: left;
 }
 
 h1, h2, h3 {
@@ -75,13 +80,13 @@ a {
 
 /* unvisited link */
 a:link {
-    color: white;
+    color: #3A517D;
     text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-    color: white;
+    color: #3A517D;
     text-decoration: none;
 }
 
@@ -106,6 +111,13 @@ a:active {
   width: 202px;
 }
 
+.card-group {
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 1px 1px 1px 1px;
+}
+
 .card-frame {
   height: 298px;
   width: 212px;
@@ -114,6 +126,7 @@ a:active {
   margin-left: auto;
   margin-right: auto;
   border-radius: 15px;
+  background-color: gray;
 }
 
 #battlefield-deck {

@@ -76,7 +76,7 @@ class DecksController < ApplicationController
     when "Creature"
       @card_groups["Creatures"] << card
     when "Enchantment"
-      @card_groups["Enchaments"] << card
+      @card_groups["Enchantments"] << card
     when "Instant"
       @card_groups["Instants"] << card
     when "Basic Land"

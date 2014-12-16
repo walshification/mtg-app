@@ -57,15 +57,19 @@
           $scope.cardGroups["Artifacts"].push(cards[i]);
           break;
         case "Creature":
+        case "Artifact Creature":
+        case "Legendary Creature":
+        case "Legendary Artifact Creature":
           $scope.cardGroups["Creatures"].push(cards[i]);
           break;
         case "Enchantment":
-          $scope.cardGroups["Enchaments"].push(cards[i]);
+          $scope.cardGroups["Enchantments"].push(cards[i]);
           break;
         case "Instant":
           $scope.cardGroups["Instants"].push(cards[i]);
           break;
         case "Basic Land":
+        case "Land":
           $scope.cardGroups["Lands"].push(cards[i]);
           break;
         case "Planeswalker":
