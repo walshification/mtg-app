@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       resources :decks
       resources :cards
       post "place_land" => 'battlefields#place_land'
+      post "cast_spell" => 'battlefields#cast_spell'
+      post "resolve_permanent" => 'battlefields#resolve_permanent'
+      post "resolve_nonpermanent" => 'battlefields#resolve_nonpermanent'
+      post "tap_card" => 'battlefields#tap_card'
+      post "opponent_draw" => 'battlefields#opponent_draw'
     end
   end
 

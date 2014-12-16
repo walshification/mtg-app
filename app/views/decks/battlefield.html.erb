@@ -55,7 +55,7 @@
         
           <div class="col-md-8 relative test" id="opponent-hand">
             <div class="col-md-1 battlefield-cards" ng-repeat="card in opponentHand track by $index">
-              <img ng-click="cast(card)" class="battlefield-card" src="{{ card.image_url }}">
+              <img class="battlefield-card" src="/assets/cardback.jpg">
             </div>
           </div>
 
@@ -72,13 +72,13 @@
 
       <div class="col-md-10 test" id="opponent-land">
         <div class="permanent" ng-repeat="opponentLand in opponentLands track by $index">
-          <img class="battlefield-card" src="{{ opponentLand.image_url }}">
+          <img ng-class="{tap: opponentLand.tapped }" class="battlefield-card" src="{{ opponentLand.image_url }}">
         </div>
       </div>
 
       <div class="col-md-10 test" id="opponent-permanents">
-        <div class="permanent" ng-repeat="opponentPermanent in opponentPermanents track by $index" ng-click="tap(permanent)">
-          <img ng-class="{tap: permanent.tapped }" class="battlefield-card" src="{{ permanent.image_url }}">
+        <div class="permanent" ng-repeat="opponentPermanent in opponentPermanents track by $index">
+          <img ng-class="{tap: opponentPermanent.tapped }" class="battlefield-card" src="{{ opponentPermanent.image_url }}">
         </div>
       </div>
 
