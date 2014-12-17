@@ -42,15 +42,15 @@
       <!-- <div class="row"> -->
         <div class="col-md-11" id="opponent-resources">
           <div class="test" id="opponent-graveyard">
+            <h3 class="battlefield-text">Graveyard</h3>
             <div class="relative" ng-repeat="card in opponentGraveyard track by $index">
               <img class="battlefield-card graveyard absolute" src="{{ card.image_url }}">
             </div>
-            <h3 class="battlefield-text">Graveyard</h3>
           </div> <!-- opponent-graveyard -->
 
           <div class="col-md-2 test">
+            <h3 class="battlefield-text">Life Total: {{ opponentLife() }}</h3>
             <img class="deck" src="/assets/magic_deck.png">
-            <h3 class="battlefield-text">Life Total: 20</h3>
           </div>
         
           <div class="col-md-8 relative test" id="opponent-hand">
@@ -64,9 +64,9 @@
 
       <div class="test" id="stack">
         <h3>The Stack</h3>
-        <div class="permanent" ng-repeat="spell in stackSpells track by $index">
-          <img class="battlefield-card" src="{{ spell.image_url }}">
-          <button ng-click="resolve(spell)">Resolve</button>
+        <div class="permanent relative" ng-repeat="spell in stackSpells track by $index">
+          <img class="battlefield-card absolute" src="{{ spell.image_url }}">
+          <button class="absolute stack-button" ng-click="resolve(spell)">Resolve</button>
         </div>
       </div>
 
@@ -83,21 +83,21 @@
       </div>
 
       <div class="col-md-10 test" id="player-permanents">
-        <div class="permanent" ng-repeat="permanent in permanents track by $index" ng-click="tap(permanent)">
+        <div class="permanent" ng-repeat="permanent in permanents track by $index" ng-click="tap(permanent, $event)">
           <img ng-class="{tap: permanent.tapped }" class="battlefield-card" src="{{ permanent.image_url }}">
         </div>
       </div>
 
       <div class="col-md-10 test" id="player-land">
-        <div class="permanent" ng-repeat="land in lands track by $index" ng-click="tap(land)">
+        <div class="permanent" ng-repeat="land in lands track by $index" ng-click="tap(land, $event)">
           <img ng-class="{tap: land.tapped }" class="battlefield-card" src="{{ land.image_url }}">
         </div>
       </div>
 
       <div class="col-md-11" id="player-resources">
         <div class="btn-group-vertical" role="group" id="player-buttons">
-          <button type="button" class="btn btn-primary">Pass Priority</button>
-          <button type="button" class="btn btn-primary" ng-click="shuffle()">Shuffle</button>
+          <!-- <button type="button" class="btn btn-primary">Pass Priority</button> -->
+          
         </div>
 
         <div class="col-md-7 relative test" id="player-hand">
@@ -114,8 +114,10 @@
         </div> <!-- graveyard -->
 
         <div class="test" id="player-deck">
-          <h3 class="battlefield-text">Life Total: 20</h3>
+          <h3 class="battlefield-text">Life Total: <span ng-click="decreaseLife()">{{ playerLife() }}</span></h3>
           <img class="deck" src="/assets/magic_deck.png" ng-click="drawCard()">
+          <br>
+          <button type="button" class="btn btn-primary" ng-click="shuffle()">Shuffle</button>
         </div>
       </div> <!-- player-resources -->
 

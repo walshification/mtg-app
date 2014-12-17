@@ -25,6 +25,9 @@ Rails.application.routes.draw do
       post "resolve_nonpermanent" => 'battlefields#resolve_nonpermanent'
       post "tap_card" => 'battlefields#tap_card'
       post "opponent_draw" => 'battlefields#opponent_draw'
+      post "send_land_to_graveyard" => 'battlefields#send_land_to_graveyard'
+      post "send_permanent_to_graveyard" => 'battlefields#send_permanent_to_graveyard'
+      post "decrease_opponent_life" => 'battlefields#decrease_opponent_life'
     end
   end
 

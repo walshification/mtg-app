@@ -40,6 +40,24 @@ nav {
   top: 0px;
 }
 
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  
+  border-bottom: 5px solid white;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-top: 20px solid white;
+}
+
 #add_card_form {
   clear: both
 }
@@ -147,6 +165,7 @@ a:active {
 
 #player-hand {
   height: 145px;
+  margin-left: 125px;
 
   img {
     height: 144px;
@@ -168,7 +187,7 @@ a:active {
 
 #stack {
   float: left;
-  width: 110px;
+  width: 103px;
   height: 300px;
   button {
     display: block;
@@ -243,6 +262,7 @@ a:active {
 
 #player-resources, #player-buttons {
   padding-left: 0px;
+  float: right;
 }
 
 #player-buttons {
@@ -276,6 +296,10 @@ a:active {
 #new_deck_form {
   border: 1px solid black;
   padding: 15px;
+}
+
+.stack-button {
+  margin-top: 140px;
 }
 
 // .test {

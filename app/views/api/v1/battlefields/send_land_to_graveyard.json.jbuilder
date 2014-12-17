@@ -1,0 +1,1 @@
+send_land_to_graveyard.json.jbuilder

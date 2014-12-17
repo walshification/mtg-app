@@ -1,7 +1,6 @@
 class Api::V1::BattlefieldsController < ApplicationController
 
   def place_land
-    # save gameplay here
     Pusher['test_channel'].trigger("place_land#{params[:user_id]}", {
       card: params[:card]
     })
@@ -34,6 +33,24 @@ class Api::V1::BattlefieldsController < ApplicationController
   def opponent_draw
     Pusher['test_channel'].trigger("opponent_draw#{params[:user_id]}", {
 
+    })
+  end
+
+  def send_land_to_graveyard
+    Pusher['test_channel'].trigger("send_land_to_graveyard#{params[:user_id]}", {
+      card: params[:card]
+    })
+  end
+
+  def decrease_opponent_life
+    Pusher['test_channel'].trigger("decrease_opponent_life#{params[:user_id]}", {
+
+    })
+  end
+
+  def send_permanent_to_graveyard
+    Pusher['test_channel'].trigger("send_permanent_to_graveyard#{params[:user_id]}", {
+      card: params[:card]
     })
   end
 end

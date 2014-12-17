@@ -1,0 +1,1 @@
+resolve_permanent.json.jbuilder
