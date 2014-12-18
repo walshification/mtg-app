@@ -12,6 +12,10 @@ table, tr, td, th {
   color: black;
 }
 
+table {
+  background-color: #bbbbbb;
+}
+
 #shield {
   background-color: gray;
   background: rgba(255,255,255,0.50);
@@ -121,6 +125,15 @@ a:active {
 }
 
 .show_card {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  height: 360px;
+  width: 253px;
+}
+
+.gallery_card {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -241,7 +254,7 @@ a:active {
   position: relative;
 }
 
-.absolute {
+.absolute, .alert {
   position: absolute;
 }
 
@@ -307,3 +320,20 @@ a:active {
 //   border: 2px solid gray;
 // }
 
+.sign-up {
+  padding-left: 120px !important;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}

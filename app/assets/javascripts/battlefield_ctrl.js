@@ -169,7 +169,7 @@
     }
 
     $scope.resolve = function(card) {
-      if ((card.card_type === "Creature") || (card.card_type === "Enchantment") || (card.card_type === "Legendary Creature") || (card.card_type === "Legendary Artifact Creature")) {
+      if ((card.card_type === "Creature") || (card.card_type === "Enchantment") || (card.card_type === "Legendary Creature") || (card.card_type === "Legendary Artifact Creature") || (card.card_type === "Artifact Creature")) {
         $http.post("/api/v1/resolve_permanent.json", {card: card, user_id: $scope.userId }).then(function (response) {
         }, function (error) {
           $scope.error = error.statusText;
