@@ -13,12 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20141207174119) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
-    t.text     "body",          limit: 65535
-    t.string   "resource_id",   limit: 255,   null: false
-    t.string   "resource_type", limit: 255,   null: false
-    t.integer  "author_id",     limit: 4
+    t.text     "body"
+    t.string   "resource_id",   limit: 255, null: false
+    t.string   "resource_type", limit: 255, null: false
+    t.integer  "author_id"
     t.string   "author_type",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 20141207174119) do
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -47,8 +50,8 @@ ActiveRecord::Schema.define(version: 20141207174119) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "cards", force: :cascade do |t|
-    t.integer  "multiverse_id", limit: 4
-    t.integer  "deck_id",       limit: 4
+    t.integer  "multiverse_id"
+    t.integer  "deck_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "card_name",     limit: 255
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 20141207174119) do
   end
 
   create_table "decks", force: :cascade do |t|
-    t.integer  "user_id",      limit: 4
+    t.integer  "user_id"
     t.string   "name",         limit: 255
     t.string   "legal_format", limit: 255
     t.string   "deck_type",    limit: 255
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 20141207174119) do
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
