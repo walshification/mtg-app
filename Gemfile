@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
+gem 'rails', '4.2.6'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 gem 'quiet_assets'
@@ -18,14 +18,10 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 gem 'carrierwave'
 gem 'activeadmin', github: 'activeadmin'
-gem 'unirest'
 gem 'tolarian_registry'
-gem 'dotenv-rails', :groups => [:development, :test]
 gem 'pusher'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -46,5 +42,6 @@ gem 'devise'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'rspec-rails'
 end

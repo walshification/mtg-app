@@ -19,17 +19,17 @@
       $scope.deck = $scope.decks[0];
     });
 
-    $scope.createDeck = function (newDeckName, newDeckColors, newDeckType, newDeckFormat) {
+    $scope.createDeck = function (newDeckName, newDeckColors,
+                                  newDeckType, newDeckFormat) {
       var newDeck = {
-        name: newDeckName, 
-        color: newDeckColors, 
-        deck_type: newDeckType, 
+        name: newDeckName,
+        color: newDeckColors,
+        deck_type: newDeckType,
         legal_format: newDeckFormat,
         user_id: $scope.userId
       };
-      $http.post("/api/v1/decks.json", {deck: newDeck}).then(function (response) {
-
-        }, function (error) {
+      $http.post("/api/v1/decks.json", {deck: newDeck})
+        .then(function (response) {}, function (error) {
           $scope.error = error.statusText;
         });
 
@@ -79,7 +79,7 @@
           $scope.cardGroups["Sorceries"].push(cards[i]);
           break;
         }
-      } 
+      }
     }
 
     $scope.cardImageInGallery;
