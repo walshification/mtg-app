@@ -47,5 +47,5 @@ gem 'devise'
 group :development, :test do
   gem 'capybara', '~> 2.7'
   gem 'dotenv-rails'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0'
 end
