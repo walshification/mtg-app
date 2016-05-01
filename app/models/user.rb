@@ -27,6 +27,5 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
-  has_many :cards
   has_many :decks
 end

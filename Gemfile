@@ -9,7 +9,6 @@ gem "pg"
 # stylin"
 gem "sass-rails", "~> 4.0.3"
 gem "simple_form"
-gem "annotate"
 
 # API
 gem "tolarian_registry"
@@ -32,6 +31,7 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "spring", group: :development
 gem "pry-rails", group: :development
 gem "quiet_assets", group: :development
+gem "annotate", group: :development
 
 # Security
 gem "devise"
