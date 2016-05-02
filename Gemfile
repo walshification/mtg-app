@@ -53,6 +53,7 @@ end
 group :test do
   gem "capybara", "~> 2.7"
   gem "database_cleaner", "~> 1.3.0"
+  gem "codeclimate-test-reporter", require: nil
 end
 
 gem 'httparty', '~>0.11'
