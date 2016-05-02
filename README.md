@@ -1,5 +1,6 @@
-My Magic: the Gathering App [![Build Status](https://travis-ci.org/walshification/mtg-app.svg?branch=master)](https://travis-ci.org/walshification/mtg-app)
+My Magic: the Gathering App
 ==
+[![Build Status](https://travis-ci.org/walshification/mtg-app.svg?branch=master)](https://travis-ci.org/walshification/mtg-app) [![Code Climate](https://codeclimate.com/github/walshification/mtg-app/badges/gpa.svg)](https://codeclimate.com/github/walshification/mtg-app) [![Test Coverage](https://codeclimate.com/github/walshification/mtg-app/badges/coverage.svg)](https://codeclimate.com/github/walshification/mtg-app/coverage) [![Inline docs](http://inch-ci.org/github/walshification/mtg-app.svg?branch=master)](http://inch-ci.org/github/walshification/mtg-app)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
