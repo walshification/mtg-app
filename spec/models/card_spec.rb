@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 describe Card, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#new" do
+    it "makes a new card" do
+      expect(Card.new).to be_valid
+    end
+  end
 end
