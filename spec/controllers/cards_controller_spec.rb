@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe CardController, :type => :controller do
+RSpec.describe CardsController, :type => :controller do
 
 end

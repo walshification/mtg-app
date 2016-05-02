@@ -5,11 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: mtg-app_development
+  database: mtg_app_development
 
 test:
   <<: *default
-  database: mtg-app_test
+  database: mtg_app_test
 
 production:
   <<: *default
