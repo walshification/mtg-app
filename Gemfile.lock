@@ -59,6 +59,7 @@ GEM
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.3)
+    awesome_print (1.6.1)
     bcrypt (3.1.11)
     bourbon (3.2.4)
       sass (~> 3.2)
@@ -98,6 +99,9 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     httpclient (2.8.0)
     i18n (0.7.0)
     inherited_resources (1.6.0)
@@ -126,6 +130,7 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.3)
+    multi_xml (0.5.5)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -239,10 +244,12 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  awesome_print
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
   dotenv-rails
+  httparty (~> 0.11)
   jbuilder (~> 2.0)
   jquery-rails
   pg

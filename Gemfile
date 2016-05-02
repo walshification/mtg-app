@@ -45,3 +45,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
 end
+
+gem 'httparty', '~>0.11'
+gem 'awesome_print'

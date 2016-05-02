@@ -106,6 +106,36 @@ ALTER SEQUENCE admin_users_id_seq OWNED BY admin_users.id;
 
 
 --
+-- Name: card_scrapers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE card_scrapers (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: card_scrapers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE card_scrapers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: card_scrapers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE card_scrapers_id_seq OWNED BY card_scrapers.id;
+
+
+--
 -- Name: cards; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -267,6 +297,13 @@ ALTER TABLE ONLY admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY card_scrapers ALTER COLUMN id SET DEFAULT nextval('card_scrapers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY cards ALTER COLUMN id SET DEFAULT nextval('cards_id_seq'::regclass);
 
 
@@ -298,6 +335,14 @@ ALTER TABLE ONLY active_admin_comments
 
 ALTER TABLE ONLY admin_users
     ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: card_scrapers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY card_scrapers
+    ADD CONSTRAINT card_scrapers_pkey PRIMARY KEY (id);
 
 
 --
@@ -409,4 +454,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141207174119');
 INSERT INTO schema_migrations (version) VALUES ('20160429125033');
 
 INSERT INTO schema_migrations (version) VALUES ('20160501215136');
+
+INSERT INTO schema_migrations (version) VALUES ('20160502014107');
 
