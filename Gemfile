@@ -48,3 +48,4 @@ end
 
 gem 'httparty', '~>0.11'
 gem 'awesome_print'
+gem 'seed_dump'

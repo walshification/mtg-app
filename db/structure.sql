@@ -35,12 +35,12 @@ SET default_with_oids = false;
 
 CREATE TABLE active_admin_comments (
     id integer NOT NULL,
-    namespace character varying(255),
+    namespace character varying,
     body text,
-    resource_id character varying(255) NOT NULL,
-    resource_type character varying(255) NOT NULL,
+    resource_id character varying NOT NULL,
+    resource_type character varying NOT NULL,
     author_id integer,
-    author_type character varying(255),
+    author_type character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -71,16 +71,16 @@ ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 
 CREATE TABLE admin_users (
     id integer NOT NULL,
-    email character varying(255) DEFAULT ''::character varying NOT NULL,
-    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
-    reset_password_token character varying(255),
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
     reset_password_sent_at timestamp without time zone,
     remember_created_at timestamp without time zone,
     sign_in_count integer DEFAULT 0 NOT NULL,
     current_sign_in_at timestamp without time zone,
     last_sign_in_at timestamp without time zone,
-    current_sign_in_ip character varying(255),
-    last_sign_in_ip character varying(255),
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -145,10 +145,10 @@ CREATE TABLE cards (
     deck_id integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    card_name character varying(255),
-    image_url character varying(255),
-    card_type character varying(255),
-    card_subtype character varying(255),
+    card_name character varying,
+    image_url character varying,
+    card_type character varying,
+    card_subtype character varying,
     layout character varying,
     mana_cost character varying,
     cmc integer,
@@ -201,10 +201,10 @@ ALTER SEQUENCE cards_id_seq OWNED BY cards.id;
 CREATE TABLE decks (
     id integer NOT NULL,
     user_id integer,
-    name character varying(255),
-    legal_format character varying(255),
-    deck_type character varying(255),
-    color character varying(255),
+    name character varying,
+    legal_format character varying,
+    deck_type character varying,
+    color character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -244,16 +244,16 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE users (
     id integer NOT NULL,
-    email character varying(255) DEFAULT ''::character varying NOT NULL,
-    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
-    reset_password_token character varying(255),
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
     reset_password_sent_at timestamp without time zone,
     remember_created_at timestamp without time zone,
     sign_in_count integer DEFAULT 0 NOT NULL,
     current_sign_in_at timestamp without time zone,
     last_sign_in_at timestamp without time zone,
-    current_sign_in_ip character varying(255),
-    last_sign_in_ip character varying(255),
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     CONSTRAINT email_must_be_valid_email CHECK (((email)::text ~* '[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+.[A-Za-z]+'::text))
