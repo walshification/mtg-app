@@ -8,9 +8,6 @@ branches:
 addons:
   postgresql: "9.4"
 
-before_install:
-  - gem install bundler
-
 env:
   - DB=postgresql
 
