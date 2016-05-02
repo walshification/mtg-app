@@ -54,3 +54,7 @@ group :test do
   gem "capybara", "~> 2.7"
   gem "database_cleaner", "~> 1.3.0"
 end
+
+gem 'httparty', '~>0.11'
+gem 'awesome_print'
+gem 'seed_dump'
