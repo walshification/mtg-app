@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CardScraper, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should be true" do
+    expect(true).to be_truthy
+  end
 end
