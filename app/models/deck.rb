@@ -4,10 +4,10 @@
 #
 #  id           :integer          not null, primary key
 #  user_id      :integer
-#  name         :string(255)
-#  legal_format :string(255)
-#  deck_type    :string(255)
-#  color        :string(255)
+#  name         :string
+#  legal_format :string
+#  deck_type    :string
+#  color        :string
 #  created_at   :datetime
 #  updated_at   :datetime
 #

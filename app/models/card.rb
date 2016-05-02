@@ -7,10 +7,33 @@
 #  deck_id       :integer
 #  created_at    :datetime
 #  updated_at    :datetime
-#  card_name     :string(255)
-#  image_url     :string(255)
-#  card_type     :string(255)
-#  card_subtype  :string(255)
+#  card_name     :string
+#  image_url     :string
+#  card_type     :string
+#  card_subtype  :string
+#  layout        :string
+#  mana_cost     :string
+#  cmc           :integer
+#  rarity        :string
+#  card_text     :text
+#  flavor        :string
+#  artist        :string
+#  number        :string
+#  power         :string
+#  toughness     :string
+#  loyalty       :integer
+#  set_id        :integer
+#  watermark     :string
+#  border        :string
+#  timeshifted   :boolean
+#  hand          :string
+#  life          :string
+#  reserved      :boolean
+#  release_date  :string
+#  starter       :boolean
+#  original_text :text
+#  original_type :string
+#  source        :string
 #
 
 class Card < ActiveRecord::Base
