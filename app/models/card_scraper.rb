@@ -174,13 +174,13 @@ class CardScraper < ActiveRecord::Base
     "SOI",
   ]
 
-  def self.create_cards
-    SETS.each do |set_name|
-      HTTParty.get(
+  def self.create_cards(sets: SETS, client: HTTParty, card_class: Card)
+    sets.each do |set_name|
+      resp = client.get(
         "https://api.magicthegathering.io/v1/cards?set=#{set_name}"
-      ).parsed_response['cards'].each do |card|
-        unless Card.find_by(multiverse_id: card['multiverseid'])
-          Card.create(
+      ).parsed_response[:cards].each do |card|
+        unless card_class.find_by(multiverse_id: card['multiverseid'])
+          card_class.create(
             multiverse_id: card.dig('multiverseid'),
             card_name: card.dig('name'),
             cmc: card.dig('cmc'),
