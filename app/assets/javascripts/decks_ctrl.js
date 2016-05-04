@@ -3,21 +3,17 @@
 
   angular.module("app").controller("decksCtrl", function($scope, $http){
 
-    $scope.setUser = function(id) {
-      $scope.userId = id;
-    };
-
-    $scope.setDeck = function(id) {
-      $http.get("/api/v1/decks/" + id + ".json").then(function (response) {
-        $scope.currentDeck = response.data;
-        $scope.sortByType($scope.currentDeck["cards"]);
+    $scope.init = function(user_id, deck_id) {
+      $scope.userId = user_id;
+      $http.get("/api/v1/decks/" + deck_id + ".json").then(function (response) {
+        $scope.deck = response.data;
+        $scope.sortByType($scope.deck["cards"]);
       });
     };
 
-    $http.get("/api/v1/decks.json").then(function (response) {
-      $scope.decks = response.data;
-      $scope.deck = $scope.decks[0];
-    });
+    $scope.search = function(searchTerm) {
+      $scope.searchedFor = searchTerm;
+    }
 
     $scope.createDeck = function (newDeckName, newDeckColors,
                                   newDeckType, newDeckFormat) {
