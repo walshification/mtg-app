@@ -1,7 +1,6 @@
 class Api::V1::CardsController < ApplicationController
   def index
     @card = Card.where("name LIKE ?", params[:card_name]).first
-    puts @card
     respond_to do |format|
       format.html {}
       format.json { render json: @card }

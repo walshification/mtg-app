@@ -2,25 +2,25 @@
 
     <div class="row">
       <div class="col-md-4">
-        <h1><%= @card.card_name %></h1>
+        <h1><%= @card.name %></h1>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-4">
-        <img src="https://api.mtgdb.info/content/card_images/<%= @card.multiverse_id %>.jpeg" class="show_card" />
+        <img src="<%= @card.image_url %>" class="show_card" />
       </div>
 
       <div class="col-md-4">
         <table class="table table-striped table-hover">
-          <thead><tr><th><%= @card.card_name %></th></tr></thead>
+          <thead><tr><th><%= @card.name %></th></tr></thead>
           <tbody>
-            <tr><td><strong>Mana Cost: </strong><%= @card.mana_cost %></td></tr>
+            <tr><td><strong>Mana Cost: </strong><%= @card.cmc %></td></tr>
             <tr>
               <td><strong>Types: </strong>
                 <%= @card.card_type %>
-                <% if @card.card_subtype %>
-                   -- <%= @card.card_subtype %>
+                <% if @card.subtype %>
+                   -- <%= @card.subtype %>
                 <% end %>
               </td>
             </tr>
@@ -36,8 +36,8 @@
             <% if @card.flavor %>
               <tr><td><strong>Flavor Text: </strong><span class="flavor"><%= @card.flavor %></span></td></tr>
             <% end %>
-            <tr><td><strong>Expansion: </strong><%= @card.card_set_name %></td></tr>
-            <tr><td><strong>Card Number: </strong><%= @card.card_set_id %></td></tr>
+            <tr><td><strong>Expansion: </strong><%# @card.sets %></td></tr>
+            <tr><td><strong>Card Number: </strong><%= @card.set_id %></td></tr>
             <tr><td><strong>Rarity: </strong><%= @card.rarity %></td></tr>
             <tr><td><strong>Artist: </strong><%= @card.artist %></td></tr>
           </tbody>
@@ -53,31 +53,31 @@
             </tr>
           </thead>
           <tbody>
-            <% @card.formats.each do |format| %>
-              <tr>
-                <td><%= format["name"] %></td>
-                <td><%= format["legality"] %></td>
-              </tr>
-            <% end %>
+            <%# @card.formats.each do |format| %>
+              <!-- <tr>
+                <td><%# format["name"] %></td>
+                <td><%# format["legality"] %></td>
+              </tr> -->
+            <%# end %>
           </tbody>
         </table>
       </div>
 
-      <% if @card.rulings.any? %>
-        <div class="row" id="rulings">
+      <%# if @card.rulings.any? %>
+        <!-- <div class="row" id="rulings">
           <table class="table table-striped table-hover">
             <thead><tr><th colspan="2">Card Rulings:</th></tr></thead>
             <tbody>
-            <% @card.rulings.each do |ruling| %>
+            <%# @card.rulings.each do |ruling| %>
               <tr>
-                <td id="rulings_date"><%= ruling["releasedAt"].to_time.strftime('%b %d %Y') %></td>
-                <td><%= ruling["rule"] %></td>
+                <td id="rulings_date"><%# ruling["releasedAt"].to_time.strftime('%b %d %Y') %></td>
+                <td><%# ruling["rule"] %></td>
               </tr>
-            <% end %>
+            <%# end %>
             </tbody>
           </table>
-        </div>
-      <% end %>
+        </div> -->
+      <%# end %>
     </div>
 
 <%= render "shared/shield_back" %>

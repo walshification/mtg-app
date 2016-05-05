@@ -1,0 +1,41 @@
+<%= render "shared/shield_front" %>
+<div ng-app="app">
+  <div ng-controller="cardsCtrl"
+       ng-init="init(<%= current_user.id %>)">
+
+    <h1>Card Search</h1>
+
+    <div class="col-md-12">
+
+      <section class="search-form">
+        <form>
+          <div class="input-group input-group-lg">
+            <label for="keywords" class="sr-only">Keywords</label>
+            <input type="text"
+                   name="keywords"
+                   class="form-control input-lg"
+                   placeholder="Card Name or Multiverse ID"
+                   ng-model="keywords">
+            <span class="input-group-btn">
+              <button class="btn btn-primary btn-lg"
+                      ng-click="search(keywords)">
+                Find Cards
+              </button>
+            </span>
+          </div>
+        </form>
+      </section>
+
+      <div ng-if="cards">
+        <h2>Cards</h2>
+        <div class="card-group"
+             ng-repeat="card in cards | orderBy:card_name:false"
+             ng-if="cards.length > 0">
+          <div>{{ card.name }}</div>
+          <br />
+        </div>
+      </div>
+    </div>
+  </div> <!-- ng-controller -->
+</div> <!-- ng-app -->
+<%= render "shared/shield_back" %>
