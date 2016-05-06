@@ -1,9 +1,11 @@
 class Api::V1::CardsController < ApplicationController
   def index
-    @card = Card.where("name LIKE ?", params[:card_name]).first
-    respond_to do |format|
-      format.html {}
-      format.json { render json: @card }
+    if params[:name]
+      @cards = Card.where("name LIKE ?", params[:name])
+    elsif params[:multiverse_id]
+      @cards = [Card.find_by(multiverse_id: params[:multiverse_id])]
+    else
+      @cards = []
     end
   end
 

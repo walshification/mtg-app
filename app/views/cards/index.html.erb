@@ -9,6 +9,7 @@
 
       <section class="search-form">
         <form>
+          <div ng-if="error">{{ error }}</div>
           <div class="input-group input-group-lg">
             <label for="keywords" class="sr-only">Keywords</label>
             <input type="text"
@@ -26,13 +27,16 @@
         </form>
       </section>
 
-      <div ng-if="cards">
-        <h2>Cards</h2>
-        <div class="card-group"
-             ng-repeat="card in cards | orderBy:card_name:false"
-             ng-if="cards.length > 0">
-          <div>{{ card.name }}</div>
-          <br />
+      <div ng-if="cards" class="container">
+        <div class="col-md-10">
+          <div class="gallery col-md-3"
+              ng-repeat="card in cards">
+            <div class="show_card">
+              <a href="/cards/{{ card.id }}">
+                <img class="gallery_card" src="{{ card.image_url }}" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

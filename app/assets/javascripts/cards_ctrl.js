@@ -10,14 +10,18 @@
     };
 
     $scope.search = function(searchTerm) {
-      $http.get("/api/v1/cards.json", { "params": {"card_name": searchTerm } }
+      $scope.error = null;  // reset error message
+      var params = {};
+      var searchKey = searchTerm.match(/^\d*$/) ? "multiverse_id" : "name";
+      params[searchKey] = searchTerm;
+      $http.get("/api/v1/cards.json", { "params": params }
         ).then(function (response) {
-          $scope.cards.push(response.data);
+          $scope.cards = Array.prototype.concat(response.data);
         }, function (error) {
           $scope.error = error.statusText;
         });
 
-      $scope.searchTerm = "";
+      $scope.searchTerm = null;
     }
 
     window.scope = $scope;
