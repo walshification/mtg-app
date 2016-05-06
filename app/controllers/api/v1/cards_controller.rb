@@ -1,5 +1,12 @@
 class Api::V1::CardsController < ApplicationController
   def index
+    if params[:name]
+      @cards = Card.where("name LIKE ?", params[:name])
+    elsif params[:multiverse_id]
+      @cards = [Card.find_by(multiverse_id: params[:multiverse_id])]
+    else
+      @cards = []
+    end
   end
 
   def show
@@ -13,10 +20,10 @@ class Api::V1::CardsController < ApplicationController
     @deck = Deck.find_by(:id => params[:deck_id])
     lookup_card = TolarianRegistry::Card.find_by_name(params[:card_name])
     @card = Card.new({
-      :multiverse_id => lookup_card.multiverse_id, 
-      :deck_id => params[:deck_id], 
-      :card_name => lookup_card.card_name, 
-      :image_url => lookup_card.image_url, 
+      :multiverse_id => lookup_card.multiverse_id,
+      :deck_id => params[:deck_id],
+      :card_name => lookup_card.card_name,
+      :image_url => lookup_card.image_url,
       :card_type => lookup_card.card_type,
       :card_subtype => lookup_card.card_subtype
     })

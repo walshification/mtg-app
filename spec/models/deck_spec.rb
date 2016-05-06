@@ -37,15 +37,27 @@ describe Deck, :type => :model do
 
     it "contains associated card objects" do
       deck = Deck.create(name: "New Deck", user_id: user.id)
-      card = Card.create(card_name: "Foo Card", deck_id: deck.id)
+      card = Card.create(
+        name: "Foo Card",
+        deck_id: deck.id,
+        multiverse_id: "foo_multiverse_id",
+      )
       expect(deck.cards.first.id).to eq(card.id)
     end
 
     it "doesn't include cards associated with other decks" do
       first_deck = Deck.create(name: "New Deck", user_id: user.id)
       second_deck = Deck.create(name: "Second Deck", user_id: user.id)
-      first_card = Card.create(card_name: "Foo Card", deck_id: first_deck.id)
-      second_card = Card.create(card_name: "Foo Card", deck_id: second_deck.id)
+      first_card = Card.create(
+        name: "Foo Card",
+        deck_id: first_deck.id,
+        multiverse_id: "first_card_id",
+      )
+      second_card = Card.create(
+        name: "Foo Card",
+        deck_id: second_deck.id,
+        multiverse_id: "second_card_id",
+      )
       expect(first_deck.cards).to_not include(second_card)
     end
   end

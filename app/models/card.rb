@@ -3,19 +3,16 @@
 # Table name: cards
 #
 #  id            :integer          not null, primary key
-#  multiverse_id :integer
+#  multiverse_id :string           not null
 #  deck_id       :integer
-#  created_at    :datetime
-#  updated_at    :datetime
-#  card_name     :string
+#  name          :string           not null
 #  image_url     :string
 #  card_type     :string
-#  card_subtype  :string
+#  subtype       :string
 #  layout        :string
-#  mana_cost     :string
 #  cmc           :integer
 #  rarity        :string
-#  card_text     :text
+#  text          :text
 #  flavor        :string
 #  artist        :string
 #  number        :string
@@ -35,8 +32,16 @@
 #  original_type :string
 #  source        :string
 #
+# Indexes
+#
+#  index_cards_on_multiverse_id  (multiverse_id) UNIQUE
+#
 
 class Card < ActiveRecord::Base
+  validates :name, :presence => true
+  validates :multiverse_id, :presence => true
+  validates :multiverse_id, :uniqueness => true
+
   belongs_to :user
   belongs_to :decks
 end

@@ -1,29 +1,53 @@
 <%= render "shared/shield_front" %>
 <div ng-app="app">
-  <div ng-controller="decksCtrl" ng-init="setUser(<%= current_user.id %>); setDeck(<%= @deck.id %>)">
+  <div ng-controller="decksCtrl"
+       ng-init="init(<%= current_user.id %>, <%= @deck.id %>)">
 
-    <h1><%= @deck.name %></h1>
+    <h1>{{ deck.name }}</h1>
 
-    <div class="col-md-9 test">
-      <div class="card-group" ng-repeat="(cardGroupName, cardGroup) in cardGroups track by $index" ng-if="cardGroup.length > 0">
-        <h2>{{ cardGroupName }}</h2>
-        <div class="card_group" ng-repeat="card in cardGroup | orderBy:card_name:false">
-          <a href="/cards/{{ card.id }}" ng-mouseover="galleryCard(card.image_url)">
-            {{ card.card_name }}
+    <div class="col-md-9">
+      <div ng-if="instants.length > 0">
+        <h2>Instants</h2>
+        <div class="card-group"
+             ng-repeat="instant in instants | orderBy:card_name:false"
+             ng-if="instants.length > 0">
+          <a href="/cards/{{ instant.id }}"
+             ng-mouseover="galleryCard(instant.image_url)">
+            {{ instant.name }}
           </a>
           <br />
         </div>
       </div>
 
+      <section class="search-form">
+        <form>
+          <div class="input-group input-group-lg">
+            <label for="keywords" class="sr-only">Keywords</label>
+            <input type="text"
+                   name="keywords"
+                   class="form-control input-lg"
+                   placeholder="Card Name or Multiverse ID"
+                   ng-model="keywords">
+            <span class="input-group-btn">
+              <button class="btn btn-primary btn-lg"
+                      ng-click="search(keywords)">
+                Find Cards
+              </button>
+            </span>
+          </div>
+        </form>
+      </section>
+
       <div class="col-md-4" id="add_card_form">
         <h2>Add a Card:</h2>
-        <%= render 'card_form' %>
       </div>
     </div>
 
     <div class="col-md-2 test">
       <div class="card-frame">
-        <img class="gallery_card" src="{{ cardImageInGallery }}" ng-if="cardImageInGallery">
+        <img class="gallery_card"
+             src="{{ cardImageInGallery }}"
+             ng-if="cardImageInGallery">
       </div>
     </div>
 

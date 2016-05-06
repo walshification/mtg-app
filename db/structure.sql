@@ -141,19 +141,16 @@ ALTER SEQUENCE card_scrapers_id_seq OWNED BY card_scrapers.id;
 
 CREATE TABLE cards (
     id integer NOT NULL,
-    multiverse_id integer,
+    multiverse_id character varying NOT NULL,
     deck_id integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    card_name character varying,
+    name character varying NOT NULL,
     image_url character varying,
     card_type character varying,
-    card_subtype character varying,
+    subtype character varying,
     layout character varying,
-    mana_cost character varying,
     cmc integer,
     rarity character varying,
-    card_text text,
+    text text,
     flavor character varying,
     artist character varying,
     number character varying,
@@ -405,6 +402,13 @@ CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON admin_users USI
 
 
 --
+-- Name: index_cards_on_multiverse_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_cards_on_multiverse_id ON cards USING btree (multiverse_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -456,4 +460,8 @@ INSERT INTO schema_migrations (version) VALUES ('20160429125033');
 INSERT INTO schema_migrations (version) VALUES ('20160501215136');
 
 INSERT INTO schema_migrations (version) VALUES ('20160502014107');
+
+INSERT INTO schema_migrations (version) VALUES ('20160503123814');
+
+INSERT INTO schema_migrations (version) VALUES ('20160503130939');
 
