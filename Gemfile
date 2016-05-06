@@ -11,7 +11,6 @@ gem "sass-rails", "~> 4.0.3"
 gem "simple_form"
 
 # API
-gem "tolarian_registry"
 gem "jbuilder", "~> 2.0"
 
 # Use Uglifier as compressor for JavaScript assets
