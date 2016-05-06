@@ -227,6 +227,43 @@ ALTER SEQUENCE decks_id_seq OWNED BY decks.id;
 
 
 --
+-- Name: magic_sets; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE magic_sets (
+    id integer NOT NULL,
+    name character varying,
+    code character varying,
+    gatherer_code character varying,
+    magiccards_info_code character varying,
+    border character varying,
+    set_type character varying,
+    block character varying,
+    release_date character varying,
+    online_only boolean DEFAULT false
+);
+
+
+--
+-- Name: magic_sets_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE magic_sets_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: magic_sets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE magic_sets_id_seq OWNED BY magic_sets.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -315,6 +352,13 @@ ALTER TABLE ONLY decks ALTER COLUMN id SET DEFAULT nextval('decks_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY magic_sets ALTER COLUMN id SET DEFAULT nextval('magic_sets_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -356,6 +400,14 @@ ALTER TABLE ONLY cards
 
 ALTER TABLE ONLY decks
     ADD CONSTRAINT decks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: magic_sets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY magic_sets
+    ADD CONSTRAINT magic_sets_pkey PRIMARY KEY (id);
 
 
 --
@@ -464,4 +516,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160502014107');
 INSERT INTO schema_migrations (version) VALUES ('20160503123814');
 
 INSERT INTO schema_migrations (version) VALUES ('20160503130939');
+
+INSERT INTO schema_migrations (version) VALUES ('20160506190027');
 
