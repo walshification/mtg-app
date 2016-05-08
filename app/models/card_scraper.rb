@@ -66,15 +66,14 @@ class CardScraper < ActiveRecord::Base
   end
 
   def gather
-    sets.each do |set|
-      cards_in(set(set["code"]))
+    sets.each do |_set|
+      cards_in(set(_set.code))
     end
   end
 
   private
 
   def sets
-    puts "LOOKING FOR SETS"
     @sets ||= get_from_api("sets")
   end
 
@@ -87,9 +86,7 @@ class CardScraper < ActiveRecord::Base
   end
 
   def get_from_api(query)
-    puts "GETTING FROM API"
     resp_key = query.include?("?") ? query.split("?").first : query
-    puts @api_root
     objs = @client.get("#{@api_root}#{query}").parsed_response[resp_key.to_sym]
     doublecheck_these(objs)
   end
@@ -102,6 +99,7 @@ class CardScraper < ActiveRecord::Base
       query_key = "code"
       klass = MagicSet
     end
+    puts "doublechecking #{things.first}"
     things.map { |thing| doublecheck_this(thing, klass, query_key) }
   end
 
@@ -112,6 +110,7 @@ class CardScraper < ActiveRecord::Base
   end
 
   def collect(thing, klass)
+    puts "COLLECTING"
     klass.create(convert(thing))
   end
 
@@ -123,6 +122,7 @@ class CardScraper < ActiveRecord::Base
       key = converter_key ? converter_key : api_attr
       converted[key] = thing.dig(api_attr) if ATTRS.include?(key)
     end
+    puts converted
     converted
   end
 end
