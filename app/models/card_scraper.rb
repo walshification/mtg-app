@@ -99,7 +99,6 @@ class CardScraper < ActiveRecord::Base
       query_key = "code"
       klass = MagicSet
     end
-    puts "doublechecking #{things.first}"
     things.map { |thing| doublecheck_this(thing, klass, query_key) }
   end
 
@@ -110,7 +109,6 @@ class CardScraper < ActiveRecord::Base
   end
 
   def collect(thing, klass)
-    puts "COLLECTING"
     klass.create(convert(thing))
   end
 
@@ -122,7 +120,6 @@ class CardScraper < ActiveRecord::Base
       key = converter_key ? converter_key : api_attr
       converted[key] = thing.dig(api_attr) if ATTRS.include?(key)
     end
-    puts converted
     converted
   end
 end
