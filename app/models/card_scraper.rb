@@ -7,209 +7,122 @@
 #  updated_at :datetime         not null
 #
 
+
 class CardScraper < ActiveRecord::Base
 
-  SETS = [
-    "WTH",
-    "pPRE",
-    "TMP",
-    "STH",
-    "PO2",
-    "pJGP",
-    "EXO",
-    "UGL",
-    "pALP",
-    "7ED",
-    "USG",
-    "ATH",
-    "ULG",
-    "6ED",
-    "PTK",
-    "UDS",
-    "S99",
-    "pGRU",
-    "pWOR",
-    "pWOS",
-    "MMQ",
-    "BRB",
-    "pSUS",
-    "pFNM",
-    "pELP",
-    "NMS",
-    "S00",
-    "PCY",
-    "BTD",
-    "INV",
-    "PLS",
-    "pMPR",
-    "APC",
-    "ODY",
-    "DKM",
-    "TOR",
-    "JUD",
-    "ONS",
-    "LGN",
-    "SCG",
-    "pREL",
-    "8ED",
-    "MRD",
-    "DST",
-    "5DN",
-    "CHK",
-    "UNH",
-    "BOK",
-    "SOK",
-    "9ED",
-    "pLPA",
-    "RAV",
-    "p2HG",
-    "pGTW",
-    "GPT",
-    "pCMP",
-    "DIS",
-    "CSP",
-    "CST",
-    "TSP",
-    "TSB",
-    "pHHO",
-    "PLC",
-    "pPRO",
-    "pGPX",
-    "FUT",
-    "10E",
-    "pMGD",
-    "MED",
-    "LRW",
-    "EVG",
-    "MOR",
-    "p15A",
-    "SHM",
-    "pSUM",
-    "EVE",
-    "DRB",
-    "ME2",
-    "pWPN",
-    "ALA",
-    "DD2",
-    "CON",
-    "DDC",
-    "ARB",
-    "M10",
-    "V09",
-    "HOP",
-    "ME3",
-    "ZEN",
-    "DDD",
-    "H09",
-    "WWK",
-    "DDE",
-    "ROE",
-    "DPA",
-    "ARC",
-    "M11",
-    "V10",
-    "DDF",
-    "SOM",
-    "PD2",
-    "ME4",
-    "MBS",
-    "DDG",
-    "NPH",
-    "CMD",
-    "M12",
-    "V11",
-    "DDH",
-    "ISD",
-    "PD3",
-    "DKA",
-    "DDI",
-    "AVR",
-    "PC2",
-    "M13",
-    "V12",
-    "DDJ",
-    "RTR",
-    "CM1",
-    "GTC",
-    "DDK",
-    "pWCQ",
-    "DGM",
-    "MMA",
-    "M14",
-    "V13",
-    "DDL",
-    "THS",
-    "C13",
-    "BNG",
-    "DDM",
-    "JOU",
-    "MD1",
-    "CNS",
-    "VMA",
-    "M15",
-    "CPK",
-    "V14",
-    "DDN",
-    "KTK",
-    "C14",
-    "DD3_DVD",
-    "DD3_EVG",
-    "DD3_GVL",
-    "DD3_JVC",
-    "FRF_UGIN",
-    "FRF",
-    "DDO",
-    "DTK",
-    "TPR",
-    "MM2",
-    "ORI",
-    "V15",
-    "DDP",
-    "BFZ",
-    "EXP",
-    "C15",
-    "OGW",
-    "DDQ",
-    "W16",
-    "SOI",
+  ATTRS = [
+    "name",
+    "cmc",
+    "layout",
+    "rarity",
+    "text",
+    "flavor",
+    "artist",
+    "number",
+    "power",
+    "toughness",
+    "loyalty",
+    "watermark",
+    "border",
+    "timeshifted",
+    "hand",
+    "life",
+    "reserved",
+    "release_date",
+    "starter",
+    "original_text",
+    "original_type",
+    "source",
+    "code",
+    "border",
+    "block",
+    "set_type",
+    "gatherer_code",
+    "magiccards_info_code",
+    "online_only",
+    "multiverse_id",
+    "image_url",
   ]
+  CONVERTER = {
+    "card": {
+      multiverseid: "multiverse_id",
+      imageUrl: "image_url",
+      type: "card_type",
+      manaCost: "mana_cost",
+    },
+    "set": {
+      type: "set_type",
+      gathererCode: "gatherer_code",
+      magicCardsInfoCode: "magiccards_info_code",
+      releaseDate: "release_date",
+      onlineOnly: "online_only",
+    }
+  }
 
-  def self.create_cards(sets: SETS, client: HTTParty, card_class: Card)
-    sets.each do |set_name|
-      resp = client.get(
-        "https://api.magicthegathering.io/v1/cards?set=#{set_name}"
-      ).parsed_response[:cards].each do |card|
-        unless card_class.find_by(multiverse_id: card['multiverseid'])
-          card_class.create(
-            multiverse_id: card.dig('multiverseid'),
-            card_name: card.dig('name'),
-            cmc: card.dig('cmc'),
-            image_url: card.dig('imageUrl'),
-            card_type: card.dig('type'),
-            layout: card.dig('layout'),
-            mana_cost: card.dig('manaCost'),
-            rarity: card.dig('rarity'),
-            card_text: card.dig('text'),
-            flavor: card.dig('flavor'),
-            artist: card.dig('artist'),
-            number: card.dig('number'),
-            power: card.dig('power'),
-            toughness: card.dig('toughness'),
-            loyalty: card.dig('loyalty'),
-            watermark: card.dig('watermark'),
-            border: card.dig('border'),
-            timeshifted: card.dig('timeshifted'),
-            hand: card.dig('hand'),
-            life: card.dig('life'),
-            reserved: card.dig('reserved'),
-            release_date: card.dig('release_date'),
-            starter: card.dig('starter'),
-            original_text: card.dig('original_text'),
-            original_type: card.dig('original_type'),
-            source: card.dig('source')
-          )
-        end
-      end
+  def initialize(client=HTTParty)
+    @api_root = ENV["MAGIC_API_ROOT_URL"]
+    @sets = nil
+    @client = client
+  end
+
+  def gather
+    sets.each do |set|
+      cards_in(set(set["code"]))
     end
+  end
+
+  private
+
+  def sets
+    puts "LOOKING FOR SETS"
+    @sets ||= get_from_api("sets")
+  end
+
+  def set(desired_set)
+    sets.select { |set| set.code == desired_set }.first
+  end
+
+  def cards_in(desired_set)
+    get_from_api("cards?set=#{set(desired_set).code}")
+  end
+
+  def get_from_api(query)
+    puts "GETTING FROM API"
+    resp_key = query.include?("?") ? query.split("?").first : query
+    puts @api_root
+    objs = @client.get("#{@api_root}#{query}").parsed_response[resp_key.to_sym]
+    doublecheck_these(objs)
+  end
+
+  def doublecheck_these(things)
+    if things.first.dig("multiverseid")
+      query_key = "multiverse_id"
+      klass = Card
+    else
+      query_key = "code"
+      klass = MagicSet
+    end
+    things.map { |thing| doublecheck_this(thing, klass, query_key) }
+  end
+
+  def doublecheck_this(thing, klass, query_key)
+    db_thing = klass.find_by(query_key => thing[query_key])
+    return db_thing if db_thing
+    self.send("collect", thing, klass)
+  end
+
+  def collect(thing, klass)
+    klass.create(convert(thing))
+  end
+
+  def convert(thing)
+    type = thing.dig("multiverseid") ? :card : :set
+    converted = {}
+    thing.keys.each do |api_attr|
+      converter_key = CONVERTER[type].dig(api_attr.to_sym)
+      key = converter_key ? converter_key : api_attr
+      converted[key] = thing.dig(api_attr) if ATTRS.include?(key)
+    end
+    converted
   end
 end
