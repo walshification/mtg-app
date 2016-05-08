@@ -1,6 +1,6 @@
 <%= render "shared/shield_front" %>
 <div ng-app="app">
-  <div ng-controller="decksCtrl" ng-init="setUser(<%= current_user.id %>)">
+  <div ng-controller="decksCtrl" ng-init="getDecks(<%= current_user.id %>)">
 
     <h1>Your Decks</h1>
 

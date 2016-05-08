@@ -1,12 +1,12 @@
 class Api::V1::DecksController < ApplicationController
   def index
-    @decks = Deck.all
+    @decks = current_user.decks
   end
 
   def show
     @card = Card.new
-    @deck = Deck.find_by(:id => params[:id])
-    @cards = @deck.cards.all
+    @deck = Deck.find(params[:id])
+    @cards = @deck.cards
   end
 
   def create
@@ -14,15 +14,21 @@ class Api::V1::DecksController < ApplicationController
 
     if @deck.save
       flash[:success] = "Deck created successfully"
-      redirect_to decks_path
     else
-      render 'new'
+      flash[:error] = "Unable to save new deck"
     end
+    redirect_to decks_path
   end
 
   private
 
   def deck_params
-    params.require(:deck).permit(:name, :user_id, :legal_format, :deck_type)
+    params.require(:deck).permit(
+      :name,
+      :user_id,
+      :legal_format,
+      :deck_type,
+      :color
+    )
   end
 end
