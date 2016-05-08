@@ -1,25 +1,17 @@
 class DecksController < ApplicationController
+
+  # GET /decks
   def index
     @decks = current_user.decks
   end
 
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
+  # GET /decks/:id
   def show
     @card = Card.new
     @deck = Deck.find(params[:id])
   end
 
-  def update
-  end
-
+  # GET /battlefield
   def battlefield
   end
 
@@ -32,6 +24,12 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-    params.require(:deck).permit(:name, :user_id, :legal_format, :deck_type)
+    params.require(:deck).permit(
+    :name,
+    :user_id,
+    :legal_format,
+    :deck_type,
+    :color
+  )
   end
 end
