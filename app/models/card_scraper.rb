@@ -44,13 +44,13 @@ class CardScraper < ActiveRecord::Base
     "image_url",
   ]
   CONVERTER = {
-    "card": {
+    card: {
       multiverseid: "multiverse_id",
       imageUrl: "image_url",
       type: "card_type",
       manaCost: "mana_cost",
     },
-    "set": {
+    set: {
       type: "set_type",
       gathererCode: "gatherer_code",
       magicCardsInfoCode: "magiccards_info_code",
