@@ -1,7 +1,7 @@
 <%= render "shared/shield_front" %>
 <div ng-app="app">
   <div ng-controller="decksCtrl"
-       ng-init="init(<%= current_user.id %>, <%= @deck.id %>)">
+       ng-init="getDeck(<%= current_user.id %>, <%= @deck.id %>)">
 
     <h1>{{ deck.name }}</h1>
 
@@ -30,7 +30,7 @@
                    ng-model="keywords">
             <span class="input-group-btn">
               <button class="btn btn-primary btn-lg"
-                      ng-click="search(keywords)">
+                      ng-click="addCard(keywords)">
                 Find Cards
               </button>
             </span>

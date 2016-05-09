@@ -3,7 +3,14 @@
 
   angular.module("app").controller("decksCtrl", function($scope, $http){
 
-    $scope.init = function(user_id, deck_id) {
+    $scope.getDecks = function(user_id) {
+      $scope.userId = user_id;
+      $http.get("/api/v1/decks.json").then(function(response) {
+        $scope.decks = response.data;
+      });
+    };
+
+    $scope.getDeck = function(user_id, deck_id) {
       $scope.userId = user_id;
       $scope.artifacts = [];
       $scope.conspiracies = [];
@@ -34,7 +41,7 @@
         "Vanguard": $scope.vanguards,
       };
 
-      $http.get("/api/v1/decks/" + deck_id + ".json").then(function (response) {
+      $http.get("/api/v1/decks/" + deck_id + ".json").then(function(response) {
         $scope.deck = response.data;
         $scope.sortCardsByType($scope.deck["cards"]);
       });
@@ -61,16 +68,21 @@
       $scope.newDeckFormat = "";
     };
 
-    $scope.search = function(searchTerm) {
-      $http.get("/api/v1/cards.json", { "params": {"card_name": searchTerm } }
-        ).then(function (response) {
-          $scope.sortCardByType(response.data);
-        }, function (error) {
-          $scope.error = error.statusText;
-        });
-
-      $scope.searchTerm = "";
-    }
+    // $scope.addCard = function(searchTerm) {
+    //   $scope.error = null;  // reset error message
+    //   var params = {};
+    //   var searchKey = searchTerm.match(/^\d*$/) ? "multiverse_id" : "name";
+    //   params[searchKey] = searchTerm;
+    //   $http.post("/api/v1/cards.json", { "params": params }
+    //     ).then(function (response) {
+    //       $scope.deck.cards.push(response.data[-1])
+    //       $scope.sortCardsByType($scope.deck.cards);
+    //     }, function (error) {
+    //       $scope.error = error.statusText;
+    //     });
+    //
+    //   $scope.searchTerm = null;
+    // }
 
     $scope.sortCardByType = function(card) {
       $scope.cardGroups[card.card_type].push(card);
