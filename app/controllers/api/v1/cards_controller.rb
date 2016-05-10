@@ -1,4 +1,6 @@
 class Api::V1::CardsController < ApplicationController
+
+  # GET /api/v1/cards
   def index
     if params[:name]
       @cards = Card.where("name LIKE ?", params[:name])
@@ -9,23 +11,26 @@ class Api::V1::CardsController < ApplicationController
     end
   end
 
+  # GET /api/v1/cards/:id
   def show
-    @card = Card.find_by(:id => params[:id])
+    @card = Card.find(params[:id])
   end
 
+  # GET /api/v1/cards/new
   def new
   end
 
+  # POST /api/v1/cards
   def create
-    @deck = Deck.find_by(:id => params[:deck_id])
+    @deck = Deck.find(params[:deck_id])
     lookup_card = TolarianRegistry::Card.find_by_name(params[:card_name])
     @card = Card.new({
-      :multiverse_id => lookup_card.multiverse_id,
-      :deck_id => params[:deck_id],
-      :card_name => lookup_card.card_name,
-      :image_url => lookup_card.image_url,
-      :card_type => lookup_card.card_type,
-      :card_subtype => lookup_card.card_subtype
+      multiverse_id: lookup_card.multiverse_id,
+      deck_id: params[:deck_id],
+      card_name: lookup_card.card_name,
+      image_url: lookup_card.image_url,
+      card_type: lookup_card.card_type,
+      card_subtype: lookup_card.card_subtype,
     })
     if @card.save
       flash[:success] = "Card successfully added!"
@@ -37,6 +42,7 @@ class Api::V1::CardsController < ApplicationController
 
   private
 
+  # Whitelists params for adding a card to a deck.
   def card_params
     params.permit(:multiverse_id, :deck_id)
   end
