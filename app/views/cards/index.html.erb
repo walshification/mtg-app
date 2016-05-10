@@ -10,35 +10,38 @@
       <section class="search-form">
         <form>
           <div ng-if="error">{{ error }}</div>
-          <div class="input-group input-group-lg">
-            <label for="keywords" class="sr-only">Keywords</label>
-            <input type="text"
-                   name="keywords"
-                   class="form-control input-lg"
-                   placeholder="Card Name or Multiverse ID"
-                   ng-model="keywords">
-            <span class="input-group-btn">
-              <button class="btn btn-primary btn-lg"
-                      ng-click="search(keywords)">
-                Find Cards
-              </button>
-            </span>
-          </div>
+          <label for="search.keywords" class="sr-only">Keywords</label>
+          <input type="text"
+                 name="keywords"
+                 class="form-control input-lg"
+                 placeholder="Card Name or Multiverse ID"
+                 ng-change="search(keywords)"
+                 ng-model="keywords">
         </form>
       </section>
 
-      <div ng-if="cards" class="container">
-        <div class="col-md-10">
-          <div class="gallery col-md-3"
-              ng-repeat="card in cards">
-            <div class="show_card">
-              <a href="/cards/{{ card.id }}">
-                <img class="gallery_card" src="{{ card.image_url }}" />
-              </a>
+      <section class="search-results">
+        <div ng-if="cards" class="container">
+          <div class="col-md-10">
+            <div class="row">
+              <%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
+            </div>
+            <div class="row">
+              <div class="gallery col-md-3"
+                  ng-repeat="card in cards">
+                <div class="show_card">
+                  <a href="/cards/{{ card.id }}">
+                    <img class="gallery_card" src="{{ card.image_url }}" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
             </div>
           </div>
-        </div>
-      </div>
+        </div><!-- container -->
+      </section>
     </div>
   </div> <!-- ng-controller -->
 </div> <!-- ng-app -->
