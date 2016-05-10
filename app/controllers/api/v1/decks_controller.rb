@@ -7,22 +7,34 @@ class Api::V1::DecksController < ApplicationController
 
   # GET /api/v1/decks/:id
   def show
-    @card = Card.new
     @deck = Deck.find(params[:id])
-    @cards = @deck.cards
+    # respond_to
   end
 
   # POST /api/v1/decks
   def create
     @deck = Deck.new(deck_params)
-
-    if @deck.save
-      flash[:success] = "Deck created successfully"
-    else
-      flash[:error] = "Unable to save new deck"
+    respond_to do |format|
+      if @deck.save
+        format.json {
+          render action: :show, status: :created
+        }
+      else
+        format.json { render json: @deck.errors, status: :unprocessable_entity }
+      end
     end
-    redirect_to decks_path
   end
+
+  # def create
+  #   @deck = Deck.new(deck_params)
+  #
+  #   if @deck.save
+  #     flash[:success] = "Deck created successfully"
+  #   else
+  #     flash[:error] = "Unable to save new deck"
+  #   end
+  #   redirect_to decks_path
+  # end
 
   private
 
