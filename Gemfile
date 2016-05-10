@@ -32,6 +32,8 @@ gem "pry-rails", group: :development
 gem "quiet_assets", group: :development
 gem "annotate", group: :development
 gem 'byebug', '~> 8.2', '>= 8.2.4'
+gem 'awesome_print', group: :development
+gem 'seed_dump', group: :development
 
 # Security
 gem "devise"
@@ -57,5 +59,3 @@ group :test do
 end
 
 gem 'httparty', '~>0.11'
-gem 'awesome_print'
-gem 'seed_dump'
