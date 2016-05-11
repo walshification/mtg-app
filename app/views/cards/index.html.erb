@@ -31,7 +31,9 @@
                   ng-repeat="card in cards">
                 <div class="show_card">
                   <a href="/cards/{{ card.id }}">
-                    <img class="gallery_card" src="{{ card.image_url }}" />
+                    <img class="gallery_card"
+                         id="{{ card.name }}-{{ card.multiverse_id }}"
+                         ng-src="{{ card.image_url }}" />
                   </a>
                 </div>
               </div>
