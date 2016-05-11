@@ -1,0 +1,13 @@
+{
+  "name": "mtg-app",
+  "version": "0.0.0",
+  "repository": "https://github.com/walshification/mtg-app",
+  "dependencies": {},
+  "devDependencies": {
+    "phantomjs-prebuilt": "^2.1.7"
+  },
+  "engines": {
+    "node": ">=5.1.0"
+  },
+  "scripts": {}
+}
