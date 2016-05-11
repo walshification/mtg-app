@@ -16,10 +16,10 @@ install:
 
 env:
   - DB=postgresql
-  - RAILS_ENV=test bundle exec rake --trace db:migrate
 
 before_script:
   - psql -c 'create database mtg_app_test' -U postgres
+  - RAILS_ENV=test bundle exec rake --trace db:migrate
 
 script:
   - RAILS_ENV=test bundle exec rspec
