@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular/angular.min
-//= require angular-animate/angular-animate
+//= require bower_components/angular/angular.min
+//= require bower_components/angular-animate/angular-animate
 //= require app
 //= require pusher.min
 //= require_tree .
