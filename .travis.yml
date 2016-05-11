@@ -8,13 +8,18 @@ branches:
 addons:
   postgresql: "9.4"
 
+install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - npm install
+
 env:
   - DB=postgresql
+  - RAILS_ENV=test bundle exec rake --trace db:migrate
 
 before_script:
   - psql -c 'create database mtg_app_test' -U postgres
 
 script:
-  - npm install
-  - RAILS_ENV=test bundle exec rake --trace db:migrate
   - RAILS_ENV=test bundle exec rspec
