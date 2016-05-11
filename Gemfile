@@ -8,6 +8,7 @@ gem "pg"
 
 # stylin"
 gem "sass-rails", "~> 4.0.3"
+gem 'bootstrap-sass', '>= 3.2', group: [:assets, :development, :test]
 gem "simple_form"
 
 # API
