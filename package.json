@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "bower": "^1.7.9",
     "phantomjs-prebuilt": "^2.1.7"
   },
   "engines": {
