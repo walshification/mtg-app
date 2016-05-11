@@ -8,6 +8,7 @@ gem "pg"
 
 # stylin"
 gem "sass-rails", "~> 4.0.3"
+gem 'bootstrap-sass', '>= 3.2', group: [:assets, :development, :test]
 gem "simple_form"
 
 # API
@@ -53,9 +54,12 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara", "~> 2.7"
+  gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
   gem "database_cleaner", "~> 1.3.0"
   gem "codeclimate-test-reporter", require: nil
+  gem "capybara", "~> 2.7"
+  gem 'capybara-angular'
+  gem 'poltergeist', '~> 1.7'
 end
 
 gem 'httparty', '~>0.11'

@@ -20,10 +20,9 @@
         </form>
       </section>
 
-      <section class="search-results">
-        <div ng-if="cards" class="container">
+      <section class="search-results container" ng-if="cards.length > 0">
           <div class="col-md-10">
-            <div class="row">
+            <div class="row" id="top-pager">
               <%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
             </div>
             <div class="row">
@@ -31,16 +30,17 @@
                   ng-repeat="card in cards">
                 <div class="show_card">
                   <a href="/cards/{{ card.id }}">
-                    <img class="gallery_card" src="{{ card.image_url }}" />
+                    <img class="gallery_card"
+                         id="{{ card.name }}-{{ card.multiverse_id }}"
+                         ng-src="{{ card.image_url }}" />
                   </a>
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" id="bottom-pager">
               <%= render partial: "pager", locals: { keywords: @keywords, page: @page } %>
             </div>
           </div>
-        </div><!-- container -->
       </section>
     </div>
   </div> <!-- ng-controller -->

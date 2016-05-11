@@ -1,0 +1,16 @@
+{
+  "name": "mtg-app",
+  "version": "0.0.0",
+  "repository": "https://github.com/walshification/mtg-app",
+  "description": "magic: the gathering deckbuilding and playtesting web app",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "phantomjs-prebuilt": "^2.1.7"
+  },
+  "engines": {
+    "node": ">=5.1.0"
+  },
+  "scripts": {}
+}
