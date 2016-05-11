@@ -15,5 +15,6 @@ before_script:
   - psql -c 'create database mtg_app_test' -U postgres
 
 script:
+  - npm install
   - RAILS_ENV=test bundle exec rake --trace db:migrate
   - RAILS_ENV=test bundle exec rspec
