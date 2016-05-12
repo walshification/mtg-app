@@ -5,9 +5,10 @@
 
     $scope.init = function(user_id, deck_id) {
       $scope.userId = user_id;
-      $scope.cards = [];
       $scope.error = null;
     };
+
+    $scope.cards = [];
 
     var page = 0;
 
