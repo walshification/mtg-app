@@ -1,6 +1,21 @@
 (function() {
   "use strict";
 
-  angular.module("app", ["ngAnimate"]);
+  var app = angular.module("app", [
+    "ngAnimate",
+    "ngRoute",
+    "templates",
+    ]
+  );
+
+  app.config([
+    "$routeProvider",
+    function($routeProvider) {
+      $routeProvider.when("/", {
+        controller: "cardsCtrl",
+        templateUrl: "card_search.html",
+      });
+    }
+  ]);
 
 }());

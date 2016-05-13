@@ -65,3 +65,5 @@ group :test do
 end
 
 gem 'httparty', '~>0.11'
+gem 'angular-rails-templates'
+gem 'sprockets', '~> 2.0'
