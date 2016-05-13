@@ -14,7 +14,7 @@ describe("cardsCtrl", function() {
     }));
 
     it("defaults to an empty card list", function() {
-      expect(scope.cards).toEqualData([]);
+      expect(scope.cards).toEqual([]);
     });
 
   });
@@ -32,7 +32,7 @@ describe("cardsCtrl", function() {
           {
             id: 2,
             multiverse_id: 103,
-            name: "Fireball",
+            name: "Counterspell",
           },
         ];
 
@@ -46,7 +46,6 @@ describe("cardsCtrl", function() {
       });
     }));
 
-
     beforeEach(function() {
       httpBackend.when('GET',
                        '/api/v1/cards.json?name=Counterspell&page=0').
@@ -56,7 +55,7 @@ describe("cardsCtrl", function() {
     it("populates the card list with the results", function() {
       scope.search("Counterspell");
       httpBackend.flush();
-      expect(scope.cards).toEqualData(serverResults);
+      expect(scope.cards).toEqual(serverResults);
     });
   });
 });

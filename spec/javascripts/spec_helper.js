@@ -34,7 +34,7 @@
 
 beforeEach(function() {
   jasmine.addMatchers({
-    toEqualData: function(util, customEqualityTesters) {
+    toEqual: function(util, customEqualityTesters) {
       return {
         compare: function(actual, expected) {
           var result = {};
