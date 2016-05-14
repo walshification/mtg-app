@@ -1,7 +1,7 @@
 class Api::V1::CardsController < ApplicationController
   PAGE_SIZE = 12
 
-  # GET /api/v1/cards
+  # GET /api/v1/cards.json
   def index
     @page = (params[:page] || 0).to_i
     if params[:name]
@@ -14,16 +14,12 @@ class Api::V1::CardsController < ApplicationController
     end
   end
 
-  # GET /api/v1/cards/:id
+  # GET /api/v1/cards/:id.json
   def show
     @card = Card.find(params[:id])
   end
 
-  # GET /api/v1/cards/new
-  def new
-  end
-
-  # POST /api/v1/cards
+  # POST /api/v1/cards.json
   def create
     @deck = Deck.find(params[:deck_id])
     lookup_card = TolarianRegistry::Card.find_by_name(params[:card_name])

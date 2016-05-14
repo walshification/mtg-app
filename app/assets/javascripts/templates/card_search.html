@@ -1,0 +1,57 @@
+<div ng-init="init(<%= current_user.id %>)">
+
+  <h1>Card Search</h1>
+
+  <div class="col-md-12">
+
+    <section class="search-form">
+      <form>
+        <div ng-if="error">{{ error }}</div>
+        <label for="search.keywords" class="sr-only">Keywords</label>
+        <input type="text"
+               name="keywords"
+               class="form-control input-lg"
+               placeholder="Card Name or Multiverse ID"
+               ng-change="search(keywords)"
+               ng-model="keywords">
+      </form>
+    </section>
+
+    <section class="search-results container" ng-if="cards.length > 0">
+        <div class="col-md-10">
+          <div class="row" id="top-pager">
+            <ul class="pager">
+              <li class="previous">
+                <a href="" ng-click="previousPage()">&larr; Previous</a>
+              </li>
+              <li class="next">
+                <a href="" ng-click="nextPage()">Next &rarr;</a>
+              </li>
+            </ul>
+          </div><!-- top-pager -->
+          <div class="row">
+            <div class="gallery col-md-3"
+                ng-repeat="card in cards">
+              <div class="show_card">
+                <div ng-click="viewDetails(card)">
+                  <img class="gallery_card"
+                       id="{{ card.name }}-{{ card.multiverse_id }}"
+                       ng-src="{{ card.image_url }}" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="bottom-pager">
+            <ul class="pager">
+              <li class="previous">
+                <a href="" ng-click="previousPage()">&larr; Previous</a>
+              </li>
+              <li class="next">
+                <a href="" ng-click="nextPage()">Next &rarr;</a>
+              </li>
+            </ul>
+          </div><!-- bottom-pager -->
+        </div>
+    </section>
+  </div>
+</div> <!-- ng-controller -->

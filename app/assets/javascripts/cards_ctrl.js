@@ -1,16 +1,21 @@
 (function() {
   "use strict";
 
-  angular.module("app").controller("cardsCtrl", function($scope, $http){
+  var app = angular.module("app")
+
+  app.controller("cardsCtrl", function($scope, $http, $location) {
+
+    var page = 0;
+    $scope.cards = [];
 
     $scope.init = function(user_id, deck_id) {
       $scope.userId = user_id;
       $scope.error = null;
     };
 
-    $scope.cards = [];
-
-    var page = 0;
+    $scope.viewDetails = function(card) {
+      $location.path("/" + card.id);
+    }
 
     $scope.search = function(searchTerm) {
       if (searchTerm.length < 3) {
@@ -45,4 +50,18 @@
 
     window.scope = $scope;
   });
+
+  app.controller("CardDetailsController",
+                 function($scope , $http , $routeParams) {
+    var cardId = $routeParams.id;
+    $scope.card = {};
+    $http.get(
+      "/api/v1/cards/" + cardId + ".json"
+    ).then(function(response) {
+      $scope.card = response.data;
+    },function(response) {
+      alert("There was a problem: " + response.status);
+    });
+  });
+
 }());
