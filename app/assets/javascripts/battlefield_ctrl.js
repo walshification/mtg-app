@@ -6,51 +6,26 @@
     "$http",
     function($scope, $http) {
 
-      $scope.setBattlefield = function(userId) {
+      $scope.init = function(userId, opponentId) {
         $scope.userId = userId;
-        $scope.opponentId = 2;
+        $scope.hand = [];
+        $scope.permanents = [];
+        $scope.lands = [];
+        $scope.stackSpells = [];
+        $scope.graveyard = [];
+
+        $scope.opponentId = opponentId;
+        $scope.opponentLands = [];
+        $scope.opponentPermanents = [];
+        $scope.opponentHand = [];
+        $scope.opponentGraveyard = [];
+
 
         $http.get("/api/v1/decks.json").then(function (response) {
           $scope.decks = response.data;
           $scope.deck = $scope.decks[0];
         });
-
-        var updateBoard = function(data, boardArea, hand) {
-          boardArea.push(data.card);
-          hand.splice($scope.hand.indexOf({card: 1}), 1);
-          $scope.$apply();
-        };
-
-        function tapCard(data) {
-          if (~data.card.card_type.indexOf("Land")) {
-            card = findOpponentCard($scope.opponentLands, data.card);
-          } else {
-            card = findOpponentCard($scope.opponentPermanents, data.card);
-          }
-          data.card.tapped = !data.card.tapped;
-          $scope.$apply();
-        }
-
-        function findOpponentCard(cardGroup, card) {
-          for (var i = 0; i < cardGroup.length; i++) {
-            if(cardGroup[i].card_name === card.card_name) {
-              return cardGroup[i];
-            }
-          }
-        }
-
       };
-
-      $scope.hand = [];
-      $scope.permanents = [];
-      $scope.lands = [];
-      $scope.stackSpells = [];
-      $scope.graveyard = [];
-
-      $scope.opponentLands = [];
-      $scope.opponentPermanents = [];
-      $scope.opponentHand = [];
-      $scope.opponentGraveyard = [];
 
       $scope.drawCard = function() {
         $http.post("/api/v1/opponent_draw.json", {user_id: $scope.userId}).then(function (response) {
