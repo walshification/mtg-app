@@ -33,11 +33,11 @@
             <div class="gallery col-md-3"
                 ng-repeat="card in cards">
               <div class="show_card">
-                <a href="/cards/{{ card.id }}">
+                <div ng-click="viewDetails(card)">
                   <img class="gallery_card"
                        id="{{ card.name }}-{{ card.multiverse_id }}"
                        ng-src="{{ card.image_url }}" />
-                </a>
+                </div>
               </div>
             </div>
           </div>
