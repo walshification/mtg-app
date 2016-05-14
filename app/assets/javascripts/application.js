@@ -18,5 +18,6 @@
 //= require_tree ./templates
 //= require angular-animate/angular-animate
 //= require app
-//= require pusher.min
+//= require pusher-websocket-iso/dist/web/pusher
+//= require pusher-angular/lib/pusher-angular.min
 //= require_tree .

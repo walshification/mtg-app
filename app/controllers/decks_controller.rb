@@ -13,6 +13,7 @@ class DecksController < ApplicationController
 
   # GET /battlefield
   def battlefield
+    @opponent_id = User.find_by(email: "nemesis@gmail.com").id
   end
 
   def test_pusher

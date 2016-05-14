@@ -5,6 +5,7 @@
     "ngAnimate",
     "ngRoute",
     "templates",
+    // "pusher-angular",
     ]
   );
 
