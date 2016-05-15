@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'feature_helper'
 
 feature "Card Search", js: true do
   let(:email) { "bob@example.com" }
