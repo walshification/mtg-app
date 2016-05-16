@@ -43,5 +43,6 @@ class Card < ActiveRecord::Base
   validates :multiverse_id, :uniqueness => true
 
   belongs_to :user
-  belongs_to :decks
+  has_and_belongs_to_many :decks
+  belongs_to :magic_set
 end
