@@ -24,4 +24,4 @@ before_script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate
 
 script:
-  - RAILS_ENV=test bundle exec rspec
+  - RAILS_ENV=test make all-the-tests
