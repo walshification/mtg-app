@@ -17,5 +17,6 @@ class Deck < ActiveRecord::Base
   validates :name, :uniqueness => true
 
   belongs_to :user
-  has_and_belongs_to_many :cards
+  has_many :cards, through: :deck_card
+  has_many :deck_cards
 end

@@ -97,16 +97,6 @@ CREATE TABLE cards (
 
 
 --
--- Name: cards_decks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE cards_decks (
-    deck_id integer,
-    card_id integer
-);
-
-
---
 -- Name: cards_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -123,6 +113,36 @@ CREATE SEQUENCE cards_id_seq
 --
 
 ALTER SEQUENCE cards_id_seq OWNED BY cards.id;
+
+
+--
+-- Name: deck_cards; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE deck_cards (
+    id integer NOT NULL,
+    deck_id integer,
+    card_id integer
+);
+
+
+--
+-- Name: deck_cards_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE deck_cards_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: deck_cards_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE deck_cards_id_seq OWNED BY deck_cards.id;
 
 
 --
@@ -265,6 +285,13 @@ ALTER TABLE ONLY cards ALTER COLUMN id SET DEFAULT nextval('cards_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY deck_cards ALTER COLUMN id SET DEFAULT nextval('deck_cards_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY decks ALTER COLUMN id SET DEFAULT nextval('decks_id_seq'::regclass);
 
 
@@ -299,6 +326,14 @@ ALTER TABLE ONLY cards
 
 
 --
+-- Name: deck_cards_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY deck_cards
+    ADD CONSTRAINT deck_cards_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: decks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -323,24 +358,24 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_cards_decks_on_card_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_cards_decks_on_card_id ON cards_decks USING btree (card_id);
-
-
---
--- Name: index_cards_decks_on_deck_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_cards_decks_on_deck_id ON cards_decks USING btree (deck_id);
-
-
---
 -- Name: index_cards_on_multiverse_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_cards_on_multiverse_id ON cards USING btree (multiverse_id);
+
+
+--
+-- Name: index_deck_cards_on_card_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_deck_cards_on_card_id ON deck_cards USING btree (card_id);
+
+
+--
+-- Name: index_deck_cards_on_deck_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_deck_cards_on_deck_id ON deck_cards USING btree (deck_id);
 
 
 --
@@ -405,4 +440,8 @@ INSERT INTO schema_migrations (version) VALUES ('20160506190027');
 INSERT INTO schema_migrations (version) VALUES ('20160516103305');
 
 INSERT INTO schema_migrations (version) VALUES ('20160516104915');
+
+INSERT INTO schema_migrations (version) VALUES ('20160516124912');
+
+INSERT INTO schema_migrations (version) VALUES ('20160516130848');
 

@@ -25,6 +25,11 @@ class Api::V1::DecksController < ApplicationController
     end
   end
 
+  # PUT /api/v1/decks/:id
+  def update
+    Deck.find(params[:id]).update(params[:deck])
+  end
+
   # def create
   #   @deck = Deck.new(deck_params)
   #
