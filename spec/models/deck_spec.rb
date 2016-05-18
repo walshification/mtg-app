@@ -21,11 +21,22 @@ describe Deck, :type => :model do
       expect(deck.errors[:name]).to include("can't be blank")
     end
 
-    it "is invalid if name is not unique" do
+    it "is invalid if name is not unique to the user" do
       Deck.create(name: "New Deck", user_id: user.id)
       deck = Deck.new(name: "New Deck", user_id: user.id)
       deck.save()
       expect(deck.errors[:name]).to include("has already been taken")
+    end
+
+    it "is valid if another user has a deck with the same name" do
+      new_user = User.create(
+        email: "another_test@example.com",
+        password: "barrrrrrrpassword",
+        password_confirmation: "barrrrrrrpassword",
+      )
+      Deck.create(name: "New Deck", user_id: user.id)
+      new_user_deck = Deck.new(name: "New Deck", user_id: new_user.id)
+      expect(new_user_deck).to be_valid
     end
   end
 
@@ -33,16 +44,6 @@ describe Deck, :type => :model do
     it "associates a created deck with the user who made it" do
       deck = Deck.create(name: "New Deck", user_id: user.id)
       expect(user.decks.first.id).to eq(deck.id)
-    end
-
-    it "contains associated card objects" do
-      deck = Deck.create(name: "New Deck", user_id: user.id)
-      card = Card.create(
-        name: "Foo Card",
-        deck_id: deck.id,
-        multiverse_id: "foo_multiverse_id",
-      )
-      expect(deck.cards.first.id).to eq(card.id)
     end
 
     it "doesn't include cards associated with other decks" do
