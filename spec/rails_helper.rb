@@ -81,7 +81,7 @@ RSpec.configure do |config|
     DatabaseCleaner.start
   end
 
-  config.after(:each) do |example|
+  config.after(type: :feature) do |example|
     if example.exception
       filename = File.basename(example.metadata[:file_path])
       line_number = example.metadata[:line_number]
@@ -96,7 +96,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.around(:each) do |example|
+  config.around(type: :feature) do |example|
     retry_count = 5
     retry_count.times do |i|
       example.run
