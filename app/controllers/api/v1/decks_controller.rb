@@ -1,31 +1,31 @@
 class Api::V1::DecksController < ApplicationController
 
-  # GET /api/v1/decks
+  # GET /api/v1/decks.json
   def index
     @decks = current_user.decks
   end
 
-  # GET /api/v1/decks/:id
+  # GET /api/v1/decks/:id.json
   def show
     @deck = Deck.find(params[:id])
     # respond_to
   end
 
-  # POST /api/v1/decks
+  # POST /api/v1/decks.json
   def create
     @deck = Deck.new(deck_params)
+    puts @deck.inspect
     respond_to do |format|
       if @deck.save
-        format.json {
-          render action: :show, status: :created
-        }
+        format.json { render json: @deck }
       else
+        puts @deck.errors.inspect
         format.json { render json: @deck.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /api/v1/decks/:id
+  # PUT /api/v1/decks/:id.json
   def update
     Deck.find(params[:id]).update(params[:deck])
   end

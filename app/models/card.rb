@@ -44,6 +44,6 @@ class Card < ActiveRecord::Base
 
   belongs_to :user
   has_many :decks, through: :deck_card
-  has_many :deck_cards
+  has_many :deck_card
   belongs_to :magic_set
 end

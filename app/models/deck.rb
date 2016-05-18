@@ -13,10 +13,10 @@
 #
 
 class Deck < ActiveRecord::Base
-  validates :name, :presence => true
-  validates :name, :uniqueness => true
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :user }
 
   belongs_to :user
   has_many :cards, through: :deck_card
-  has_many :deck_cards
+  has_many :deck_card
 end
