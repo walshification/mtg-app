@@ -57,7 +57,11 @@
         user_id: $scope.userId
       };
       $http.post("/api/v1/decks.json", {deck: newDeck})
-        .then(function (response) {}, function (error) {
+        .then(function (response) {
+          console.log(response.data);
+          newDeck['id'] = response.data.id;
+        }, function (error) {
+          console.log(error)
           $scope.error = error.statusText;
         });
 
