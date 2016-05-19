@@ -9,9 +9,6 @@ help:
 start: env
 	$(BUNDLE) rails server
 
-##### Node Path Export #####
-ci-% : export PHANTOMJS_BIN=./node_modules/.bin/phantomjs
-
 ##### Tests #####
 test: env
 	$(RSPEC) --exclude-pattern "spec/features/*_spec.rb"
@@ -33,7 +30,7 @@ features: env
 	$(RSPEC) spec/features
 
 all-the-tests:
-	$(RSPEC) && $(RAKE) teaspoon
+	export PHANTOMJS_BIN=./node_modules/.bin/phantomjs $(RSPEC) && $(RAKE) teaspoon
 
 ci-test: all-the-tests
 
