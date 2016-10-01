@@ -14,12 +14,10 @@ class Api::V1::DecksController < ApplicationController
   # POST /api/v1/decks.json
   def create
     @deck = Deck.new(deck_params)
-    puts @deck.inspect
     respond_to do |format|
       if @deck.save
         format.json { render json: @deck }
       else
-        puts @deck.errors.inspect
         format.json { render json: @deck.errors, status: :unprocessable_entity }
       end
     end
