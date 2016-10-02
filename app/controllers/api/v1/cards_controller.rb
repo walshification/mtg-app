@@ -5,10 +5,10 @@ class Api::V1::CardsController < ApplicationController
   def index
     @page = (params[:page] || 0).to_i
     if params[:name]
-      @cards = Card.where("name LIKE ?", params[:name]).
+      @cards = Card.where("name LIKE ?", "%#{params[:name]}%").
         offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     elsif params[:multiverse_id]
-      @cards = [Card.find_by(multiverse_id: params[:multiverse_id])]
+      @cards = Card.where(multiverse_id: params[:multiverse_id])
     else
       @cards = []
     end
@@ -20,24 +20,24 @@ class Api::V1::CardsController < ApplicationController
   end
 
   # POST /api/v1/cards.json
-  def create
-    @deck = Deck.find(params[:deck_id])
-    lookup_card = TolarianRegistry::Card.find_by_name(params[:card_name])
-    @card = Card.new({
-      multiverse_id: lookup_card.multiverse_id,
-      deck_id: params[:deck_id],
-      card_name: lookup_card.card_name,
-      image_url: lookup_card.image_url,
-      card_type: lookup_card.card_type,
-      card_subtype: lookup_card.card_subtype,
-    })
-    if @card.save
-      flash[:success] = "Card successfully added!"
-      redirect_to deck_path(@deck.id)
-    else
-      render 'new'
-    end
-  end
+  # def create
+  #   @deck = Deck.find(params[:deck_id])
+  #   lookup_card = TolarianRegistry::Card.find_by_name(params[:card_name])
+  #   @card = Card.new({
+  #     multiverse_id: lookup_card.multiverse_id,
+  #     deck_id: params[:deck_id],
+  #     card_name: lookup_card.card_name,
+  #     image_url: lookup_card.image_url,
+  #     card_type: lookup_card.card_type,
+  #     card_subtype: lookup_card.card_subtype,
+  #   })
+  #   if @card.save
+  #     flash[:success] = "Card successfully added!"
+  #     redirect_to deck_path(@deck.id)
+  #   else
+  #     render 'new'
+  #   end
+  # end
 
   private
 

@@ -20,17 +20,17 @@ test: env
 
 # js_te% : export PHANTOMJS_BIN=./node_modules/.bin/phantomjs
 
-js-test: env
+js-test: deps
 	$(RAKE) teaspoon
 
 # js-test-watch: env
 # 	./node_modules/karma/bin/karma start
 
-features: env
+features: deps
 	$(RSPEC) spec/features
 
 all-the-tests:
-	export PHANTOMJS_BIN=./node_modules/.bin/phantomjs $(RSPEC) && $(RAKE) teaspoon
+	export PHANTOMJS_BIN=./node_modules/.bin/phantomjs && $(RSPEC) && $(RAKE) teaspoon
 
 ci-test: all-the-tests
 
@@ -40,6 +40,9 @@ env:
 
 deps: env
 	npm install && bower install
+
+clean:
+	rm -rf node_modules vendor/assets/bower_components
 
 ##### No Idea i.e. magic #####
 .PHONY: env test features all-the-tests js-test deps help start
