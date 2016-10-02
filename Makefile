@@ -29,7 +29,7 @@ js-test: deps
 features: deps
 	$(RSPEC) spec/features
 
-all-the-tests: deps
+all-the-tests:
 	export PHANTOMJS_BIN=./node_modules/.bin/phantomjs && $(RSPEC) && $(RAKE) teaspoon
 
 ci-test: all-the-tests
