@@ -25,19 +25,15 @@ class Api::V1::DecksController < ApplicationController
 
   # PUT /api/v1/decks/:id.json
   def update
-    Deck.find(params[:id]).update(params[:deck])
+    @deck = Deck.find(params[:id])
+    respond_to do |format|
+      if @deck.update(deck_params)
+        format.json { render json: @deck }
+      else
+        format.json { render json: @deck.errors, status: :unprocessable_entity }
+      end
+    end
   end
-
-  # def create
-  #   @deck = Deck.new(deck_params)
-  #
-  #   if @deck.save
-  #     flash[:success] = "Deck created successfully"
-  #   else
-  #     flash[:error] = "Unable to save new deck"
-  #   end
-  #   redirect_to decks_path
-  # end
 
   private
 
