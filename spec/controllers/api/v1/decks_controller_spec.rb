@@ -3,42 +3,76 @@ require 'rails_helper'
 describe Api::V1::DecksController, :type => :controller do
 
   let(:user) { create(:user) }
+  let(:another_user) { create(:user) }
+  let(:deck_1) { create(:deck, user_id: user.id) }
+  let(:deck_2) { create(:deck, user_id: another_user.id)}
 
   before(:each) do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
+    allow(controller).to receive(:current_user).and_return(user)
     sign_in(user)
   end
 
-  # describe "#create" do
-  #   it "creates a deck" do
-  #     expect {
-  #       post :create, { deck: { name: "asdf" }, format: :json }, {}
-  #     }.to change { Deck.count }.by(1)
-  #   end
-  #
-  #   context "with rendered views" do
-  #     render_views
-  #     it "responds with the deck's attrs" do
-  #       post :create, {
-  #         deck: {
-  #           name: 'whatever',
-  #           user_id: user.id,
-  #           legal_format: 'modern',
-  #           deck_type: 'beatdown',
-  #           color: 'blue',
-  #         }, format: :json
-  #       }, {}
-  #
-  #       expect(JSON.parse(response.body)).to eq(
-  #         'name' => 'whatever',
-  #         'user_id' => user.id,
-  #         'legal_format' => 'modern',
-  #         'deck_type' => 'beatdown',
-  #         'id' => assigns(:deck).id,
-  #         'color' => 'blue',
-  #         'cards' => [],
-  #       )
-  #     end
-  #   end
-  # end
+  describe 'GET #index' do
+    it "retrieves the current user's decks" do
+      get(:index, format: :json)
+
+      expect(response).to be_success
+      expect(assigns(:decks)).to match_array([deck_1])
+    end
+  end
+
+  describe 'GET #show' do
+    it "retrieves the correct deck by ID in the url" do
+      get(:show, id: deck_1.id, format: :json)
+
+      expect(response).to be_success
+      expect(assigns(:deck)).to eq(deck_1)
+    end
+  end
+
+  describe "POST #create" do
+    it "creates a deck" do
+      expect {
+        post :create, { deck: { name: "asdf" }, format: :json }, {}
+      }.to change { Deck.count }.by(1)
+    end
+
+    context "with rendered views" do
+      render_views
+      it "responds with the deck's attrs" do
+        post(:create, {
+          deck: {
+            name: 'whatever',
+            user_id: user.id,
+            legal_format: 'modern',
+            deck_type: 'beatdown',
+            color: 'blue',
+          }, format: :json
+        }, {})
+
+        response_card = JSON.parse(response.body)
+
+        expect(response).to be_success
+        expect(response_card['name']).to eq('whatever')
+        expect(response_card['user_id']).to eq(user.id)
+        expect(response_card['legal_format']).to eq('modern')
+        expect(response_card['id']).to eq(assigns(:deck).id)
+        expect(response_card['color']).to eq('blue')
+      end
+    end
+  end
+
+  describe "PUT #update" do
+    it "updates deck attributes with the ID in the URL" do
+      expect(deck_1.name).to eq('Test Deck')
+
+      post(:update, {
+        id: deck_1.id,
+        deck: { name: 'babadoos' },
+        format: :json
+      }, {})
+
+      expect(Deck.find(deck_1.id).name).to eq('babadoos')
+    end
+  end
 end
