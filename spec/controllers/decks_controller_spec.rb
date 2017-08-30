@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: decks
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  name         :string
+#  legal_format :string
+#  deck_type    :string
+#  color        :string
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 require 'rails_helper'
 
 describe DecksController, :type => :controller do
