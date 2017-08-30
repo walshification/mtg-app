@@ -14,7 +14,6 @@ gem 'puma', '~> 3.7'
 
 # stylin'
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass', '>= 3.2', group: [:assets, :development, :test]
 gem 'simple_form'
 
 # API
