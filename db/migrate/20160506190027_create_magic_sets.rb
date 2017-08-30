@@ -1,4 +1,4 @@
-class CreateMagicSets < ActiveRecord::Migration
+class CreateMagicSets < ActiveRecord::Migration[4.2]
   def change
     create_table :magic_sets do |t|
       t.string :name

@@ -11,8 +11,8 @@
 #  set_type             :string
 #  block                :string
 #  release_date         :string
-#  online_only          :boolean          default("false")
+#  online_only          :boolean          default(FALSE)
 #
 
-class MagicSet < ActiveRecord::Base
+class MagicSet < ApplicationRecord
 end

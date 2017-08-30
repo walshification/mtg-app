@@ -39,10 +39,9 @@ env:
 	bundle
 
 deps: env
-	npm install && bower install
+	npm install
 
 clean:
 	rm -rf node_modules vendor/assets/bower_components
 
-##### No Idea i.e. magic #####
 .PHONY: env test features all-the-tests js-test deps help start

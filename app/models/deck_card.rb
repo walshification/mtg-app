@@ -12,7 +12,7 @@
 #  index_deck_cards_on_deck_id  (deck_id)
 #
 
-class DeckCard < ActiveRecord::Base
+class DeckCard < ApplicationRecord
   belongs_to :deck
   belongs_to :card
 end

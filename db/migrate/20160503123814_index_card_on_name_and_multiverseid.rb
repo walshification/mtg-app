@@ -1,4 +1,4 @@
-class IndexCardOnNameAndMultiverseid < ActiveRecord::Migration
+class IndexCardOnNameAndMultiverseid < ActiveRecord::Migration[4.2]
   def change
     rename_column :cards, :card_name, :name
     change_column :cards, :name, :string, null: false

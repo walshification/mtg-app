@@ -8,8 +8,7 @@
 #
 
 
-class CardScraper < ActiveRecord::Base
-
+class CardScraper < ApplicationRecord
   ATTRS = [
     "name",
     "cmc",
