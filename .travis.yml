@@ -11,6 +11,16 @@ addons:
 before_install:
   - nvm install 8.1.4
 
+cache: yarn
+
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb https://dl.yarnpkg.com/debian/ stable main'
+        key_url: 'https://dl.yarnpkg.com/debian/pubkey.gpg'
+    packages:
+      - yarn
+
 install:
   - bundle install
   - yarn install
