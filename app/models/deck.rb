@@ -12,11 +12,11 @@
 #  updated_at   :datetime
 #
 
-class Deck < ActiveRecord::Base
+class Deck < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: { scope: :user }
 
   belongs_to :user
-  has_many :cards, through: :deck_card
   has_many :deck_card
+  has_many :cards, through: :deck_card
 end

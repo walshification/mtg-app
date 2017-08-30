@@ -1,4 +1,4 @@
-class RestructureCardModel < ActiveRecord::Migration
+class RestructureCardModel < ActiveRecord::Migration[4.2]
   def change
     add_column :cards, :layout, :string
     add_column :cards, :mana_cost, :string
