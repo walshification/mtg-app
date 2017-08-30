@@ -40,8 +40,6 @@ group :development do
   gem 'seed_dump', group: :development
 end
 
-gem 'nokogiri', '~> 1.6.0'
-
 # Security
 gem 'devise'
 
