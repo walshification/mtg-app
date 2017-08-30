@@ -39,7 +39,7 @@ env:
 	bundle
 
 deps: env
-	npm install && bower install
+	npm install
 
 clean:
 	rm -rf node_modules vendor/assets/bower_components
