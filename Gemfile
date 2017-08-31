@@ -8,7 +8,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.1.3'
 # Use postgresql as the database for Active Record
-gem 'pg', '0.18'
+gem 'pg', '0.21.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 
@@ -56,11 +56,12 @@ group :development, :test do
   gem 'teaspoon-jasmine'
   gem 'guard-rspec'
   gem 'rails-controller-testing'
+  gem 'simplecov', '0.15.0'
 end
 
 group :test do
   gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
-  gem 'database_cleaner', '~> 1.3.0'
+  gem 'database_cleaner', '~> 1.6.1'
   gem 'codeclimate-test-reporter', require: nil
   gem 'capybara', '~> 2.7'
   gem 'capybara-angular'
