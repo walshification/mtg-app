@@ -1,5 +1,4 @@
 class Api::V1::BattlefieldsController < ApplicationController
-
   def place_land
     push_event("place_land", { card: params[:card] })
   end

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe Card, :type => :model do
   let(:magic_set) { create(:magic_set) }
-  let(:new_card) { Card.new(name: 'New Card', multiverse_id: 'new_card', magic_set_id: magic_set.id) }
+  let(:new_card) do
+    Card.new(name: 'New Card', multiverse_id: 'new_card', magic_set_id: magic_set.id)
+  end
 
   describe '#new' do
     it 'is valid with a name, multiverse_id, and magic_set_id' do
@@ -29,7 +31,11 @@ describe Card, :type => :model do
 
     it 'is invalid if multiverse_id is not unique' do
       new_card.save
-      newer_card = Card.new(name: 'Newer Card', multiverse_id: 'new_card', magic_set_id: magic_set.id)
+      newer_card = Card.new(
+        name: 'Newer Card',
+        multiverse_id: 'new_card',
+        magic_set_id: magic_set.id
+      )
       newer_card.valid?
       expect(newer_card.errors[:multiverse_id]).to include('has already been taken')
     end

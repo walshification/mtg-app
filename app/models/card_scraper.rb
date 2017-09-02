@@ -7,7 +7,6 @@
 #  updated_at :datetime         not null
 #
 
-
 class CardScraper < ApplicationRecord
   ATTRS = [
     "name",

@@ -1,17 +1,15 @@
 require 'rails_helper'
 require 'support/matchers/violate_check_constraint_matcher'
 
-describe User, :type => :model do
-
+describe User, type: :model do
   describe '#new' do
-
-    let(:user) {
+    let(:user) do
       User.new(
         email: 'test@example.com',
         password: 'foooooooooword',
         password_confirmation: 'foooooooooword',
       )
-    }
+    end
 
     it 'is valid with an email address and password' do
       expect(user).to be_valid
@@ -39,15 +37,5 @@ describe User, :type => :model do
       dup_user.valid?
       expect(dup_user.errors[:email]).to include('has already been taken')
     end
-  end
-
-  describe '#create' do
-    let(:user) {
-      User.create!(
-        email: 'foo@example.com',
-        password: 'qwertyuiop',
-        password_confirmation: 'qwertyuiop',
-      )
-    }
   end
 end

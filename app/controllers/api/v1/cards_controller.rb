@@ -5,8 +5,9 @@ class Api::V1::CardsController < ApplicationController
   def index
     @page = (params[:page] || 0).to_i
     if params[:name]
-      @cards = Card.where("name LIKE ?", "%#{params[:name]}%").
-        offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
+      @cards = Card.where("name LIKE ?", "%#{params[:name]}%")
+                   .offset(PAGE_SIZE * @page)
+                   .limit(PAGE_SIZE)
     elsif params[:multiverse_id]
       @cards = Card.where(multiverse_id: params[:multiverse_id])
     else

@@ -1,5 +1,4 @@
 class Api::V1::DecksController < ApplicationController
-
   # GET /api/v1/decks.json
   def index
     @decks = current_user.decks

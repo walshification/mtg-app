@@ -54,7 +54,7 @@ RSpec.configure do |config|
       js_errors: false,
       default_wait_time: 5,
       phantomjs: "#{File.dirname(__FILE__)}/../node_modules/.bin/phantomjs"
-      #debug:       true
+      # debug:       true
     )
   end
 
@@ -108,7 +108,9 @@ RSpec.configure do |config|
 
       # If we got to this point, then a retry-able exception has been thrown by the spec
       e_line = real_example.instance_variable_get '@example_block'
+      # rubocop:disable Metrics/LineLength
       puts "Error (#{real_example.exception.class} - #{real_example.exception}) occurred while running rspec example (#{e_line}"
+      # rubocop:enable Metrics/LineLength
 
       if i < retry_count
         real_example.instance_variable_set('@exception', nil)
