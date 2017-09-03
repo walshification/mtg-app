@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 FactoryGirl.define do
   factory :user do
     email { 'test@test.com' }
@@ -19,3 +18,19 @@ FactoryGirl.define do
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: decks
+#
+# *id*::           <tt>integer, not null, primary key</tt>
+# *user_id*::      <tt>integer</tt>
+# *name*::         <tt>string</tt>
+# *legal_format*:: <tt>string</tt>
+# *deck_type*::    <tt>string</tt>
+# *color*::        <tt>string</tt>
+# *created_at*::   <tt>datetime</tt>
+# *updated_at*::   <tt>datetime</tt>
+#--
+# == Schema Information End
+#++

@@ -1,16 +1,7 @@
 # frozen_string_literal: true
 
-# == Schema Information
-#
-# Table name: card_scrapers
-#
-#  id         :integer          not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-
 # Web scraper for Magic cards
-class CardScraper < ApplicationRecord
+class Gatherer
   ATTRS = %w[
     name
     cmc

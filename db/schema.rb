@@ -10,19 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830024941) do
+ActiveRecord::Schema.define(version: 20170903184914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "card_scrapers", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cards", id: :serial, force: :cascade do |t|
     t.string "multiverse_id", null: false
-    t.integer "deck_id"
     t.string "name", null: false
     t.string "image_url"
     t.string "card_type"
