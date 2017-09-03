@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe Api::V1::DecksController, :type => :controller do
+describe Api::V1::DecksController, type: :controller do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:deck_1) { create(:deck, user_id: user.id) }
-  let(:deck_2) { create(:deck, user_id: another_user.id)}
+  let(:deck_2) { create(:deck, user_id: another_user.id) }
 
   before(:each) do
     sign_in(user)
@@ -19,22 +21,22 @@ describe Api::V1::DecksController, :type => :controller do
   end
 
   describe 'GET #show' do
-    it "retrieves the correct deck by ID in the url" do
+    it 'retrieves the correct deck by ID in the url' do
       get(:show, params: { id: deck_1.id }, format: :json)
       expect(response).to be_success
       expect(assigns(:deck)).to eq(deck_1)
     end
   end
 
-  describe "POST #create" do
-    it "creates a deck" do
+  describe 'POST #create' do
+    it 'creates a deck' do
       post(:create,
            params: { deck: { name: 'unique deck name', user_id: user.id }, format: :json },
            session: {})
       expect(Deck.count).to eq(1)
     end
 
-    context "with rendered views" do
+    context 'with rendered views' do
       render_views
 
       it "responds with the deck's attrs" do
@@ -46,7 +48,7 @@ describe Api::V1::DecksController, :type => :controller do
               user_id: user.id,
               legal_format: 'modern',
               deck_type: 'beatdown',
-              color: 'blue',
+              color: 'blue'
             },
             format: :json
           },
@@ -68,7 +70,7 @@ describe Api::V1::DecksController, :type => :controller do
     it 'updates deck attributes with the ID in the URL' do
       expect(deck_1.name).to eq('Test Deck')
       post(:update,
-           params: {id: deck_1.id, deck: { name: 'babadoos' }, format: :json },
+           params: { id: deck_1.id, deck: { name: 'babadoos' }, format: :json },
            session: {})
       expect(Deck.find(deck_1.id).name).to eq('babadoos')
     end

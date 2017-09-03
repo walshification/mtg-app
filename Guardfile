@@ -30,8 +30,6 @@ guard :rspec, cmd: 'bundle exec rspec' do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
 
-  # Feel free to open issues for suggestions and improvements
-
   # RSpec files
   rspec = dsl.rspec
   watch(rspec.spec_helper) { rspec.spec_dir }
@@ -50,8 +48,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
   watch(rails.controllers) do |m|
     [
       rspec.spec.call("routing/#{m[1]}_routing"),
-      rspec.spec.call("controllers/#{m[1]}_controller"),
-      rspec.spec.call("acceptance/#{m[1]}")
+      rspec.spec.call("controllers/#{m[1]}_controller")
     ]
   end
 
@@ -63,15 +60,9 @@ guard :rspec, cmd: 'bundle exec rspec' do
   # Capybara features specs
   watch(rails.view_dirs)     { |m| rspec.spec.call("features/#{m[1]}") }
   watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
-
-  # Turnip features and steps
-  watch(%r{^spec/acceptance/(.+)\.feature$})
-  watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
-    Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance'
-  end
 end
 
 guard :rubocop do
   watch(/.+\.rb$/)
-  watch(/(?:.+/)?\.rubocop(?:_todo)?\.yml$/) { |m| File.dirname(m[0]) }
+  watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
 end

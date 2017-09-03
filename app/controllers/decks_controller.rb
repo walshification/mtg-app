@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for deck operations.
 class DecksController < ApplicationController
   # GET /decks
   def index
@@ -12,13 +15,11 @@ class DecksController < ApplicationController
 
   # GET /battlefield
   def battlefield
-    @opponent_id = User.find_by(email: "nemesis@gmail.com").id
+    @opponent_id = User.find_by(email: 'nemesis@gmail.com').id
   end
 
   def test_pusher
-    Pusher['test_channel'].trigger('my_event', {
-      message: 'hello world'
-    })
+    Pusher['test_channel'].trigger('my_event', message: 'hello world')
   end
 
   private

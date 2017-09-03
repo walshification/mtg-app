@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'support/matchers/violate_check_constraint_matcher'
 
@@ -7,7 +9,7 @@ describe User, type: :model do
       User.new(
         email: 'test@example.com',
         password: 'foooooooooword',
-        password_confirmation: 'foooooooooword',
+        password_confirmation: 'foooooooooword'
       )
     end
 
@@ -32,7 +34,7 @@ describe User, type: :model do
       dup_user = User.new(
         email: 'test@example.com',
         password: 'foooooword',
-        password_confirmation: 'foooooword',
+        password_confirmation: 'foooooword'
       )
       dup_user.valid?
       expect(dup_user.errors[:email]).to include('has already been taken')

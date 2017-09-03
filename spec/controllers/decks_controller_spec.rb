@@ -1,20 +1,8 @@
-# == Schema Information
-#
-# Table name: decks
-#
-#  id           :integer          not null, primary key
-#  user_id      :integer
-#  name         :string
-#  legal_format :string
-#  deck_type    :string
-#  color        :string
-#  created_at   :datetime
-#  updated_at   :datetime
-#
+# frozen_string_literal: true
 
 require 'rails_helper'
 
-describe DecksController, :type => :controller do
+describe DecksController, type: :controller do
   let(:user) { create(:user) }
 
   before(:each) do
@@ -29,20 +17,20 @@ describe DecksController, :type => :controller do
       expect(assigns(:decks)).to match_array([deck])
     end
 
-    it "renders the index template" do
+    it 'renders the index template' do
       get(:index)
-      expect(response).to render_template("index")
+      expect(response).to render_template('index')
     end
   end
 
   describe 'GET #show' do
     let(:deck) { create(:deck) }
-    it "assigns the requested deck to @deck" do
+    it 'assigns the requested deck to @deck' do
       get(:show, params: { id: deck.id })
       expect(assigns(:deck)).to eq(deck)
     end
 
-    it "renders the index template" do
+    it 'renders the index template' do
       get(:show, params: { id: deck.id })
       expect(response).to render_template('show')
     end

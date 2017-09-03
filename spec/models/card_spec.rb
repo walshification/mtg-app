@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe Card, :type => :model do
+describe Card, type: :model do
   let(:magic_set) { create(:magic_set) }
   let(:new_card) do
     Card.new(name: 'New Card', multiverse_id: 'new_card', magic_set_id: magic_set.id)

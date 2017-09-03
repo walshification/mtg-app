@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.cards @deck.cards.each do |card|
   json.card_name card.card_name
   json.id card.id

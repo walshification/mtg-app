@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CardScraper, type: :model do
@@ -5,7 +7,9 @@ describe CardScraper, type: :model do
   let(:fake_response) { double('http response') }
   let(:api_set) { { 'code' => 'FOO', 'type' => 'foo_type' } }
   let(:fake_set) { double('MagicSet') }
-  let(:api_card) { { 'multiverseid' => 'foo234', 'imageUrl' => 'foo_url' } }
+  let(:api_card) do
+    { 'multiverseid' => 'foo234', 'imageUrl' => 'foo_url' }
+  end
   let(:fake_card) { double('Card') }
 
   subject { described_class.new(fake_httparty) }
@@ -45,7 +49,8 @@ describe CardScraper, type: :model do
       allow(subject).to receive(:cards_in)
       allow(MagicSet).to receive(:create) { fake_set }
       expect(MagicSet).to receive(:create).with(
-        { 'code'=>'FOO', 'set_type'=>'foo_type' }
+        'code' => 'FOO',
+        'set_type' => 'foo_type'
       )
       subject.gather
     end
@@ -64,7 +69,7 @@ describe CardScraper, type: :model do
     it 'calls API to gather cards' do
       allow(subject).to receive(:doublecheck_these) { [fake_card] }
       expect(fake_httparty).to receive(:get).with(
-        "#{ENV["MAGIC_API_ROOT_URL"]}cards?set=FOO"
+        "#{ENV['MAGIC_API_ROOT_URL']}cards?set=FOO"
       )
       subject.gather
     end
@@ -84,7 +89,9 @@ describe CardScraper, type: :model do
     it 'converts camelcase attrs to snakecase' do
       allow(Card).to receive(:create) { fake_set }
       expect(Card).to receive(:create).with(
-        { 'multiverse_id'=>'foo234', 'image_url'=>'foo_url' })
+        'multiverse_id' => 'foo234',
+        'image_url' => 'foo_url'
+      )
       subject.gather
     end
   end

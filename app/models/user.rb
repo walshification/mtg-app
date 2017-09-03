@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -22,6 +24,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
+# Devise-based user model.
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

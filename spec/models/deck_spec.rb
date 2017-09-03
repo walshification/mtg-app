@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Deck, type: :model do
@@ -14,14 +16,14 @@ describe Deck, type: :model do
 
     it 'is invalid without a name' do
       deck = Deck.new
-      deck.save()
+      deck.save
       expect(deck.errors[:name]).to include("can't be blank")
     end
 
     it 'is invalid if name is not unique to the user' do
       Deck.create(name: 'New Deck', user_id: user.id)
       deck = Deck.new(name: 'New Deck', user_id: user.id)
-      deck.save()
+      deck.save
       expect(deck.errors[:name]).to include('has already been taken')
     end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: cards
@@ -37,6 +39,7 @@
 #  index_cards_on_multiverse_id  (multiverse_id) UNIQUE
 #
 
+# A model representation of a Magic card.
 class Card < ApplicationRecord
   validates :name, presence: true
   validates :multiverse_id, presence: true, uniqueness: true

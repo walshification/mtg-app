@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'devise'
 require 'capybara/poltergeist'
@@ -13,7 +15,7 @@ require 'capybara/poltergeist'
 # run twice. It is recommended that you do not name files matching this glob to
 # end with _spec.rb. You can configure this pattern with with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -73,7 +75,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
-  config.before(:each, :type => :feature) do
+  config.before(:each, type: :feature) do
     DatabaseCleaner.strategy = :truncation
   end
 
@@ -86,7 +88,7 @@ RSpec.configure do |config|
       filename = File.basename(example.metadata[:file_path])
       line_number = example.metadata[:line_number]
       screenshot_name = "screenshot-#{filename}-#{line_number}.png"
-      screenshot_path = "#{Rails.root.join("tmp")}/#{screenshot_name}"
+      screenshot_path = "#{Rails.root.join('tmp')}/#{screenshot_name}"
       page.save_screenshot(screenshot_path)
       puts example.metadata[:full_description] + "\n  Screenshot: #{screenshot_path}"
     end
@@ -102,7 +104,7 @@ RSpec.configure do |config|
       example.run
       real_example = example.example
 
-      if real_example.exception.nil? || (real_example.exception && i == retry_count-1)
+      if real_example.exception.nil? || (real_example.exception && i == retry_count - 1)
         break # Stop the retry loop and proceed to the next spec
       end
 
@@ -114,7 +116,7 @@ RSpec.configure do |config|
 
       if i < retry_count
         real_example.instance_variable_set('@exception', nil)
-        puts "Re-running rspec example (#{e_line}. Retry count #{i+1} of #{retry_count}"
+        puts "Re-running rspec example (#{e_line}. Retry count #{i + 1} of #{retry_count}"
       end
     end
   end
