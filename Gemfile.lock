@@ -341,7 +341,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   teaspoon-jasmine
-  tzinfo-data
   web-console (>= 3.3.0)
 
 BUNDLED WITH
