@@ -22,13 +22,11 @@ js-test: deps
 features: deps
 	$(RSPEC) spec/features
 
-all-the-tests:
-	export PHANTOMJS_BIN=./node_modules/.bin/phantomjs && $(RSPEC) && $(RAKE) teaspoon
-
 lint: env
 	$(BUNDLE) rubocop
 
-ci-test: lint all-the-tests
+all-the-tests: lint
+	export PHANTOMJS_BIN=./node_modules/.bin/phantomjs && $(RSPEC) && $(RAKE) teaspoon
 
 ##### Dependencies #####
 env:
