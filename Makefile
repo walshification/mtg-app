@@ -13,26 +13,20 @@ start: env
 test: env
 	$(RSPEC) --exclude-pattern "spec/features/*_spec.rb"
 
-# test-watch:
-
-# test_prepare:
-# 	$(BUNDLE) rake db:test:prepare
-
-# js_te% : export PHANTOMJS_BIN=./node_modules/.bin/phantomjs
+test-watch: env
+	$(BUNDLE) guard
 
 js-test: deps
 	$(RAKE) teaspoon
 
-# js-test-watch: env
-# 	./node_modules/karma/bin/karma start
-
 features: deps
 	$(RSPEC) spec/features
 
-all-the-tests:
-	export PHANTOMJS_BIN=./node_modules/.bin/phantomjs && $(RSPEC) && $(RAKE) teaspoon
+lint: env
+	$(BUNDLE) rubocop
 
-ci-test: all-the-tests
+all-the-tests: lint
+	export PHANTOMJS_BIN=./node_modules/.bin/phantomjs && $(RSPEC) && $(RAKE) teaspoon
 
 ##### Dependencies #####
 env:
@@ -44,4 +38,4 @@ deps: env
 clean:
 	rm -rf node_modules vendor/assets/bower_components
 
-.PHONY: env test features all-the-tests js-test deps help start
+.PHONY: env test features all-the-tests js-test deps help start test-watch lint

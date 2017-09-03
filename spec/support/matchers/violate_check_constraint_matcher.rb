@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 RSpec::Matchers.define :violate_check_constraint do |constraint_name|
   supports_block_expectations
   match do |code_to_test|
     begin
-      code_to_test.()
+      code_to_test.call
       false
     rescue ActiveRecord::StatementInvalid => ex
       ex.message =~ /#{constraint_name}/

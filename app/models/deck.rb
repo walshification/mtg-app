@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decks
@@ -12,6 +14,7 @@
 #  updated_at   :datetime
 #
 
+# Model representation of a deck of Magic cards.
 class Deck < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: { scope: :user }

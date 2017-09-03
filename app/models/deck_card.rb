@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: deck_cards
@@ -12,6 +14,7 @@
 #  index_deck_cards_on_deck_id  (deck_id)
 #
 
+# Join table for assigning cards to decks
 class DeckCard < ApplicationRecord
   belongs_to :deck
   belongs_to :card
