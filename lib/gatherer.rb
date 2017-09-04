@@ -2,56 +2,6 @@
 
 # Web scraper for Magic cards
 class Gatherer
-  ATTRS = %w[
-    name
-    cmc
-    layout
-    rarity
-    text
-    flavor
-    artist
-    number
-    power
-    toughness
-    loyalty
-    watermark
-    border
-    timeshifted
-    hand
-    life
-    reserved
-    release_date
-    starter
-    original_text
-    original_type
-    source
-    code
-    border
-    block
-    set_type
-    gatherer_code
-    magiccards_info_code
-    online_only
-    multiverse_id
-    image_url
-  ].freeze
-
-  CONVERTER = {
-    card: {
-      multiverseid: 'multiverse_id',
-      imageUrl: 'image_url',
-      type: 'card_type',
-      manaCost: 'mana_cost'
-    },
-    set: {
-      type: 'set_type',
-      gathererCode: 'gatherer_code',
-      magicCardsInfoCode: 'magiccards_info_code',
-      releaseDate: 'release_date',
-      onlineOnly: 'online_only'
-    }
-  }.freeze
-
   def initialize(client = HTTParty)
     @api_root = ENV['MAGIC_API_ROOT_URL']
     @sets = nil
@@ -59,58 +9,79 @@ class Gatherer
   end
 
   def gather
-    sets.each do |magic_set|
-      cards_in(set(magic_set.code))
+    sets = get_from_api('sets')
+    save_sets(sets)
+    set_codes = sets.collect { |magic_set| magic_set['code'] }
+    set_codes.each do |set_code|
+      save_cards(set_code)
     end
   end
 
   private
 
-  def sets
-    @sets ||= get_from_api('sets')
-  end
-
-  def set(desired_set)
-    sets.select { |set| set.code == desired_set }.first
-  end
-
-  def cards_in(desired_set)
-    get_from_api("cards?set=#{set(desired_set).code}")
-  end
-
   def get_from_api(query)
     resp_key = query.include?('?') ? query.split('?').first : query
-    objs = @client.get("#{@api_root}#{query}").parsed_response[resp_key.to_sym]
-    doublecheck_these(objs)
+    @client.get("#{@api_root}#{query}").parsed_response[resp_key]
   end
 
-  def doublecheck_these(things)
-    if things.first.dig('multiverseid')
-      query_key = 'multiverse_id'
-      klass = Card
-    else
-      query_key = 'code'
-      klass = MagicSet
-    end
-    things.map { |thing| doublecheck_this(thing, klass, query_key) }
-  end
-
-  def doublecheck_this(thing, klass, query_key)
-    db_thing = klass.find_by(query_key => thing[query_key])
-    return db_thing if db_thing
-    send('collect', thing, klass)
-  end
-
-  def collect(thing, klass)
-    klass.create(convert(thing))
-  end
-
-  def convert(thing)
-    type = thing.dig('multiverseid') ? :card : :set
-    thing.keys.each_with_object({}) do |api_attr, converted|
-      converter_key = CONVERTER[type].dig(api_attr.to_sym)
-      key = converter_key ? converter_key : api_attr
-      converted[key] = thing.dig(api_attr) if ATTRS.include?(key)
+  def save_sets(sets)
+    sets.each do |magic_set|
+      save_set(magic_set)
     end
   end
+
+  def save_set(magic_set)
+    MagicSet.find_or_create_by(
+      name: magic_set['name'],
+      code: magic_set['code'],
+      magiccards_info_code: magic_set['magicCardsInfoCode'],
+      border: magic_set['border'],
+      set_type: magic_set['type'],
+      block: magic_set['block'],
+      release_date: magic_set['releaseDate'],
+      online_only: magic_set.fetch('online_only', false)
+    )
+  end
+
+  def save_cards(set_code)
+    set_cards = get_from_api("cards?set=#{set_code}")
+    magic_set = MagicSet.find_by(code: set_code)
+    set_cards.each do |card|
+      save_card(card, magic_set)
+    end
+  end
+
+  # rubocop:disable MethodLength, AbcSize
+  def save_card(card, magic_set)
+    Card.find_or_create_by(
+      name: card['name'],
+      multiverse_id: card['multiverseid'],
+      magic_set: magic_set,
+      image_url: card['imageUrl'],
+      types: card['types'],
+      subtypes: card['subtypes'],
+      layout: card['layout'],
+      cmc: card['cmc'],
+      rarity: card['rarity'],
+      text: card['text'],
+      flavor: card['flavor'],
+      artist: card['artist'],
+      number: card['number'],
+      power: card['power'],
+      toughness: card['toughness'],
+      loyalty: card['loyalty'],
+      watermark: card['watermark'],
+      border: card['border'],
+      timeshifted: card['timeshifted'],
+      hand: card['hand'],
+      life: card['life'],
+      reserved: card.fetch('reserved', false),
+      release_date: card['release_date'],
+      starter: card.fetch('starter', false),
+      original_text: card['original_text'],
+      original_type: card['original_type'],
+      source: card['source']
+    )
+  end
+  # rubocop:enable MethodLength, AbcSize
 end
