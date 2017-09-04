@@ -124,13 +124,20 @@ describe Gatherer, type: :model do
       ]
     }
   end
+  let(:no_cards) { { 'cards' => [] } }
 
   subject { Gatherer.new.gather }
 
   before(:each) do
     allow(set_response).to receive(:parsed_response) { test_sets }
     allow(HTTParty).to receive(:get).with(/.*sets/) { set_response }
-    allow(tms_response).to receive(:parsed_response) { test_cards }
+    allow(tms_response).to receive(:parsed_response).and_return(
+      test_cards,
+      no_cards,
+      no_cards,
+      no_cards,
+      no_cards
+    )
     allow(HTTParty).to receive(:get).with(/.*cards\?set=TMS&page=[\d]+/) { tms_response }
     allow(ats_response).to receive(:parsed_response) { { 'cards' => [] } }
     allow(HTTParty).to receive(:get).with(/.*cards\?set=ATS&page=[\d]+/) { ats_response }
