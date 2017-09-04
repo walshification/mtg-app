@@ -32,6 +32,8 @@ group :development do
   gem 'annotate'
   gem 'guard-rubocop', '~> 1.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'pry', '~> 0.10.4'
+  gem 'pry-rails', '~> 0.3.6'
   gem 'seed_dump'
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring

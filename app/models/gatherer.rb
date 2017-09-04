@@ -1,25 +1,33 @@
 # frozen_string_literal: true
 
-require 'httparty'
-
 # Gathers Magic cards.
 class Gatherer
-  def initialize(client = HTTParty)
+  def initialize(client: HTTParty, set_codes: nil)
     @api_root = ENV['MAGIC_API_ROOT_URL']
-    @sets = nil
+    @set_codes = set_codes || []
     @client = client
   end
 
   def gather
-    sets = get_from_api('sets')
-    save_sets(sets)
-    set_codes = sets.collect { |magic_set| magic_set['code'] }
-    set_codes.each do |set_code|
+    gathered_sets.collect(&:code)
+                 .each do |set_code|
       save_cards(set_code)
     end
   end
 
   private
+
+  def gathered_sets
+    existing_sets = MagicSet.where(code: @set_codes)
+    return existing_sets if gathered?(existing_sets)
+    unsaved_sets = get_from_api('sets')
+    save_sets(unsaved_sets)
+    @set_codes.any? ? MagicSet.where(code: @set_codes) : MagicSet.all
+  end
+
+  def gathered?(existing_sets)
+    existing_sets.any? && existing_sets.count == @set_codes.count
+  end
 
   def get_from_api(query)
     resp_key = query.include?('?') ? query.split('?').first : query
@@ -27,21 +35,22 @@ class Gatherer
   end
 
   def save_sets(sets)
-    sets.each do |magic_set|
+    sets.map do |magic_set|
       save_set(magic_set)
     end
   end
 
   def save_set(magic_set)
     MagicSet.find_or_create_by(
-      name: magic_set['name'],
-      code: magic_set['code'],
-      magiccards_info_code: magic_set['magicCardsInfoCode'],
-      border: magic_set['border'],
-      set_type: magic_set['type'],
       block: magic_set['block'],
+      border: magic_set['border'],
+      code: magic_set['code'],
+      gatherer_code: magic_set['gathererCode'],
+      magiccards_info_code: magic_set['magicCardsInfoCode'],
+      name: magic_set['name'],
+      online_only: magic_set.fetch('online_only', false),
       release_date: magic_set['releaseDate'],
-      online_only: magic_set.fetch('online_only', false)
+      set_type: magic_set['type']
     )
   end
 
@@ -91,5 +100,3 @@ class Gatherer
   end
   # rubocop:enable MethodLength, AbcSize
 end
-
-Gatherer.new.gather if $PROGRAM_NAME == __FILE__

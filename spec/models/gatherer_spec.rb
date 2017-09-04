@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'gatherer'
 
-describe Gatherer, type: :lib do
-  let(:test_set_response) { double('test set response') }
+describe Gatherer, type: :model do
+  let(:set_response) { double('set response') }
+  let(:tms_response) { double('test magic set response') }
+  let(:ats_response) { double('another test set response') }
   let(:test_card_response) { double('test card response') }
   let(:test_sets) do
     {
@@ -37,6 +38,35 @@ describe Gatherer, type: :lib do
           ],
           'releaseDate' => '2017-11-03',
           'magicCardsInfoCode' => 'tms',
+          'block' => 'Test Magic Block'
+        },
+        {
+          'code' => 'ATS',
+          'name' => 'Another Test Set',
+          'type' => 'expansion',
+          'border' => 'white',
+          'booster' => [
+            [
+              'rare'
+            ],
+            'uncommon',
+            'uncommon',
+            'uncommon',
+            'common',
+            'common',
+            'common',
+            'common',
+            'common',
+            'common',
+            'common',
+            'common',
+            'common',
+            'common',
+            'land',
+            'marketing'
+          ],
+          'releaseDate' => '2017-12-12',
+          'magicCardsInfoCode' => 'ats',
           'block' => 'Test Magic Block'
         }
       ]
@@ -98,17 +128,15 @@ describe Gatherer, type: :lib do
   subject { Gatherer.new.gather }
 
   before(:each) do
-    allow(test_set_response).to receive(:parsed_response) { test_sets }
-    allow(HTTParty).to receive(:get).with("#{ENV['MAGIC_API_ROOT_URL']}sets") do
-      test_set_response
-    end
-    allow(test_card_response).to receive(:parsed_response) { test_cards }
-    allow(HTTParty).to receive(:get).with("#{ENV['MAGIC_API_ROOT_URL']}cards?set=TMS") do
-      test_card_response
-    end
+    allow(set_response).to receive(:parsed_response) { test_sets }
+    allow(HTTParty).to receive(:get).with(/.*sets/) { set_response }
+    allow(tms_response).to receive(:parsed_response) { test_cards }
+    allow(HTTParty).to receive(:get).with(/.*cards\?set=TMS&page=[\d]+/) { tms_response }
+    allow(ats_response).to receive(:parsed_response) { { 'cards' => [] } }
+    allow(HTTParty).to receive(:get).with(/.*cards\?set=ATS&page=[\d]+/) { ats_response }
   end
 
-  describe '.gather' do
+  describe '#gather' do
     context 'gathering sets' do
       it 'saves names' do
         subject
