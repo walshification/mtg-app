@@ -19,6 +19,8 @@ Metrics/LineLength:
   Max: 93
 
 Metrics/BlockLength:
-  Enabled: true
   Exclude:
     - spec/**/*
+
+Style/NumericLiterals:
+  Enabled: false
