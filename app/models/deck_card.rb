@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Join table for assigning cards to decks
 class DeckCard < ApplicationRecord
   belongs_to :deck
