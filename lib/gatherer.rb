@@ -46,10 +46,14 @@ class Gatherer
   end
 
   def save_cards(set_code)
-    set_cards = get_from_api("cards?set=#{set_code}")
-    magic_set = MagicSet.find_by(code: set_code)
-    set_cards.each do |card|
-      save_card(card, magic_set)
+    page = 1
+    5.times do
+      set_cards = get_from_api("cards?set=#{set_code}&page=#{page}")
+      magic_set = MagicSet.find_by(code: set_code)
+      set_cards.each do |card|
+        save_card(card, magic_set)
+      end
+      page += 1
     end
   end
 
