@@ -48,10 +48,10 @@ describe Deck, type: :model do
     it 'does not include cards associated with other decks' do
       some_set = MagicSet.create(name: 'some set')
       first_card = create(:card, name: 'Foo Card',
-                                 multiverse_id: 'first_card_id',
+                                 multiverse_id: 1111111,
                                  magic_set_id: some_set.id)
       second_card = create(:card, name: 'Another Card',
-                                  multiverse_id: 'second_card_id',
+                                  multiverse_id: 999999,
                                   magic_set_id: some_set.id)
       first_deck = create(:deck, name: 'New Deck', user_id: user.id)
       second_deck = create(:deck, name: 'Second Deck', user_id: user.id)

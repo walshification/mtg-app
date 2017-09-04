@@ -1,20 +1,24 @@
 # frozen_string_literal: true
 
+# A Magic Set.
+class MagicSet < ApplicationRecord
+  has_many :cards
+end
+
 # == Schema Information
 #
 # Table name: magic_sets
 #
-#  id                   :integer          not null, primary key
-#  name                 :string
-#  code                 :string
-#  gatherer_code        :string
-#  magiccards_info_code :string
-#  border               :string
-#  set_type             :string
-#  block                :string
-#  release_date         :string
-#  online_only          :boolean          default(FALSE)
-#
-
-class MagicSet < ApplicationRecord
-end
+# *id*::                   <tt>integer, not null, primary key</tt>
+# *name*::                 <tt>string</tt>
+# *code*::                 <tt>string</tt>
+# *gatherer_code*::        <tt>string</tt>
+# *magiccards_info_code*:: <tt>string</tt>
+# *border*::               <tt>string</tt>
+# *set_type*::             <tt>string</tt>
+# *block*::                <tt>string</tt>
+# *release_date*::         <tt>string</tt>
+# *online_only*::          <tt>boolean, default(FALSE)</tt>
+#--
+# == Schema Information End
+#++

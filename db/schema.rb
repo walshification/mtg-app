@@ -10,23 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830024941) do
+ActiveRecord::Schema.define(version: 20170903231922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "card_scrapers", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cards", id: :serial, force: :cascade do |t|
-    t.string "multiverse_id", null: false
-    t.integer "deck_id"
+    t.integer "multiverse_id", null: false
     t.string "name", null: false
     t.string "image_url"
-    t.string "card_type"
-    t.string "subtype"
     t.string "layout"
     t.integer "cmc"
     t.string "rarity"
@@ -49,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170830024941) do
     t.string "original_type"
     t.string "source"
     t.integer "magic_set_id"
+    t.string "types", array: true
+    t.string "subtypes", array: true
     t.index ["multiverse_id"], name: "index_cards_on_multiverse_id", unique: true
   end
 
