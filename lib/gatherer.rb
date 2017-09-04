@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-# Web scraper for Magic cards
+require 'httparty'
+
+# Gathers Magic cards.
 class Gatherer
   def initialize(client = HTTParty)
     @api_root = ENV['MAGIC_API_ROOT_URL']
@@ -85,3 +87,5 @@ class Gatherer
   end
   # rubocop:enable MethodLength, AbcSize
 end
+
+Gatherer.new.gather if $PROGRAM_NAME == __FILE__

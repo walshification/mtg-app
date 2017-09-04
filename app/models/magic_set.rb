@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# A Magic Set.
 class MagicSet < ApplicationRecord
+  has_many :cards
 end
 
 # == Schema Information
