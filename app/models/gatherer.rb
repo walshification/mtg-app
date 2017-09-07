@@ -66,11 +66,11 @@ class Gatherer
       set_cards += get_from_api("cards?set=#{set_code}&page=#{page}")
       page += 1
     end
-    filter_duplicate_cards(set_cards, MagicSet.find_by(code: set_code).id)
+    filter_duplicate_cards(set_cards, MagicSet.find_by(code: set_code))
   end
 
-  def filter_duplicate_cards(set_cards, set_id)
-    new_cards = set_cards.map { |card| record_card(card, set_id) }
+  def filter_duplicate_cards(set_cards, magic_set)
+    new_cards = set_cards.map { |card| record_card(card, magic_set) }
                          .uniq(&:multiverse_id)
     new_cards.reject do |card|
       Card.where(multiverse_id: card.multiverse_id).any?
@@ -78,11 +78,11 @@ class Gatherer
   end
 
   # rubocop:disable MethodLength, AbcSize
-  def record_card(card, set_id)
+  def record_card(card, magic_set)
     Card.new(
       name: card['name'],
       multiverse_id: card['multiverseid'],
-      magic_set_id: set_id,
+      magic_set_id: magic_set.id,
       image_url: card['imageUrl'],
       types: card['types'],
       subtypes: card['subtypes'],
@@ -97,7 +97,7 @@ class Gatherer
       toughness: card['toughness'],
       loyalty: card['loyalty'],
       watermark: card['watermark'],
-      border: card['border'],
+      border: card['border'] || magic_set.border,
       timeshifted: card['timeshifted'],
       hand: card['hand'],
       life: card['life'],

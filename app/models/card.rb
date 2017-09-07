@@ -18,8 +18,8 @@ end
 # *multiverse_id*:: <tt>string, not null</tt>
 # *name*::          <tt>string, not null</tt>
 # *image_url*::     <tt>string</tt>
-# *card_type*::     <tt>string</tt>
-# *subtype*::       <tt>string</tt>
+# *types*::         <tt>string</tt>
+# *subtypes*::      <tt>string</tt>
 # *layout*::        <tt>string</tt>
 # *cmc*::           <tt>integer</tt>
 # *rarity*::        <tt>string</tt>
