@@ -8,6 +8,40 @@ class Card < ApplicationRecord
   has_many :deck_card
   has_many :decks, through: :deck_card
   belongs_to :magic_set
+
+  # rubocop:disable MethodLength, AbcSize
+  def self.from_api(json_card, magic_set)
+    new(
+      name: json_card['name'],
+      multiverse_id: json_card['multiverseid'],
+      magic_set_id: magic_set.id,
+      image_url: json_card['imageUrl'],
+      types: json_card['types'],
+      subtypes: json_card['subtypes'],
+      layout: json_card['layout'],
+      cmc: json_card['cmc'],
+      rarity: json_card['rarity'],
+      text: json_card['text'],
+      flavor: json_card['flavor'],
+      artist: json_card['artist'],
+      number: json_card['number'],
+      power: json_card['power'],
+      toughness: json_card['toughness'],
+      loyalty: json_card['loyalty'],
+      watermark: json_card['watermark'],
+      border: json_card['border'] || magic_set.border,
+      timeshifted: json_card['timeshifted'],
+      hand: json_card['hand'],
+      life: json_card['life'],
+      reserved: json_card.fetch('reserved', false),
+      release_date: json_card['release_date'],
+      starter: json_card.fetch('starter', false),
+      original_text: json_card['original_text'],
+      original_type: json_card['original_type'],
+      source: json_card['source']
+    )
+  end
+  # rubocop:enable MethodLength, AbcSize
 end
 
 # == Schema Information
