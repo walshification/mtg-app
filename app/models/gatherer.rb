@@ -19,12 +19,29 @@ class Gatherer
   private
 
   def gathered_sets
-    existing_sets = MagicSet.where(code: @set_codes)
-    unsaved_sets = get_from_api('sets').reject do |unsaved_set|
-      @set_codes.include?(unsaved_set['code'])
-    end
     return existing_sets unless unsaved_sets.any?
     existing_sets + save_sets(unsaved_sets)
+  end
+
+  def unsaved_sets
+    if @set_codes.any?
+      get_from_api('sets').reject do |unsaved_set|
+        existing_set_codes.include?(unsaved_set['code']) ||
+          @set_codes.exclude?(unsaved_set['code'])
+      end
+    else
+      get_from_api('sets').reject do |unsaved_set|
+        existing_set_codes.include?(unsaved_set['code'])
+      end
+    end
+  end
+
+  def existing_set_codes
+    @existing_set_codes ||= existing_sets.collect(&:code)
+  end
+
+  def existing_sets
+    @existing_sets ||= @set_codes.any? ? MagicSet.where(code: @set_codes) : MagicSet.all
   end
 
   def get_from_api(query)

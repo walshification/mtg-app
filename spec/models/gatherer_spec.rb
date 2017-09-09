@@ -109,6 +109,13 @@ describe Gatherer, type: :model do
         subject
         expect(MagicSet.count).to eq(2)
       end
+
+      it 'only gathers specified sets if codes are provided' do
+        Gatherer.new(client: fake_client, set_codes: ['TMS']).gather
+        gathered_codes = MagicSet.all.pluck(:code)
+        expect(gathered_codes).to include('TMS')
+        expect(gathered_codes).to_not include('ATS')
+      end
     end
 
     context 'gathering cards' do
