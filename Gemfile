@@ -62,7 +62,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', '~> 0.49.1', require: false
   gem 'simplecov', '0.15.0'
+  gem 'spring-commands-rspec'
   gem 'teaspoon-jasmine'
+  gem 'webmock'
 end
 
 group :test do

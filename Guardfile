@@ -26,7 +26,7 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: 'bundle exec rspec' do
+guard :rspec, cmd: 'bundle exec spring rspec' do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
 
@@ -62,7 +62,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
   watch(rails.layouts)       { |m| rspec.spec.call("features/#{m[1]}") }
 end
 
-guard :rubocop do
+guard :rubocop, cmd: 'bundle exec rubocop' do
   watch(/.+\.rb$/)
   watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
 end
