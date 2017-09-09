@@ -4,22 +4,88 @@ require 'rails_helper'
 
 describe Gatherer, type: :model do
   let(:fake_client) { double('fake client') }
-  let(:test_response) { double('test card response') }
-  let(:api_response) { YAML.load_file('spec/fixtures/magic_api_responses.yml') }
+  let(:set_response) { double('magic sets') }
+  let(:new_set_response) { double('new set response') }
+  let(:tms_response) { double('test magic set cards') }
+  let(:ats_response) { double('another test set cards') }
+  let(:yas_response) { double('yet another set cards') }
+  let(:api_responses) { YAML.load_file('spec/fixtures/magic_api_responses.yml') }
   let(:no_cards) { { 'cards' => [] } }
 
   subject { Gatherer.new(client: fake_client).gather }
 
   before(:each) do
-    allow(test_response).to receive(:parsed_response).and_return(
-      api_response, # once for sets
-      api_response, # next five for cards
+    allow(set_response).to receive(:parsed_response) { api_responses['two_sets'] }
+    allow(new_set_response).to receive(:parsed_response) { api_responses['three_sets'] }
+    allow(tms_response).to receive(:parsed_response).and_return(
+      api_responses['tms_cards'],
       no_cards,
       no_cards,
       no_cards,
       no_cards
     )
-    allow(fake_client).to receive(:get) { test_response }
+    allow(ats_response).to receive(:parsed_response).and_return(
+      no_cards,
+      no_cards,
+      no_cards,
+      no_cards,
+      no_cards
+    )
+    allow(yas_response).to receive(:parsed_response).and_return(
+      api_responses['yas_cards'],
+      no_cards,
+      no_cards,
+      no_cards,
+      no_cards
+    )
+    allow(fake_client).to receive(:get).with(/.*sets/) { set_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=TMS&page=1"
+    ) { tms_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=TMS&page=2"
+    ) { tms_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=TMS&page=3"
+    ) { tms_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=TMS&page=4"
+    ) { tms_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=TMS&page=5"
+    ) { tms_response }
+
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=ATS&page=1"
+    ) { ats_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=ATS&page=2"
+    ) { ats_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=ATS&page=3"
+    ) { ats_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=ATS&page=4"
+    ) { ats_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=ATS&page=5"
+    ) { ats_response }
+
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=YAS&page=1"
+    ) { yas_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=YAS&page=2"
+    ) { yas_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=YAS&page=3"
+    ) { yas_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=YAS&page=4"
+    ) { yas_response }
+    allow(fake_client).to receive(:get).with(
+      "#{ENV['MAGIC_API_ROOT_URL']}cards?set=YAS&page=5"
+    ) { yas_response }
   end
 
   describe '#gather' do

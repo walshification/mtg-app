@@ -20,14 +20,11 @@ class Gatherer
 
   def gathered_sets
     existing_sets = MagicSet.where(code: @set_codes)
-    unsaved_sets = get_from_api('sets')
-    return existing_sets if gathered?(existing_sets, unsaved_sets)
-    save_sets(unsaved_sets)
-    @set_codes.any? ? MagicSet.where(code: @set_codes) : MagicSet.all
-  end
-
-  def gathered?(existing_sets, unsaved_sets)
-    (unsaved_sets - existing_sets).empty?
+    unsaved_sets = get_from_api('sets').reject do |unsaved_set|
+      @set_codes.include?(unsaved_set['code'])
+    end
+    return existing_sets unless unsaved_sets.any?
+    existing_sets + save_sets(unsaved_sets)
   end
 
   def get_from_api(query)
@@ -36,9 +33,7 @@ class Gatherer
   end
 
   def save_sets(sets)
-    sets.map do |magic_set|
-      save_set(magic_set)
-    end
+    sets.map { |magic_set| save_set(magic_set) }
   end
 
   def save_set(magic_set)
@@ -68,5 +63,6 @@ class Gatherer
     end
   end
 
+  # TODO
   def calculate_missing_card_values; end
 end
