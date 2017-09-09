@@ -3,11 +3,12 @@
 require 'rails_helper'
 
 describe Gatherer, type: :model do
+  let(:fake_client) { double('fake client') }
   let(:test_response) { double('test card response') }
   let(:api_response) { YAML.load_file('spec/fixtures/magic_api_responses.yml') }
   let(:no_cards) { { 'cards' => [] } }
 
-  subject { Gatherer.new.gather }
+  subject { Gatherer.new(client: fake_client).gather }
 
   before(:each) do
     allow(test_response).to receive(:parsed_response).and_return(
@@ -18,7 +19,7 @@ describe Gatherer, type: :model do
       no_cards,
       no_cards
     )
-    allow(HTTParty).to receive(:get) { test_response }
+    allow(fake_client).to receive(:get) { test_response }
   end
 
   describe '#gather' do
@@ -38,6 +39,7 @@ describe Gatherer, type: :model do
 
       it 'only saves sets once' do
         subject
+        expect(MagicSet.count).to eq(2)
         subject
         expect(MagicSet.count).to eq(2)
       end
@@ -64,7 +66,7 @@ describe Gatherer, type: :model do
         expect(retrieved_card.toughness).to eq('6')
         expect(retrieved_card.loyalty).to eq(nil)
         expect(retrieved_card.watermark).to eq(nil)
-        expect(retrieved_card.border).to eq(nil)
+        expect(retrieved_card.border).to eq('black')
         expect(retrieved_card.timeshifted).to eq(nil)
         expect(retrieved_card.watermark).to eq(nil)
         expect(retrieved_card.hand).to eq(nil)
