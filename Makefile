@@ -9,6 +9,9 @@ help:
 start: env
 	$(BUNDLE) rails server
 
+shell: env
+	$(BUNDLE) foreman run -e .env.local rails console
+
 ##### Tests #####
 test: env
 	$(RSPEC) --exclude-pattern "spec/features/*_spec.rb"

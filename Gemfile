@@ -23,7 +23,6 @@ gem 'simple_form'
 gem 'jbuilder', '~> 2.5'
 
 gem 'coffee-script'
-gem 'jquery-rails'
 
 gem 'pusher'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -31,6 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   gem 'annotate'
+  gem 'foreman', '~> 0.84.0'
   gem 'guard-rubocop', '~> 1.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'pry', '~> 0.10.4'
