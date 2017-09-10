@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Client wrapper for the Magic: The Gathering API.
-class MtgApiClient
+class MagicApiClient
   def self.get_sets(codes: nil)
     return get_from_api('sets') if codes.nil?
     select_by_code(codes)

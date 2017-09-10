@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe MtgApiClient, type: :model do
+describe MagicApiClient, type: :model do
   let(:api_fixtures) { YAML.load_file('spec/fixtures/magic_api_responses.yml') }
   let(:api_response) { double('API response') }
 
