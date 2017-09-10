@@ -134,81 +134,319 @@ unicode_set:
     - code: 'UCS'
       name: "Magic: tG\u2014Conspiracy"
 tms_cards:
-  cards:
-    - name: 'some card'
-      manaCost: '{1}{W}'
-      cmc: 2
-      colors:
-        - 'White'
-      colorIdentity:
-        - 'W'
-      type: 'Creature — Angel'
-      types:
-        - 'Creature'
-      subtypes:
-        - 'Angel'
-      rarity: 'Mythic Rare'
-      set: 'TMS'
-      setName: 'Test Magic Set'
-      text: 'Flying'
-      artist: 'Chris Walsh'
-      number: '1'
-      power: '5'
-      toughness: '6'
-      flavor: 'That good, good flavor.'
-      layout: 'normal'
-      multiverseid: 8675309
-      imageUrl: 'imageurl.com/assets/card.jpg'
-      rulings:
-        - date: '2017-12-01'
-          text: 'This is the best card ever.'
-      foreignNames:
-        - name: 'Some Foreign Name'
-          imageUrl: 'imageurl.com/assets/card.jpg'
-          language: 'Some Foreign Language'
-          multiverseid: 5556703
-      printings:
-        - TMS
-      originalText: 'Original text'
-      originalType: 'Creature — Angel'
-      legalities:
-        - format: 'Commander'
-          legality: 'Legal'
-      id: '32e9a9ca8a42301c73857bb6f1cb1eb81bec59f6'
-    - name: 'Counterspell'
-      manaCost: '{U}{U}'
-      cmc: 2
-      colors:
-        - 'Blue'
-      colorIdentity:
-        - 'U'
-      type: 'Instant'
-      types:
-        - 'Instant'
-      rarity: 'Common'
-      set: 'TMS'
-      setName: 'Test Magic Set'
-      text: 'Counter target spell.'
-      artist: 'Christina Brandon'
-      number: '2'
-      layout: 'normal'
-      releaseDate: '2017'
-      foreignNames:
-        - name: '反击咒语'
-          language: 'Chinese Simplified'
-        - name: 'Contresort'
-          language: 'French'
-      printings:
-        - 'TMS'
-        - 'YAS'
-      legalities:
-        - format: 'Commander'
-          legality: 'Legal'
-        - format: 'Ice Age Block'
-          legality: 'Legal'
-        - format: 'Legacy'
-          legality: 'Legal'
-      id: '49ade2479e2c2a83cabc1bcad534222ed9f3b2a0'
+  page_one:
+    cards:
+      - name: 'some card'
+        manaCost: '{1}{W}'
+        cmc: 2
+        colors:
+          - 'White'
+        colorIdentity:
+          - 'W'
+        type: 'Creature — Angel'
+        types:
+          - 'Creature'
+        subtypes:
+          - 'Angel'
+        rarity: 'Mythic Rare'
+        set: 'TMS'
+        setName: 'Test Magic Set'
+        text: 'Flying'
+        artist: 'Chris Walsh'
+        number: '1'
+        power: '5'
+        toughness: '6'
+        flavor: 'That good, good flavor.'
+        layout: 'normal'
+        multiverseid: 8675309
+        imageUrl: 'imageurl.com/assets/card.jpg'
+        rulings:
+          - date: '2017-12-01'
+            text: 'This is the best card ever.'
+        foreignNames:
+          - name: 'Some Foreign Name'
+            imageUrl: 'imageurl.com/assets/card.jpg'
+            language: 'Some Foreign Language'
+            multiverseid: 5556703
+        printings:
+          - TMS
+        originalText: 'Original text'
+        originalType: 'Creature — Angel'
+        legalities:
+          - format: 'Commander'
+            legality: 'Legal'
+        id: '32e9a9ca8a42301c73857bb6f1cb1eb81bec59f6'
+      - name: 'Counterspell'
+        manaCost: '{U}{U}'
+        cmc: 2
+        colors:
+          - 'Blue'
+        colorIdentity:
+          - 'U'
+        type: 'Instant'
+        types:
+          - 'Instant'
+        rarity: 'Common'
+        set: 'TMS'
+        setName: 'Test Magic Set'
+        text: 'Counter target spell.'
+        artist: 'Christina Brandon'
+        number: '2'
+        layout: 'normal'
+        releaseDate: '2017'
+        foreignNames:
+          - name: '反击咒语'
+            language: 'Chinese Simplified'
+          - name: 'Contresort'
+            language: 'French'
+        printings:
+          - 'TMS'
+          - 'YAS'
+        legalities:
+          - format: 'Commander'
+            legality: 'Legal'
+          - format: 'Ice Age Block'
+            legality: 'Legal'
+          - format: 'Legacy'
+            legality: 'Legal'
+        id: '49ade2479e2c2a83cabc1bcad534222ed9f3b2a0'
+      - name: kcorzvfs
+        multiverseid: kcorzvfs
+      - name: efcmovkj
+        multiverseid: efcmovkj
+      - name: fjwmunzv
+        multiverseid: fjwmunzv
+      - name: vnjbiwfp
+        multiverseid: vnjbiwfp
+      - name: pmosygfv
+        multiverseid: pmosygfv
+      - name: ongmkids
+        multiverseid: ongmkids
+      - name: htuwqxzd
+        multiverseid: htuwqxzd
+      - name: wszdybpj
+        multiverseid: wszdybpj
+      - name: rfwvtuab
+        multiverseid: rfwvtuab
+      - name: adlnprxu
+        multiverseid: adlnprxu
+      - name: wsyevczp
+        multiverseid: wsyevczp
+      - name: ixbzfyvo
+        multiverseid: ixbzfyvo
+      - name: vqwbfjia
+        multiverseid: vqwbfjia
+      - name: lifvnudo
+        multiverseid: lifvnudo
+      - name: tvkdqcfr
+        multiverseid: tvkdqcfr
+      - name: kqzphvnf
+        multiverseid: kqzphvnf
+      - name: oeplxtjq
+        multiverseid: oeplxtjq
+      - name: stgalrbf
+        multiverseid: stgalrbf
+      - name: clpjhdzn
+        multiverseid: clpjhdzn
+      - name: xdnielfa
+        multiverseid: xdnielfa
+      - name: ystjklnx
+        multiverseid: ystjklnx
+      - name: srkoatfu
+        multiverseid: srkoatfu
+      - name: elmrzaxb
+        multiverseid: elmrzaxb
+      - name: ntlmpsev
+        multiverseid: ntlmpsev
+      - name: olxthncu
+        multiverseid: olxthncu
+      - name: qbdakzmp
+        multiverseid: qbdakzmp
+      - name: bejoxtvy
+        multiverseid: bejoxtvy
+      - name: oawnebix
+        multiverseid: oawnebix
+      - name: zjyskrox
+        multiverseid: zjyskrox
+      - name: bkipdows
+        multiverseid: bkipdows
+      - name: fblutkah
+        multiverseid: fblutkah
+      - name: kmfugxpb
+        multiverseid: kmfugxpb
+      - name: kgtocvdw
+        multiverseid: kgtocvdw
+      - name: orbegvjx
+        multiverseid: orbegvjx
+      - name: dqrncwhp
+        multiverseid: dqrncwhp
+      - name: ignomqkx
+        multiverseid: ignomqkx
+      - name: bxksmpvn
+        multiverseid: bxksmpvn
+      - name: usgfehrx
+        multiverseid: usgfehrx
+      - name: motaebrp
+        multiverseid: motaebrp
+      - name: ahsptyzu
+        multiverseid: ahsptyzu
+      - name: getldnzw
+        multiverseid: getldnzw
+      - name: sxkimgcn
+        multiverseid: sxkimgcn
+      - name: biwykjzv
+        multiverseid: biwykjzv
+      - name: ejbrmdcx
+        multiverseid: ejbrmdcx
+      - name: vwiugyls
+        multiverseid: vwiugyls
+      - name: rmdenshw
+        multiverseid: rmdenshw
+      - name: nwdvljrh
+        multiverseid: nwdvljrh
+      - name: ezwvgpan
+        multiverseid: ezwvgpan
+      - name: oierufym
+        multiverseid: oierufym
+      - name: nvuerhoc
+        multiverseid: nvuerhoc
+      - name: bshawlte
+        multiverseid: bshawlte
+      - name: hmdljzyr
+        multiverseid: hmdljzyr
+      - name: npvworyz
+        multiverseid: npvworyz
+      - name: kcjudotz
+        multiverseid: kcjudotz
+      - name: fmhzeyaw
+        multiverseid: fmhzeyaw
+      - name: wdmjikaf
+        multiverseid: wdmjikaf
+      - name: xpmflhdn
+        multiverseid: xpmflhdn
+      - name: zuaelsrc
+        multiverseid: zuaelsrc
+      - name: fmagywoe
+        multiverseid: fmagywoe
+      - name: fylxkvnt
+        multiverseid: fylxkvnt
+      - name: daghxsmu
+        multiverseid: daghxsmu
+      - name: chketplr
+        multiverseid: chketplr
+      - name: wzvhcfeu
+        multiverseid: wzvhcfeu
+      - name: tcsneufb
+        multiverseid: tcsneufb
+      - name: rzmncqou
+        multiverseid: rzmncqou
+      - name: mndgzpuq
+        multiverseid: mndgzpuq
+      - name: vungobzq
+        multiverseid: vungobzq
+      - name: ibupltmo
+        multiverseid: ibupltmo
+      - name: vswgqafk
+        multiverseid: vswgqafk
+      - name: brylmiuj
+        multiverseid: brylmiuj
+      - name: mganyjbi
+        multiverseid: mganyjbi
+      - name: smqdwaol
+        multiverseid: smqdwaol
+      - name: cmthurov
+        multiverseid: cmthurov
+      - name: xrlgpsmu
+        multiverseid: xrlgpsmu
+      - name: esajfkvm
+        multiverseid: esajfkvm
+      - name: xenpjmhz
+        multiverseid: xenpjmhz
+      - name: ncvuqaxi
+        multiverseid: ncvuqaxi
+      - name: yrmscowp
+        multiverseid: yrmscowp
+      - name: zgkfdabj
+        multiverseid: zgkfdabj
+      - name: qtdprakm
+        multiverseid: qtdprakm
+      - name: zqvlfwym
+        multiverseid: zqvlfwym
+      - name: xfhjryot
+        multiverseid: xfhjryot
+      - name: qvhmsfia
+        multiverseid: qvhmsfia
+      - name: kbgyqhlz
+        multiverseid: kbgyqhlz
+      - name: lpdemayb
+        multiverseid: lpdemayb
+      - name: jhzkncpx
+        multiverseid: jhzkncpx
+      - name: jhdfnwil
+        multiverseid: jhdfnwil
+      - name: kdofsite
+        multiverseid: kdofsite
+      - name: zireufwm
+        multiverseid: zireufwm
+      - name: sythpxwu
+        multiverseid: sythpxwu
+      - name: tvdpkjxb
+        multiverseid: tvdpkjxb
+      - name: gmucbnjk
+        multiverseid: gmucbnjk
+      - name: wndyqhot
+        multiverseid: wndyqhot
+      - name: clwutqoa
+        multiverseid: clwutqoa
+      - name: wibqhtpy
+        multiverseid: wibqhtpy
+      - name: egwlducm
+        multiverseid: egwlducm
+      - name: hfdserkg
+        multiverseid: hfdserkg
+      - name: wgxyqels
+        multiverseid: wgxyqels
+  page_two:
+    cards:
+      - name: 'Adarkar Wastes'
+        cmc: 0
+        colorIdentity:
+          - 'W'
+          - 'U'
+        type: 'Land'
+        types:
+          - 'Land'
+        rarity: 'Rare'
+        set: '5ED'
+        setName: 'Fifth Edition'
+        text: |
+          '{T}: Add {C} to your mana pool.'
+          '{T}: Add {W} or {U} to your mana pool. Adarkar Wastes deals 1 damage to you.''
+        artist: 'Gary Leach'
+        layout: 'normal'
+        multiverseid: 4175
+        imageUrl: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=4175&type=card'
+        printings:
+          - 'ICE'
+          - '5ED'
+          - '6ED'
+          - '7ED'
+          - '9ED'
+          - '10E'
+        originalText: |
+          '{T}: Add one colorless mana to your mana pool.'
+          '{T}: Add {W} or {U} to your mana pool. Adarkar Wastes deals 1 damage to you.'
+        originalType: 'Land'
+        legalities:
+          - format: 'Commander'
+            legality: 'Legal'
+          - format: 'Ice Age Block'
+            legality: 'Legal'
+          - format: 'Legacy'
+            legality: 'Legal'
+          - format: 'Modern'
+            legality: 'Legal'
+        id: '06dd4c4ba89e846861d81dce4ac9c7549f501300'
 yas_cards:
   cards:
     - name: 'Counterspell'

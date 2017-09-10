@@ -8,7 +8,12 @@ class MtgApiClient
   end
 
   def self.get_cards(set_code)
-    get_from_api("cards?set=#{set_code}")
+    (1..5).inject([]) do |cards, page_number|
+      pre_call_count = cards.count
+      cards += get_from_api("cards?set=#{set_code}&page=#{page_number}")
+      break cards if pre_call_count == cards.count || cards.count % 100 != 0
+      cards
+    end
   end
 
   private_class_method

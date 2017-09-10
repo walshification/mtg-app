@@ -58,16 +58,41 @@ describe MtgApiClient, type: :model do
     let(:tms_cards) { api_fixtures['tms_cards'] }
 
     before(:each) do
-      stub_request(:get, /cards\?set=TMS/).and_return(
-        body: tms_cards.to_json,
-        headers: { 'Content-Type' => 'application/json' }
-      )
+      stub_request(:get, 'https://api.magic.com/cards')
+        .with(query: { set: 'TMS', page: 1 })
+        .and_return(
+          body: tms_cards['page_one'].to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+      stub_request(:get, 'https://api.magic.com/cards')
+        .with(query: { set: 'TMS', page: 2 })
+        .and_return(
+          body: { cards: [] }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
     end
 
     it 'returns an array of JSON Magic cards found in a given set' do
       response = described_class.get_cards('TMS')
-      expect(response.count).to eq(2)
+      expect(response.count).to eq(100)
       expect(response.first['name']).to eq('some card')
+    end
+
+    it 'finds multiple pages of cards' do
+      stub_request(:get, 'https://api.magic.com/cards')
+        .with(query: { set: 'TMS', page: 2 })
+        .and_return(
+          body: tms_cards['page_two'].to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+      stub_request(:get, 'https://api.magic.com/cards')
+        .with(query: { set: 'TMS', page: 3 })
+        .and_return(
+          body: { cards: [] }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+      response = described_class.get_cards('TMS')
+      expect(response.count).to eq(101)
     end
   end
 end
