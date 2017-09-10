@@ -129,6 +129,10 @@ three_sets:
       releaseDate: '2018-02-03'
       magicCardsInfoCode: 'yas'
       block: 'Promo Block'
+unicode_set:
+  sets:
+    - code: 'UCS'
+      name: "Magic: tG\u2014Conspiracy"
 tms_cards:
   cards:
     - name: 'some card'
