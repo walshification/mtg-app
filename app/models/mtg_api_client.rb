@@ -7,6 +7,10 @@ class MtgApiClient
     select_by_code(codes)
   end
 
+  def self.get_cards(set_code)
+    get_from_api("cards?set=#{set_code}")
+  end
+
   private_class_method
 
   def self.get_from_api(query)
