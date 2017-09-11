@@ -36,8 +36,8 @@ class Card < ApplicationRecord
       reserved: json_card.fetch('reserved', false),
       release_date: json_card['release_date'],
       starter: json_card.fetch('starter', false),
-      original_text: json_card['original_text'],
-      original_type: json_card['original_type'],
+      original_text: json_card['originalText'],
+      original_type: json_card['originalType'],
       source: json_card['source']
     )
   end
