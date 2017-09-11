@@ -1,0 +1,397 @@
+two_sets:
+  - code: 'TMS'
+    name: 'Test Magic Set'
+    type: 'expansion'
+    border: 'black'
+    booster:
+      -
+        - 'rare'
+        - 'mythic rare'
+      - 'uncommon'
+      - 'uncommon'
+      - 'uncommon'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'land'
+      - 'marketing'
+    releaseDate: '2017-11-03'
+    magicCardsInfoCode: 'tms'
+    block: 'Test Magic Block'
+  - code: 'ATS'
+    name: 'Another Test Set'
+    type: 'expansion'
+    border: 'white'
+    booster:
+      -
+        - 'rare'
+      - 'uncommon'
+      - 'uncommon'
+      - 'uncommon'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'land'
+      - 'marketing'
+    releaseDate: '2017-12-12'
+    magicCardsInfoCode: 'ats'
+    block: 'Test Magic Block'
+three_sets:
+  - code: 'TMS'
+    name: 'Test Magic Set'
+    type: 'expansion'
+    border: 'black'
+    booster:
+      -
+        - 'rare'
+        - 'mythic rare'
+      - 'uncommon'
+      - 'uncommon'
+      - 'uncommon'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'land'
+      - 'marketing'
+    releaseDate: '2017-11-03'
+    magicCardsInfoCode: 'tms'
+    block: 'Test Magic Block'
+  - code: 'ATS'
+    name: 'Another Test Set'
+    type: 'expansion'
+    border: 'white'
+    booster:
+      -
+        - 'rare'
+      - 'uncommon'
+      - 'uncommon'
+      - 'uncommon'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'land'
+      - 'marketing'
+    releaseDate: '2017-12-12'
+    magicCardsInfoCode: 'ats'
+    block: 'Test Magic Block'
+  - code: 'YAS'
+    name: 'Yet Another Set'
+    type: 'expansion'
+    border: 'black'
+    booster:
+      -
+        - 'rare'
+      - 'uncommon'
+      - 'uncommon'
+      - 'uncommon'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'land'
+      - 'promo'
+    releaseDate: '2018-02-03'
+    magicCardsInfoCode: 'yas'
+    block: 'Promo Block'
+tms_cards:
+  - name: 'some card'
+    manaCost: '{1}{W}'
+    cmc: 2
+    colors:
+      - 'White'
+    colorIdentity:
+      - 'W'
+    type: 'Creature — Angel'
+    types:
+      - 'Creature'
+    subtypes:
+      - 'Angel'
+    rarity: 'Mythic Rare'
+    set: 'TMS'
+    setName: 'Test Magic Set'
+    text: 'Flying'
+    artist: 'Chris Walsh'
+    number: '1'
+    power: '5'
+    toughness: '6'
+    flavor: 'That good, good flavor.'
+    layout: 'normal'
+    multiverseid: 8675309
+    imageUrl: 'imageurl.com/assets/card.jpg'
+    rulings:
+      - date: '2017-12-01'
+        text: 'This is the best card ever.'
+    foreignNames:
+      - name: 'Some Foreign Name'
+        imageUrl: 'imageurl.com/assets/card.jpg'
+        language: 'Some Foreign Language'
+        multiverseid: 5556703
+    printings:
+      - TMS
+    originalText: 'Original text'
+    originalType: 'Creature — Angel'
+    legalities:
+      - format: 'Commander'
+        legality: 'Legal'
+    id: '32e9a9ca8a42301c73857bb6f1cb1eb81bec59f6'
+  - name: 'Counterspell'
+    manaCost: '{U}{U}'
+    cmc: 2
+    colors:
+      - 'Blue'
+    colorIdentity:
+      - 'U'
+    type: 'Instant'
+    types:
+      - 'Instant'
+    rarity: 'Common'
+    set: 'TMS'
+    setName: 'Test Magic Set'
+    text: 'Counter target spell.'
+    artist: 'Christina Brandon'
+    number: '2'
+    layout: 'normal'
+    releaseDate: '2017'
+    foreignNames:
+      - name: '反击咒语'
+        language: 'Chinese Simplified'
+      - name: 'Contresort'
+        language: 'French'
+    printings:
+      - 'TMS'
+      - 'YAS'
+    legalities:
+      - format: 'Commander'
+        legality: 'Legal'
+      - format: 'Ice Age Block'
+        legality: 'Legal'
+      - format: 'Legacy'
+        legality: 'Legal'
+    id: '49ade2479e2c2a83cabc1bcad534222ed9f3b2a0'
+  - name: 'Adarkar Wastes'
+    cmc: 0
+    colorIdentity:
+      - 'W'
+      - 'U'
+    type: 'Land'
+    types:
+      - 'Land'
+    rarity: 'Rare'
+    set: '5ED'
+    setName: 'Fifth Edition'
+    text: |
+      '{T}: Add {C} to your mana pool.'
+      '{T}: Add {W} or {U} to your mana pool. Adarkar Wastes deals 1 damage to you.''
+    artist: 'Gary Leach'
+    layout: 'normal'
+    multiverseid: 4175
+    imageUrl: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=4175&type=card'
+    printings:
+      - 'ICE'
+      - '5ED'
+      - '6ED'
+      - '7ED'
+      - '9ED'
+      - '10E'
+    originalText: |
+      '{T}: Add one colorless mana to your mana pool.'
+      '{T}: Add {W} or {U} to your mana pool. Adarkar Wastes deals 1 damage to you.'
+    originalType: 'Land'
+    legalities:
+      - format: 'Commander'
+        legality: 'Legal'
+      - format: 'Ice Age Block'
+        legality: 'Legal'
+      - format: 'Legacy'
+        legality: 'Legal'
+      - format: 'Modern'
+        legality: 'Legal'
+    id: '06dd4c4ba89e846861d81dce4ac9c7549f501300'
+  - name: 'Day of Judgment'
+    manaCost: '{2}{W}{W}'
+    cmc: 4
+    colors:
+      - 'White'
+    colorIdentity:
+      - 'W'
+    type: 'Sorcery'
+    types:
+      - 'Sorcery'
+    rarity: 'Rare'
+    set: 'TMS'
+    setName: 'Test Magic Set'
+    text: 'Destroy all creatures.'
+    flavor: |
+      "I have seen planes leveled and all life rendered to dust. It brought no pleasure, even to a heart as dark as mine."
+      —Sorin Markov
+    artist: 'Vincent Proce'
+    number: '9'
+    layout: 'normal'
+    multiverseid: 186309
+    imageUrl: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=186309&type=card'
+    foreignNames:
+      - name: "审判末日"
+        imageUrl: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=204627&type=card'
+        language: 'Chinese Simplified'
+        multiverseid: 204627
+      - name: 'Jour de condamnation'
+        imageUrl: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=204358&type=card'
+        language: 'French'
+        multiverseid: 204358
+    printings:
+      - pMEI
+      - pMPR
+      - ZEN
+      - M11
+      - M12
+    originalText: 'Destroy all creatures.'
+    originalType: 'Sorcery'
+    legalities:
+      - format: 'Commander'
+        legality: 'Legal'
+      - format: 'Legacy'
+        legality: 'Legal'
+      - format: 'Modern'
+        legality: 'Legal'
+      - format: 'Vintage'
+        legality: 'Legal'
+    id: '94c8f4a8bde6d61d52a8c94aa30a32aedd0fe4a4'
+  - multiverseid: 202478
+    name: 'Deathgrip'
+    imageUrl: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=202478&type=card'
+    layout: 'normal'
+    cmc: 2
+    manaCost: '{B}{B}'
+    rarity: 'Rare'
+    text: '{B}{B}: Counter target green spell.'
+    artist: 'Anson Maddocks'
+    number: '75'
+    border: 'black'
+    set: 'TMS'
+    setName: 'Test Magic Set'
+    types:
+      - 'Enchantment'
+  - name: 'Jace, the Mind Sculptor'
+    manaCost: '{2}{U}{U}'
+    cmc: 4
+    colors:
+      - 'Blue'
+    colorIdentity:
+      - 'U'
+    type: 'Planeswalker — Jace'
+    types:
+      - 'Planeswalker'
+    subtypes:
+      - Jace
+    rarity: 'Mythic Rare'
+    set: 'TMS'
+    setName: 'Test Magic Set'
+    text: |
+      +2: Look at the top card of target player's library. You may put that card on the bottom of that player's library.
+      0: Draw three cards, then put two cards from your hand on top of your library in any order.
+      −1: Return target creature to its owner's hand.
+      −12: Exile all cards from target player's library, then that player shuffles his or her hand into his or her library.
+    artist: 'Jason Chan'
+    number: '74'
+    layout: 'normal'
+    multiverseid: 382979
+    imageUrl: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=382979&type=card'
+    loyalty: 3
+    rulings:
+      - date: '2016-06-08'
+        text: "You draw three cards and put two cards back all while Jace's second ability is resolving. Nothing can happen between the two, and no player may choose to take actions."
+      - date: '2016-06-08'
+        text: "If the targeted player for Jace's last ability has no cards in hand, that player shuffles nothing into his or her library, and that player's library will remain empty. That player won't lose the game until he or she tries to draw from the empty library."
+    printings:
+      - 'WWK'
+      - 'V13'
+      - 'VMA'
+      - 'EMA'
+    originalText: |
+      +2: Look at the top card of target player's library. You may put that card on the bottom of that player's library.
+      0: Draw three cards, then put two cards from your hand on top of your library in any order.
+      −1: Return target creature to its owner's hand.
+      −12: Exile all cards from target player's library, then that player shuffles his or her hand into his or her library.
+    originalType: 'Planeswalker — Jace'
+    legalities:
+      - format: 'Commander'
+        legality: 'Legal'
+      - format: 'Legacy'
+        legality: 'Legal'
+      - format: 'Modern'
+        legality: 'Banned'
+      - format: 'Vintage'
+        legality: 'Legal'
+      - format: 'Zendikar Block'
+        legality: 'Legal'
+    id: '52abc282940de68646b5dcd266de6c7c5de9494d'
+yas_cards:
+  - name: 'Counterspell'
+    manaCost: '{U}{U}'
+    cmc: 2
+    colors:
+      - 'Blue'
+    colorIdentity:
+      - 'U'
+    type: 'Instant'
+    types:
+      - 'Instant'
+    rarity: 'Special'
+    set: 'YAS'
+    setName: 'Yet Another Set'
+    text: 'Counter target spell.'
+    artist: 'Dom!'
+    number: '1'
+    layout: 'normal'
+    releaseDate: '2000'
+    foreignNames:
+      - name: '反击咒语'
+        language: 'Chinese Simplified'
+      - name: 'Contresort'
+        language: 'French'
+    printings:
+      - 'TMS'
+      - 'YAS'
+    legalities:
+      - format: 'Commander'
+        legality: 'Legal'
+      - format: 'Ice Age Block'
+        legality: 'Legal'
+      - format: 'Legacy'
+        legality: 'Legal'
+    source: 'Yet Another Set'
+    id: 'cb37c98ad063a9d3f989621cec2bea7e0936d890'

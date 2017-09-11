@@ -64,6 +64,7 @@ describe Gatherer, type: :model do
         expect(retrieved_card.types).to eq(['Creature'])
         expect(retrieved_card.subtypes).to eq(['Angel'])
         expect(retrieved_card.layout).to eq('normal')
+        expect(retrieved_card.mana_cost).to eq('{1}{W}')
         expect(retrieved_card.cmc).to eq(2)
         expect(retrieved_card.rarity).to eq('Mythic Rare')
         expect(retrieved_card.text).to eq('Flying')
@@ -100,6 +101,7 @@ describe Gatherer, type: :model do
         expect(retrieved_card.subtypes).to eq(nil)
         expect(retrieved_card.layout).to eq('normal')
         expect(retrieved_card.cmc).to eq(4)
+        expect(retrieved_card.mana_cost).to eq('{2}{W}{W}')
         expect(retrieved_card.rarity).to eq('Rare')
         expect(retrieved_card.text).to eq('Destroy all creatures.')
         # rubocop:disable StringLiterals
@@ -138,6 +140,7 @@ describe Gatherer, type: :model do
         )
         expect(retrieved_card.layout).to eq('normal')
         expect(retrieved_card.cmc).to eq(2)
+        expect(retrieved_card.mana_cost).to eq('{B}{B}')
         expect(retrieved_card.rarity).to eq('Rare')
         expect(retrieved_card.text).to eq('{B}{B}: Counter target green spell.')
         expect(retrieved_card.flavor).to eq(nil)
@@ -175,6 +178,7 @@ describe Gatherer, type: :model do
         expect(retrieved_card.subtypes).to eq(['Jace'])
         expect(retrieved_card.layout).to eq('normal')
         expect(retrieved_card.cmc).to eq(4)
+        expect(retrieved_card.mana_cost).to eq('{2}{U}{U}')
         expect(retrieved_card.rarity).to eq('Mythic Rare')
         # rubocop:disable StringLiterals
         expect(retrieved_card.text).to eq(

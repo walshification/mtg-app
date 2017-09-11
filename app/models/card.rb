@@ -15,6 +15,7 @@ class Card < ApplicationRecord
       name: json_card['name'],
       multiverse_id: json_card['multiverseid'],
       magic_set_id: magic_set.id,
+      mana_cost: json_card['manaCost'],
       image_url: json_card['imageUrl'],
       types: json_card['types'],
       subtypes: json_card['subtypes'],
