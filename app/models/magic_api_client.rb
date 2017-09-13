@@ -22,12 +22,12 @@ class MagicApiClient
     get("cards/#{multiverse_id}")
   end
 
+  private_class_method
+
   def self.get(query)
-    path, resp_key = *parse_query(query)
+    resp_key = parse_for_response_key(query)
     HTTParty.get("#{ENV['MAGIC_API_ROOT_URL']}#{query}").parsed_response[resp_key]
   end
-
-  private_class_method
 
   def self.select_by_code(codes)
     requested_set_names = MagicSet.where(code: codes).pluck(:name)
@@ -35,10 +35,10 @@ class MagicApiClient
     returned_sets.select { |api_set| codes.include?(api_set['code']) }
   end
 
-  def self.parse_query(query)
+  def self.parse_for_response_key(query)
     path = query.split('?').first
-    return [path, path] unless path.include?('/')
-    [path.split('/').first, path.split('/').first[0..-2]]
+    return path unless path.include?('/')
+    path.split('/').first[0..-2]
   end
 
   def self.allowed?(resp_key)

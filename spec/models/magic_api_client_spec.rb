@@ -56,7 +56,6 @@ describe MagicApiClient, type: :model do
 
   describe '.get_cards' do
     let(:tms_cards) { api_fixtures['tms_cards'] }
-    let(:single_card) { api_fixtures['yas_card'] }
 
     before(:each) do
       stub_request(:get, 'https://api.magic.com/cards')
@@ -95,11 +94,13 @@ describe MagicApiClient, type: :model do
       response = described_class.get_cards('TMS')
       expect(response.count).to eq(101)
     end
+  end
 
+  describe '.get_card' do
     it 'finds a single card if given a multiverse ID' do
       stub_request(:get, 'https://api.magic.com/cards/4175')
         .and_return(
-          body: single_card.to_json,
+          body: api_fixtures['yas_card'].to_json,
           headers: { 'Content-Type' => 'application/json' }
         )
       response = described_class.get_card(4175)
