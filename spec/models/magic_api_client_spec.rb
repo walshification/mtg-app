@@ -54,6 +54,27 @@ describe MagicApiClient, type: :model do
     end
   end
 
+  describe '.get_set' do
+    it 'returns a single set from a code' do
+      stub_request(:get, %r{sets\/TMS}).and_return(
+        body: api_fixtures['single_set'].to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+      response = described_class.get_set('TMS')
+      expect(response['name']).to eq('Test Magic Set')
+    end
+
+    it 'returns a 404 error if asked for a set that does not exist' do
+      stub_request(:get, %r{sets\/FAKE}).and_return(
+        body: { 'status' => '404', 'error' => 'Not Found' }.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+      response = described_class.get_set('FAKE')
+      expect(response['status']).to eq('404')
+      expect(response['error']).to eq('Not Found')
+    end
+  end
+
   describe '.get_cards' do
     let(:tms_cards) { api_fixtures['tms_cards'] }
 
@@ -105,6 +126,16 @@ describe MagicApiClient, type: :model do
         )
       response = described_class.get_card(4175)
       expect(response['name']).to eq('Counterspell')
+    end
+
+    it 'returns a 404 error if asked for a card that does not exist' do
+      stub_request(:get, %r{cards\/FAKE}).and_return(
+        body: { 'status' => '404', 'error' => 'Not Found' }.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+      response = described_class.get_card('FAKE')
+      expect(response['status']).to eq('404')
+      expect(response['error']).to eq('Not Found')
     end
   end
 end

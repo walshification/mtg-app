@@ -9,11 +9,15 @@ class MagicApiClient
     select_by_code(codes)
   end
 
+  def self.get_set(set_code)
+    get("sets/#{set_code}")
+  end
+
   def self.get_cards(set_code)
     (1..5).inject([]) do |cards, page_number|
       pre_call_count = cards.count
       cards += get("cards?set=#{set_code}&page=#{page_number}")
-      break cards if pre_call_count == cards.count || cards.count % 100 != 0
+      break cards if no_more_cards?(pre_call_count, cards.count)
       cards
     end
   end
@@ -26,7 +30,9 @@ class MagicApiClient
 
   def self.get(query)
     resp_key = parse_for_response_key(query)
-    HTTParty.get("#{ENV['MAGIC_API_ROOT_URL']}#{query}").parsed_response[resp_key]
+    response = HTTParty.get("#{ENV['MAGIC_API_ROOT_URL']}#{query}").parsed_response
+    return response if response['status'] == '404'
+    response[resp_key]
   end
 
   def self.select_by_code(codes)
@@ -64,5 +70,9 @@ class MagicApiClient
         universal_newline: true
       )
     end
+  end
+
+  def self.no_more_cards?(pre_call_count, cards_count)
+    pre_call_count == cards_count || cards_count % 100 != 0
   end
 end

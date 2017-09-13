@@ -51,6 +51,34 @@ two_sets:
       releaseDate: '2017-12-12'
       magicCardsInfoCode: 'ats'
       block: 'Test Magic Block'
+single_set:
+  set:
+    code: 'TMS'
+    name: 'Test Magic Set'
+    type: 'expansion'
+    border: 'black'
+    booster:
+      -
+        - 'rare'
+        - 'mythic rare'
+      - 'uncommon'
+      - 'uncommon'
+      - 'uncommon'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'common'
+      - 'land'
+      - 'marketing'
+    releaseDate: '2017-11-03'
+    magicCardsInfoCode: 'tms'
+    block: 'Test Magic Block'
 unicode_set:
   sets:
     - code: 'UCS'
