@@ -22,10 +22,10 @@ describe Api::V1::CardsController, type: :controller do
 
   describe 'GET #index' do
     context 'without params' do
-      it 'returns an empty array of cards' do
+      it 'returns array of all cards in alphabetical order' do
         get(:index, format: :json)
         expect(response).to be_success
-        expect(assigns(:cards)).to match_array([])
+        expect(assigns(:cards)).to match_array([fake_card, second_fake, third_fake])
       end
     end
 

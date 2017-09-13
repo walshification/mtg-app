@@ -52,8 +52,7 @@ module Api
         elsif params[:multiverse_id]
           Card.where(multiverse_id: params[:multiverse_id])
         else
-          Card.all
-              .order(:name)
+          Card.order(:name)
               .offset(PAGE_SIZE * @page)
               .limit(PAGE_SIZE)
         end
