@@ -4,7 +4,6 @@ require 'rails_helper'
 
 describe MagicApiClient, type: :model do
   let(:api_fixtures) { YAML.load_file('spec/fixtures/magic_api_responses.yml') }
-  let(:api_response) { double('API response') }
 
   describe '.get_sets' do
     let(:two_sets) { api_fixtures['two_sets'] }
@@ -17,6 +16,7 @@ describe MagicApiClient, type: :model do
         headers: { 'Content-Type' => 'application/json' }
       )
     end
+
     it 'returns an array of JSON Magic sets' do
       response = described_class.get_sets
       expect(response.length).to eq(2)
@@ -56,6 +56,7 @@ describe MagicApiClient, type: :model do
 
   describe '.get_cards' do
     let(:tms_cards) { api_fixtures['tms_cards'] }
+    let(:single_card) { api_fixtures['yas_card'] }
 
     before(:each) do
       stub_request(:get, 'https://api.magic.com/cards')
@@ -93,6 +94,16 @@ describe MagicApiClient, type: :model do
         )
       response = described_class.get_cards('TMS')
       expect(response.count).to eq(101)
+    end
+
+    it 'finds a single card if given a multiverse ID' do
+      stub_request(:get, 'https://api.magic.com/cards/4175')
+        .and_return(
+          body: single_card.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+      response = described_class.get_card(4175)
+      expect(response['name']).to eq('Counterspell')
     end
   end
 end
